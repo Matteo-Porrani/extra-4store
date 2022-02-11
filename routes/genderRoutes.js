@@ -7,6 +7,9 @@ const db = require('../data/database');
 const router = express.Router();
 
 
+const templateName = "gender.ejs";
+
+
 // ### ROUTES ###
 
 router.get('/man', async (req, res) => {
@@ -45,6 +48,7 @@ router.get('/man', async (req, res) => {
   const [advertProducts] = await db.query(query2)
 
   res.render('gender', { 
+    templateName: templateName,
     gender: gender, 
     categories: categories,
     promos: advertProducts
@@ -85,7 +89,8 @@ router.get('/wom', async (req, res) => {
 
   const [advertProducts] = await db.query(query2)
 
-  res.render('gender', { 
+  res.render('gender', {
+    templateName: templateName,
     gender: gender, 
     categories: categories,
     promos: advertProducts

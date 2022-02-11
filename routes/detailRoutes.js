@@ -42,6 +42,7 @@ router.get('/detail/:id', async (req, res) => {
   const [product] = await db.query(getProductByid, [productID]);
 
   res.render('detail', {
+    templateName: "detail.ejs",
     product: product[0]
   });
 });

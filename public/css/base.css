@@ -12,8 +12,29 @@ body {
 
 header {
   color: #ee5a24;
-  border-bottom: 1px solid #ee5a24;
+  border-bottom: 1px solid #b4c1cc;
 }
+
+h3 {
+  border: 1px solid #212529;
+  padding: .5rem;
+  width: fit-content;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.main__logo {
+  text-decoration: none;
+  color: #ee5a24;
+}
+
+
+/* MAIN NAV */
 
 nav ul {
   display: flex;
@@ -28,25 +49,74 @@ nav ul li a:hover {
   color: #aa5a24;
 }
 
-h3 {
-  border: 1px solid #212529;
-  padding: .5rem;
-  width: fit-content;
+.brd__list {
+  display: flex;
+  gap: 1rem;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+.brd__link {
+  color: #585ff5;
 }
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 .container {
   width: 88%;
   margin: 0 auto;
 }
 
+.btn {
+  display: inline-block;
+  background: #212529;
+  color: #f8f9fa;
+
+  text-decoration: none;
+  font-size: .75rem;
+
+  /* <button> */
+  font-family: monospace;
+  border: none;
+
+  padding: .5rem;
+  margin: .25rem;
+}
+
+.btn:hover {
+  background: #ee5a24;
+}
+
+.btn--xl {
+  font-size: 1.25rem !important;
+}
+
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
 .txtor {
   color: #ee5a24 !important;
 }
+
+.bigtext {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: .25rem 0;
+}
+
+.badge {
+  background: #099f9f;
+  color: #f8f9fa;
+  padding: .125rem;
+
+  font-size: .75rem;
+  font-weight: bold;
+
+  letter-spacing: 2px;
+
+  margin: 0 .25rem;
+}
+
+
 
 .view {
   color: #ee5a24;
@@ -85,57 +155,57 @@ ul {
   width: fit-content;
 }
 
-.btn {
-  display: inline-block;
-  background: #212529;
-  color: #f8f9fa;
 
-  text-decoration: none;
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* FORM CONTROLS */
 
-  font-size: .75rem;
-
-  /* button */
+label,
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
   font-family: monospace;
-  border: none;
-
-  padding: .5rem;
-  margin: .25rem;
+  padding: .25rem;  
 }
 
-.btn:hover {
-  background: #ee5a24;
+input[type="radio"] {
+  display: inline;
+  width: fit-content;
+
+  width: 20px;
+  height: 20px;
 }
 
-
-.badge {
-  background: #099f9f;
-  color: #f8f9fa;
-  padding: .125rem;
-
-  font-size: .625rem;
-  font-weight: bold;
-
-  letter-spacing: 2px;
-
-  margin: 0 .25rem;
+textarea {
+  resize: none;
 }
 
 
-.card__product {
-  display: inline-block;
-  border: 1px solid #212529;
 
-  padding: .5rem;
-  margin: 1rem;
+input,
+select,
+textarea {
+  margin-bottom: .5rem;
 }
 
-.categ__tag {
-  color: #ee5a24;
+
+
+
+
+@media (min-width: 800px) {
+
+  .two__col {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .two__col__half {
+    width: 100%;
+  }  
+
 }
 
-.price__tag {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #ee5a24;
-  text-align: right;
-}
+
+
+

@@ -5,22 +5,9 @@ const categID = location.pathname.split('/')[2];
 localStorage.categoryPath = location.pathname;
 
 const showProducts = document.querySelector("#showProducts");
-const backToGender = document.querySelector("#backToGender");
 
 
-let gender = localStorage.gender;
-const shortGender = ["M", "W"];
-const longGender = ["man", "wom"];
-const frenchGender = ["Homme", "Femme"];
-// on génère dynamiquement le lien de retour vers la page "gender"
-const genderPath = "/" + longGender[shortGender.indexOf(gender)];
-const genderName = "< retour à la page " + frenchGender[shortGender.indexOf(gender)];
-
-backToGender.href = genderPath;
-backToGender.textContent = genderName;
-
-
-// on récupère tous les produits
+// A*A -- on récupère tous les produits
 let products = JSON.parse(localStorage.products);
 
 // (+) -- 3 clés de filtrage possibles :
@@ -65,10 +52,10 @@ const htmlProducts = filteredProducts.map(item => {
   let itemString = `
     <li>
       <i class="ph-club"></i>
-      <a href="/detail/${item.p_id}">${item.p_brand} / ${item.p_name} / ${item.p_subcat} — € ${item.p_price}</a>`;
+      <a href="/detail/${item.p_id}">${item.p_brand} / ${item.p_name} / ${item.p_subcat} / € ${item.p_price}</a>`;
 
   if (item.p_sales === 'Y') {
-    itemString += `<span class="badge">soldes</span><li>`;
+    itemString += `<span class="badge">-${item.p_disc}%</span><li>`;
   } else {
     itemString += `<li>`;
   }

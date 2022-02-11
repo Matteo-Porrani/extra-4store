@@ -25,6 +25,7 @@ router.get('/category/:id', async (req, res) => {
   }
 
   res.render('category', {
+    templateName: "category.ejs",
     categoryID: categoryID,
     categoryName: categoryNameParsed
   });

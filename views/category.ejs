@@ -9,20 +9,20 @@
 <body>
 
   <header>
-    <div class="container">
-      <h1>Extra - 0.0.1</h1>
-      <p class="view">category.ejs</p>
-
-      <%- include('./includes/nav') %>
-
-    </div>
+    <%- include('./includes/header') %>
   </header>
 
   <main>
 
     <section>
       <div class="container">
-        <a id="backToGender" class="btn"></a>
+        <%- include('./includes/breadcrumb') %>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <!-- <a id="backToGender" class="btn"></a> -->
         <h2 class="page__title">Catégorie</h2>
 
         <h2>Catégorie choisie : <%= categoryName %> (<%= categoryID %>)</h2>
@@ -43,7 +43,7 @@
 
     <section>
       <div class="container">
-        <h3>Produits filtrés</h3>
+        <h3>Produits de la catégorie choisie</h3>
 
         <ul id="showProducts">
         </ul>
@@ -54,8 +54,8 @@
   </main>
 
 
+  <%- include('./includes/scriptlist') %>
   <script src="/js/category_handler.js"></script>
-
 </body>
 
 </html>

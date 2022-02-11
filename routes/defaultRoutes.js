@@ -10,7 +10,7 @@ const router = express.Router();
 // ### ROUTES ###
 
 router.get('/', async (req, res) => {
-  res.render('index');
+  res.render('index', { templateName: "index.ejs" });
 });
 
 

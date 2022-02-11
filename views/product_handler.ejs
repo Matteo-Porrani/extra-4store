@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <%- include('./includes/head') %>
+    <title>Extra</title>
+</head>
+
+<body>
+
+  <header>
+    <%- include('./includes/header') %>
+  </header>
+
+  <main>
+
+    <section>
+      <div class="container">
+
+        <h2 class="page__title"><i class="ph-plus-circle"></i>Création produit</h2>
+
+        <form action="/product/create" method="POST">
+
+          <div class="two__col">
+            <div class="two__col__half">
+
+              <label for="p_form_category">category</label>
+              <select name="p_form_category" id="p_form_category">
+                <% for (const category of categories) { %>
+                  <option value="<%= category.catId %>">
+                    <%= category.catName %>
+                  </option>
+                  <% } %>
+
+              </select>
+
+              <label for="p_form_brand">brand</label>
+              <select name="p_form_brand" id="p_form_brand">
+                <% for (const brand of brands) { %>
+                  <option value="<%= brand.braId %>">
+                    <%= brand.braName %>
+                  </option>
+                  <% } %>
+              </select>
+
+              <input type="radio" name="p_form_gender" id="p_form_gender" value="M" checked><span>Homme</span>
+              <input type="radio" name="p_form_gender" id="p_form_gender" value="W"><span>Femme</span>
+              <input type="radio" name="p_form_gender" id="p_form_gender" value="U"><span>Unisex</span>
+
+              <label for="p_form_name">name</label>
+              <input type="text" name="p_form_name" id="p_form_name" required>
+
+              <label for="p_form_souscategory">sous-catégorie</label>
+              <input type="text" name="p_form_souscategory" id="p_form_souscategory">
+
+              <label for="p_form_description">description</label>
+              <textarea rows="3" name="p_form_description" id="p_form_description">une description détaillée du produit et de ses caractéristiques principales</textarea>
+
+              <label for="p_form_code">code</label>
+              <input type="text" name="p_form_code" id="p_form_code" value="123.456.8926">
+              <span class="badge">randomize</span>
+
+            </div>
+
+            <div class="two__col__half">
+
+              <label for="">price</label>
+              <select name="p_form_price" id="p_form_price">
+                <% for (const price of prices) { %>
+                  <option value="<%= price.priId %>">
+                    <%= price.priAmount %> €
+                  </option>
+                  <% } %>
+              </select>
+
+              <label for="p_form_discount">discount <span class="badge" id="p_form_discount_value">0</span></label>
+              <input type="range" name="p_form_discount" id="p_form_discount" min="0" max="100" step="10" value="0">
+
+              <label for="p_form_rating">rating <span class="badge" id="p_form_rating_value"></span></label>
+              <input type="range" name="p_form_rating" id="p_form_rating" min="0" max="5" step=".1" value="4.1">
+
+              <label for="p_form_revcount">review count</label>
+              <input type="text" name="p_form_revcount" id="p_form_revcount">
+
+              <label for="p_form_comments">comments</label>
+              <textarea rows="3" name="p_form_comments" id="p_form_comments"></textarea>
+
+              <div class="two__col">
+
+                <div class="two__col__half">
+                  <label>sales</label>
+                  <input type="radio" name="p_form_sales" id="p_form_sales" value="Y"><span>Y</span>
+                  <input type="radio" name="p_form_sales" id="p_form_sales" value="N" checked><span>N</span>
+                </div>
+
+                <div class="two__col__half">
+                  <label>active</label>
+                  <input type="radio" name="p_form_active" id="p_form_active" value="Y" checked><span>Y</span>
+                  <input type="radio" name="p_form_active" id="p_form_active" value="N"><span>N</span>    
+                </div>
+
+              </div>
+
+              <br>
+              <button class="btn btn--xl" style="display: block; margin-left: auto;">Submit</button>
+
+            </div>
+
+          </div>
+
+        </form>
+
+      </div>
+    </section>
+
+    <%- include('./includes/scriptlist') %>
+    <script src="/js/product_form.js"></script>
+</body>
+
+</html>

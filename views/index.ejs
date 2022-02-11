@@ -9,39 +9,62 @@
 <body>
 
   <header>
-    <div class="container">
-      <h1>Extra - 0.0.1</h1>
-      <p class="view">index.ejs</p>
-
-      <%- include('./includes/nav') %>
-
-    </div>
+    <%- include('./includes/header') %>
   </header>
 
   <main>
 
     <section>
       <div class="container">
+        <%- include('./includes/breadcrumb') %>
+      </div>
+    </section>
 
+    <section>
+      <div class="container">
+
+        <!--
         <p class="notes">
           Cette page est la porte d'entrée du site.<br>
           L'user ne fait que choisir FEMME ou HOMME, il n'y a pas de reqûete en bdd.
         </p>
+        -->
 
         <h2 class="page__title">Accueil</h2>
 
-        <p>
-          <a href="/wom" class="btn" data-gender="wom">Femme</a>
-        </p>
+        <div class="two__col">
+          <div class="two__col__half">
+            <img src="https://via.placeholder.com/150/b4c1cc/f8f9fa?text=extra" alt="">
+            <p>
+              <a href="/wom" class="btn btn--xl" data-gender="wom">Femme</a>
+            </p>
 
-        <p>
-          <a href="/man" class="btn" data-gender="man">Homme</a>
-        </p>
+          </div>
+          <div class="two__col__half">
+            <img src="https://via.placeholder.com/150/b4c1cc/f8f9fa?text=extra" alt="">
+            <p>
+              <a href="/man" class="btn btn--xl" data-gender="man">Homme</a>
+            </p>
 
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section>
+      <div class="container">
+        <h3>Newsletter</h3>
+        <p class="placeholder">
+          <i class="ph-wrench"></i>
+          Formulaire inscription newsletter
+        </p>
       </div>
     </section>
   </main>
 
+  <%- include('./includes/scriptlist') %>
 </body>
 
 </html>
