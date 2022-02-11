@@ -1,0 +1,23 @@
+<div class="card__product">
+
+  <small class="categ__tag"><%= product.p_categ %></small>
+  <hr>
+  <h2><%= product.p_name %></h2>
+  <p><%= product.p_brand %></p>
+
+  <img src="https://via.placeholder.com/200" alt="placeholder image">
+
+  <p class="price__tag">€ <%= product.p_price %></p>
+
+  <p>
+    <% for (let i = 0; i < Math.floor(product.p_rat); i++) {%>
+      <i class="ph-star"></i>
+    <% } %>
+  </p>
+
+  <p><%= product.p_revcount %> commentaires</p>
+
+
+  <a class="btn" href="">Voir</a>
+
+</div>

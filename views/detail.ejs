@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <%- include('./includes/head') %>
+    <title>Extra</title>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Extra - 0.0.1</h1>
+      <p class="view">detail.ejs</p>
+
+      <%- include('./includes/nav') %>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section>
+      <div class="container">
+
+        <a id="backToCategory" class="btn">&lt; Retour</a>
+
+        <h2 class="page__title">Détail</h2>
+
+        <p>ID # <%= product.p_id %></p>
+        <h3><%= product.p_name %></h3>
+
+        <img src="https://via.placeholder.com/200/b4c1cc/f8f9fa?text=extra" alt="">
+
+        <p>Catégorie : <%= product.p_categ %></p>
+        <p class="txtor">Marque : <%= product.p_brand %></p>
+        <p>Prix : <%= product.p_price %></p>
+
+        <p class="placeholder"><i class="ph-wrench"></i>Prix réduit</p>
+
+        <p>Description : <%= product.p_desc %></p>
+        <p>Promo : <%= product.p_sales %></p>
+        <p>Réduction : <%= product.p_disc %></p>
+
+        <p class="placeholder"><i class="ph-wrench"></i>features...</p>
+
+        <p>Code : <%= product.p_code %></p>
+        <p>Note : <%= product.p_rating %></p>
+        <p>Nb de commentaires : <%= product.p_revcount %></p>
+
+        <p class="placeholder"><i class="ph-wrench"></i>choix couleurs</p>
+
+        <p class="placeholder"><i class="ph-wrench"></i>choix tailles</p>
+
+        <button class="btn">Ajouter au panier</button>
+
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/js/detail_handler.js"></script>
+</body>
+
+</html>

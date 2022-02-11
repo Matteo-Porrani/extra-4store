@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <%- include('./includes/head') %>
+    <title>Extra</title>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Extra - 0.0.1</h1>
+      <p class="view">gender.ejs</p>
+      <%- include('./includes/nav') %>
+    </div>
+  </header>
+
+  <main>
+
+    <section>
+      <div class="container">
+
+        <!--
+        <p class="notes">
+          Au chargement de cette page on effectue 2 requêtes pour récupérer :<br>
+          - la liste des catégories<br>
+          - la liste des articles en promotion (pour alimenter le carrousel)
+        </p>
+
+        <p class="notes">
+          En arrière plan le fetch récupère un array d'objets avec TOUS les produits correspondants au GENRE CHOISI + UNISEX.<br>
+          On initialise localStorage avec les clés '.gender' ('M' / 'W') et '.products'.
+        </p>
+
+        <p class="notes">
+          D'ici on peut poursuivre en choisissant :<br>
+          - [1] UNE ou [2] TOUTES les catégories / ou [3] la catégorie spéciale "SOLDES"<br>
+          - [4] UN produit en promotion
+        </p>
+        -->
+
+        <h2 class="page__title"><%= gender %></h2>
+
+        <h3>Catégories</h3>
+        <ul>
+          <li>
+            <a class="btn" href="/category/99">SOLDES</a>
+            <i class="ph-star"></i>
+          </li>
+          <% for (const category of categories) { %>
+            <li>
+              <a class="btn" href="/category/<%= category.catId %>"><%= category.catName %></a>
+            </li>
+            <% } %>
+            <li>
+              <a class="btn" href="/category/100">toutes les catégories</a>
+              <i class="ph-star"></i>
+            </li>
+        </ul>
+
+        <h3>Promos</h3>
+        <ul>
+          <% for (const promo of promos) { %>
+            <li>
+              <i class="ph-club"></i>
+               <%= promo.p_categ %> /
+               <%= promo.p_name %> /
+               € <%= promo.p_price %> /
+               <%= promo.p_gender %> /
+            </li>
+            <% } %>
+        </ul>
+
+
+        <div class="img__wrapper">
+          <img src="https://via.placeholder.com/300" alt="placeholder image" style="max-width: 100%;">
+        </div>
+
+      </div>
+
+    </section>
+  </main>
+
+  <script src="/js/init.js"></script>
+</body>
+
+</html>

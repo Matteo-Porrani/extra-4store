@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <%- include('./includes/head') %>
+    <title>Extra</title>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Extra - 0.0.1</h1>
+      <p class="view">index.ejs</p>
+
+      <%- include('./includes/nav') %>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section>
+      <div class="container">
+
+        <p class="notes">
+          Cette page est la porte d'entrée du site.<br>
+          L'user ne fait que choisir FEMME ou HOMME, il n'y a pas de reqûete en bdd.
+        </p>
+
+        <h2 class="page__title">Accueil</h2>
+
+        <p>
+          <a href="/wom" class="btn" data-gender="wom">Femme</a>
+        </p>
+
+        <p>
+          <a href="/man" class="btn" data-gender="man">Homme</a>
+        </p>
+
+      </div>
+    </section>
+  </main>
+
+</body>
+
+</html>

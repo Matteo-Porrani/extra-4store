@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <%- include('./includes/head') %>
+    <title>Extra</title>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Extra - 0.0.1</h1>
+      <p class="view">category.ejs</p>
+
+      <%- include('./includes/nav') %>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section>
+      <div class="container">
+        <a id="backToGender" class="btn"></a>
+        <h2 class="page__title">Catégorie</h2>
+
+        <h2>Catégorie choisie : <%= categoryName %> (<%= categoryID %>)</h2>
+      </div>
+
+    </section>
+
+
+    <section>
+      <div class="container">
+        <div class="placeholder">
+          <i class="ph-wrench"></i>
+          Ici les FILTRES
+        </div>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="container">
+        <h3>Produits filtrés</h3>
+
+        <ul id="showProducts">
+        </ul>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <script src="/js/category_handler.js"></script>
+
+</body>
+
+</html>
