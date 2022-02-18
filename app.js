@@ -11,6 +11,7 @@ const defaultRoutes = require('./routes/defaultRoutes');
 const genderRoutes = require('./routes/genderRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const detailRoutes = require('./routes/detailRoutes');
+
 const adminRoutes = require('./routes/adminRoutes');
 const apiRoutes = require('./routes/apiRoutes');
 const exp = require('constants');

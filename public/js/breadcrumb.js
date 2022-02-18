@@ -1,7 +1,4 @@
 
-
-
-
 const loc = location.pathname;
 
 // A*A -- on lit le dernier niveau
@@ -9,8 +6,8 @@ const lastLevel = getLastLevel();
 let currLevel;
 
 // A*A -- on met a jour le niveau courant
-const rgxCategory = new RegExp ("/category/");
-const rgxDetail = new RegExp ("/detail/");
+const rgxCategory = new RegExp("/category/");
+const rgxDetail = new RegExp("/detail/");
 
 if (loc === '/') {
   currLevel = 0;
@@ -29,6 +26,7 @@ if (loc === '/') {
 } else if (rgxDetail.test(loc)) {
   currLevel = 3;
 }
+
 document.cookie = `lev=${currLevel}; path=/`;
 
 
@@ -54,7 +52,6 @@ if (delta < 0 && loc !== '/') {
 
 
 
-
 function getLastLevel() {
 
   const cookies = document.cookie.split('; ');
@@ -68,16 +65,13 @@ function getLastLevel() {
   } catch {
     return 0;
   }
-  
 }
-
 
 
 
 // MK -- breadcrumb routes
 
 function getCurrentBrd() {
-
   const cookies = document.cookie.split('; ');
   const prsCookies = cookies.map(item => {
     return item.split('=');
@@ -114,7 +108,6 @@ function popBrd() {
 
 // MK -- display breadcrumb
 
-
 const categories = {
   1: "t-shirts",
   2: "vestes",
@@ -129,42 +122,47 @@ const categories = {
 }
 
 
-const brdList = document.querySelector('.brd__list');
 
-function displayBrd() {
+try {
 
-  const links = getCurrentBrd();
+  const brdList = document.querySelector('.brd__list');
 
-  const listItems = links.map((item, index) => {
-    let text;
-    if (item === '/') {
-      text = "accueil";
-    } else if (item === '/man') {
-      text = "homme";
-    } else if (item === '/wom') {
-      text = "femme";
-    } else if (rgxCategory.test(item)) {
-      text = categories[item.split('/')[2]];
-    } else if (rgxDetail.test(item)) {
+  function displayBrd() {
+    const links = getCurrentBrd();
 
-      // on récupère le nom du produit directement depuis le DOM
-      text = document.querySelector('#detailPageProductName').textContent;
-    }
+    const listItems = links.map((item, index) => {
+      let text;
+      if (item === '/') {
+        text = "accueil";
+      } else if (item === '/man') {
+        text = "homme";
+      } else if (item === '/wom') {
+        text = "femme";
+      } else if (rgxCategory.test(item)) {
+        text = categories[item.split('/')[2]];
+      } else if (rgxDetail.test(item)) {
 
-    if (index === links.length - 1) {
-      return `<li><a class="brd__link txtor">${text}</a></li>`;
-    } else {
-      return `<li><a class="brd__link" href="${item}">${text}</a></li>`;
-    }
+        // on récupère le nom du produit directement depuis le DOM
+        text = document.querySelector('#detailPageProductName').textContent;
+      }
 
-  });
+      if (index === links.length - 1) {
+        return `<li><a class="brd__link txtor">${text}</a></li>`;
+      } else {
+        return `<li><a class="brd__link" href="${item}">${text}</a></li>`;
+      }
+    });
 
-  
-  brdList.innerHTML = listItems.join('<span> / </span>');
+    brdList.innerHTML = listItems.join('<span> / </span>');
+  }
+
+
+  // A*A -- on affiche uniquement si on n'est pas sur la home
+  if (loc !== '/') {
+    displayBrd();
+  }
+
+} catch {
+  console.log("cette page n'affiche pas de breadcrumb");
 }
 
-
-// A*A -- on affiche uniquement si on n'est pas sur la home
-if (loc !== '/') {
-  displayBrd();
-}

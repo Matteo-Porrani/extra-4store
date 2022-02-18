@@ -15,6 +15,11 @@ header {
   border-bottom: 1px solid #b4c1cc;
 }
 
+footer {
+  background: #b4c1cc;
+  padding: 1rem;
+}
+
 h3 {
   border: 1px solid #212529;
   padding: .5rem;
@@ -22,15 +27,14 @@ h3 {
 }
 
 ul {
-  list-style: none;
-  padding: 0;
+  /* list-style: none; */
+  /* padding: 0; */
 }
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 .main__logo {
   text-decoration: none;
-  color: #ee5a24;
 }
 
 
@@ -119,12 +123,12 @@ nav ul li a:hover {
 
 
 .view {
-  color: #ee5a24;
-  background-color: hsl(16, 78%, 92%);
+  color: #6c757d;
+  background-color: #b4c1cc;
   font-weight: bold;
   font-size: .75rem;
 
-  border-left: 5px solid #ee5a24;
+  border-left: 5px solid #6c757d;
   padding: .5rem;
 
   width: fit-content;
@@ -137,10 +141,15 @@ nav ul li a:hover {
   text-align: center;
 }
 
-.placeholder {
+.pch--display {
   background: #b4c1cc;
   padding: .5rem;
+  width: fit-content;  
+}
 
+.pch--func {
+  background: #ffc107;
+  padding: .5rem;
   width: fit-content;
 }
 

@@ -25,7 +25,7 @@
         <!-- <a id="backToGender" class="btn"></a> -->
         <h2 class="page__title">Catégorie</h2>
 
-        <h2>Catégorie choisie : <%= categoryName %> (<%= categoryID %>)</h2>
+        <h2>catégorie : <%= categoryName %> (<%= categoryID %>)</h2>
       </div>
 
     </section>
@@ -33,7 +33,7 @@
 
     <section>
       <div class="container">
-        <div class="placeholder">
+        <div class="pch--func">
           <i class="ph-wrench"></i>
           Ici les FILTRES
         </div>
@@ -43,7 +43,7 @@
 
     <section>
       <div class="container">
-        <h3>Produits de la catégorie choisie</h3>
+        <h3>produits de la catégorie choisie</h3>
 
         <ul id="showProducts">
         </ul>
@@ -53,9 +53,20 @@
 
   </main>
 
+  <footer>
+    <div class="container">
+      <small>scripts utilisés sur cette page :</small>
+      <ul>
+        <li>utils.js</li>
+        <li>breadcrumb.js</li>
+        <li>category_handler.js</li>
+      </ul>
+    </div>
+  </footer>
+
 
   <%- include('./includes/scriptlist') %>
-  <script src="/js/category_handler.js"></script>
+    <script src="/js/category_handler.js"></script>
 </body>
 
 </html>

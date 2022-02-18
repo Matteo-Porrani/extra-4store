@@ -26,22 +26,23 @@
         <!--
         <p class="notes">
           Cette page est la porte d'entrée du site.<br>
-          L'user ne fait que choisir FEMME ou HOMME, il n'y a pas de reqûete en bdd.
+          L'user ne fait que choisir FEMME ou HOMME, il n'y a aucune reqûete en bdd.
         </p>
         -->
+
 
         <h2 class="page__title">Accueil</h2>
 
         <div class="two__col">
           <div class="two__col__half">
-            <img src="https://via.placeholder.com/150/b4c1cc/f8f9fa?text=extra" alt="">
+            <img src="https://via.placeholder.com/150/dde2e9/f8f9fa?text=image femme" alt="">
             <p>
               <a href="/wom" class="btn btn--xl" data-gender="wom">Femme</a>
             </p>
 
           </div>
           <div class="two__col__half">
-            <img src="https://via.placeholder.com/150/b4c1cc/f8f9fa?text=extra" alt="">
+            <img src="https://via.placeholder.com/150/dde2e9/f8f9fa?text=image homme" alt="">
             <p>
               <a href="/man" class="btn btn--xl" data-gender="man">Homme</a>
             </p>
@@ -56,13 +57,24 @@
     <section>
       <div class="container">
         <h3>Newsletter</h3>
-        <p class="placeholder">
+        <p class="pch--func">
           <i class="ph-wrench"></i>
           Formulaire inscription newsletter
         </p>
       </div>
     </section>
   </main>
+
+
+  <footer>
+    <div class="container">
+      <small>scripts utilisés sur cette page :</small>
+      <ul>
+        <li>utils.js</li>
+        <li>breadcrumb.js</li>
+      </ul>
+    </div>
+  </footer>
 
   <%- include('./includes/scriptlist') %>
 </body>

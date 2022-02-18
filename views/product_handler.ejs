@@ -54,7 +54,8 @@
               <input type="text" name="p_form_souscategory" id="p_form_souscategory">
 
               <label for="p_form_description">description</label>
-              <textarea rows="3" name="p_form_description" id="p_form_description">une description détaillée du produit et de ses caractéristiques principales</textarea>
+              <textarea rows="3" name="p_form_description"
+                id="p_form_description">une description détaillée du produit et de ses caractéristiques principales</textarea>
 
               <label for="p_form_code">code</label>
               <input type="text" name="p_form_code" id="p_form_code" value="123.456.8926">
@@ -96,7 +97,7 @@
                 <div class="two__col__half">
                   <label>active</label>
                   <input type="radio" name="p_form_active" id="p_form_active" value="Y" checked><span>Y</span>
-                  <input type="radio" name="p_form_active" id="p_form_active" value="N"><span>N</span>    
+                  <input type="radio" name="p_form_active" id="p_form_active" value="N"><span>N</span>
                 </div>
 
               </div>
@@ -113,7 +114,22 @@
       </div>
     </section>
 
-    <%- include('./includes/scriptlist') %>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <small>scripts utilisés sur cette page :</small>
+      <ul>
+        <li>utils.js</li>
+        <li>breadcrumb.js</li>
+        <li>product_form.js</li>
+      </ul>
+    </div>
+  </footer>
+
+
+  <%- include('./includes/scriptlist') %>
     <script src="/js/product_form.js"></script>
 </body>
 

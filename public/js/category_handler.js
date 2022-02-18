@@ -1,69 +1,79 @@
 
-const categID = location.pathname.split('/')[2];
 
-// on stocke le path de la page (avec la catégorie choisie) pour créer un bouton de retour dans la page détail
-localStorage.categoryPath = location.pathname;
-
-const showProducts = document.querySelector("#showProducts");
+// A*A -- on récupère le genre courant et on construit le path pour le fetch
+const currGenderPath = getCookieValue('gender');
+const fetchUrl = `http://localhost:3000/api/products${currGenderPath}`;
 
 
-// A*A -- on récupère tous les produits
-let products = JSON.parse(localStorage.products);
-
-// (+) -- 3 clés de filtrage possibles :
-
-// index 'all' -> PAS DE FILTRAGE !
-
-let filteredProducts = [];
-
-if (categID === '100') {
-  
-  filteredProducts = [...products];
-  
-} else if (categID === '99') {
-  // index sal -> filtrage sur p_sales === 'Y'
-
-  filteredProducts = products.filter(item => {
-    if (item.p_sales === 'Y') {
-      return item;
-    }
+/*
+fetch(fetchUrl)
+  .then(res => res.json())
+  .then(async data => {
+    await filterProducts(data);
   });
+*/
 
-} else {
-  // index 1...9 -> filtrage sur p_catId
+// A*A -- on récupère tous les produits du genre courant
+fetch(fetchUrl)
+  .then(res => res.json())
+  .then(products => {
 
-  filteredProducts = products.filter(item => {
-    if (item.p_catId === parseInt(categID)) {
-      return item;
+    const categID = location.pathname.split('/')[2];
+    let filteredProducts = [];
+
+    // NEW --
+    // MK -- on filtre selon 3 clés de filtrage possibles :
+    switch (categID) {
+
+      case '100':
+        // index '100' -> PAS DE FILTRAGE !
+        filteredProducts = [...products];
+        break;
+
+      case '99':
+        // index '99' -> filtrage sur p_sales === 'Y'
+        filteredProducts = products.filter(item => {
+          if (item.p_sales === 'Y') return item;
+        });
+        break;
+
+      default:
+        // filtrage sur l'ID de catégorie
+        filteredProducts = products.filter(item => {
+          if (item.p_catId === parseInt(categID)) return item;
+        });
+        break;
     }
-  });  
-
-}
 
 
-console.log(filteredProducts);
 
-const htmlProducts = filteredProducts.map(item => {
+    // MK -- on crée les éléments DOM avec les produits filtrés
+    const htmlProducts = filteredProducts.map(item => {
+      if (item.p_subcat === null) {
+        item.p_subcat = "";
+      }
 
-  if (item.p_subcat === null) {
-    item.p_subcat = "";
-  }
-
-  let itemString = `
+      let itemString = `
     <li>
       <i class="ph-club"></i>
       <a href="/detail/${item.p_id}">${item.p_brand} / ${item.p_name} / ${item.p_subcat} / € ${item.p_price}</a>`;
 
-  if (item.p_sales === 'Y') {
-    itemString += `<span class="badge">-${item.p_disc}%</span><li>`;
-  } else {
-    itemString += `<li>`;
-  }
+      if (item.p_sales === 'Y') {
+        itemString += `<span class="badge">-${item.p_disc}%</span></li>`;
+      } else {
+        itemString += `</li>`;
+      }
 
-  return itemString;
-});
+      return itemString;
+    });
 
-showProducts.innerHTML = htmlProducts.join('');
+
+    // MK -- on affiche dans le DOM
+    const showProducts = document.querySelector("#showProducts");
+    showProducts.innerHTML = htmlProducts.join('');
+
+  });
+
 
 
 

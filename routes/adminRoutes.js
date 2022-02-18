@@ -97,8 +97,8 @@ router.post('/product/create', async (req, res) => {
 
 
 router.get('/product/create/success', (req, res) => {
-  res.render('admin_success', {
-    templateName: "admin_success.ejs"
+  res.render('product_success', {
+    templateName: "product_success.ejs"
   });
 });
 

@@ -1,4 +1,25 @@
 
+document.cookie = `gender=${encodeURIComponent(location.pathname)}; path= "/"`;
+
+
+/*
+if (location.pathname === '/man') {
+
+// create cookie 'gender=man'
+document.cookie = `gender=man; path=/`;
+
+} else if (location.pathname === '/wom') {
+
+  // create cookie 'gender=wom'
+  document.cookie = `gender=wom; path=/`;
+
+}
+*/
+
+
+
+/*
+
 if (location.pathname === '/man') {
   const gender = 'M';
 
@@ -19,8 +40,10 @@ if (location.pathname === '/man') {
   });
 }
 
-// initialisation de '.gender' & '.products' 
+// initialisation de localStorage '.gender' & '.products' 
 function useData(data, gender) {
   localStorage.gender = gender;
   localStorage.products = JSON.stringify(data);
 }
+
+*/

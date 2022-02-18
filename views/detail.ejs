@@ -30,28 +30,32 @@
           <div class="two__col__half">
 
             <p id="detailPageProductName"><span class="bigtext">
-              <%= product.p_name %>
-            </span></p>
+                <%= product.p_name %>
+              </span></p>
 
             <p>ID: <%= product.p_id %>
             </p>
-            <p>catégorie : <%= product.p_categ %></p>
-            <p>sous-catégorie : <%= product.p_subcat %></p>
+            <p>catégorie : <%= product.p_categ %>
+            </p>
+            <p>sous-catégorie : <%= product.p_subcat %>
+            </p>
             <p>marque : <span class="txtor">
                 <%= product.p_brand %>
               </span></p>
-          
 
-            <img src="https://via.placeholder.com/200/b4c1cc/f8f9fa?text=extra" alt="">
+
+            <img src="https://via.placeholder.com/200/dde2e9/f8f9fa?text=extra" alt="">
 
             <p>prix : <%= product.p_price %>
             </p>
 
-            <p class="placeholder"><i class="ph-wrench"></i>Prix réduit</p>
+            <p class="pch--display"><i class="ph-wrench"></i>Prix réduit</p>
 
             <p>promo : <%= product.p_sales %>
             </p>
-            <p>réduction : <span class="badge"><%= product.p_disc %>%</span>
+            <p>réduction : <span class="badge">
+                <%= product.p_disc %>%
+              </span>
             </p>
 
           </div>
@@ -59,8 +63,8 @@
 
           <div class="two__col__half">
 
-            <p class="placeholder"><i class="ph-wrench"></i>choix couleurs</p>
-            <p class="placeholder"><i class="ph-wrench"></i>choix tailles</p>
+            <p class="pch--func"><i class="ph-wrench"></i>choix couleurs</p>
+            <p class="pch--func"><i class="ph-wrench"></i>choix tailles</p>
 
             <p>note : <%= product.p_rating %>
             </p>
@@ -70,10 +74,12 @@
             <p>code : <%= product.p_code %>
             </p>
 
-            <p>description : <%= product.p_desc %></p>
+            <p>description : <%= product.p_desc %>
+            </p>
 
-            <p class="placeholder"><i class="ph-wrench"></i>features...</p>
+            <p class="pch--display"><i class="ph-wrench"></i>features...</p>
 
+            <p class="pch--func"><i class="ph-wrench"></i>choix quantité</p>
 
             <button class="btn">Ajouter au panier</button>
 
@@ -87,6 +93,17 @@
     </section>
 
   </main>
+
+  <footer>
+    <div class="container">
+      <small>scripts utilisés sur cette page :</small>
+      <ul>
+        <li>utils.js</li>
+        <li>breadcrumb.js</li>
+      </ul>
+    </div>
+  </footer>
+
 
   <%- include('./includes/scriptlist') %>
 </body>
