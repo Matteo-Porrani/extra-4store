@@ -46,10 +46,8 @@
 
             <img src="https://via.placeholder.com/200/dde2e9/f8f9fa?text=extra" alt="">
 
-            <p>prix : <%= product.p_price %>
+            <p class="txtbl">description : <%= product.p_desc %>
             </p>
-
-            <p class="pch--display"><i class="ph-wrench"></i>Prix réduit</p>
 
             <p>promo : <%= product.p_sales %>
             </p>
@@ -58,13 +56,30 @@
               </span>
             </p>
 
+            <p>prix : <%= product.p_price %>
+            </p>
+
+            <p>prix réduit : <%= (product.p_price - (product.p_price*(product.p_disc/100))).toFixed(2) %></p>
+
+
           </div>
 
 
           <div class="two__col__half">
 
             <p class="pch--func"><i class="ph-wrench"></i>choix couleurs</p>
+            <ul>
+              <% for (const color of colors) { %>
+                <li data-color-id="<%= color.col_id %>"><%= color.col_name %></li>
+              <% } %>
+            </ul>
+
             <p class="pch--func"><i class="ph-wrench"></i>choix tailles</p>
+            <ul>
+              <% for (const size of sizes) { %>
+                <li data-size-id="<%= size.siz_id %>"><%= size.siz_name %></li>
+              <% } %>
+            </ul>
 
             <p>note : <%= product.p_rating %>
             </p>
@@ -74,10 +89,7 @@
             <p>code : <%= product.p_code %>
             </p>
 
-            <p>description : <%= product.p_desc %>
-            </p>
-
-            <p class="pch--display"><i class="ph-wrench"></i>features...</p>
+            <p class="pch--display"><i class="ph-eye"></i>features...</p>
 
             <p class="pch--func"><i class="ph-wrench"></i>choix quantité</p>
 

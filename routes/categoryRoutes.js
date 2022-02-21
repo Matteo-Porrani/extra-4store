@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.get('/category/:id', async (req, res) => {
 
-  let categoryID = req.params.id;
+  const categoryID = req.params.id;
   let categoryName;
   let categoryNameParsed;
 

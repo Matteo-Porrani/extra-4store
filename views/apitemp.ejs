@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <%- include('./includes/head') %>
+    <title>Extra</title>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Extra - 0.0.1</h1>
+
+      <%- include('./includes/nav') %>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section>
+      <div class="container">
+
+        <h2>API TEST</h2>
+
+        <p>page temporaire</p>
+
+        <ul>
+          <% for (const color of colors) { %>
+            <li><%= color.colName %></li>
+          <% } %>
+
+        </ul>
+
+      </div>
+    </section>
+
+  </main>
+
+</body>
+
+</html>

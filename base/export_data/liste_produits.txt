@@ -1,0 +1,148 @@
+localhost/extra/price/		http://localhost:8888/phpMyAdmin/tbl_sql.php?db=extra&table=price
+ Affichage des lignes 0 - 44 (total de 45, traitement en 0.0004 seconde(s).)
+
+SELECT 
+p.proId, 
+c.catName,
+p.proSubcat,
+b.braName, 
+p.proName,
+pr.priAmount
+FROM product p
+INNER JOIN brand b
+ON p.proBrandId = b.braId
+INNER JOIN category c 
+ON p.proCategoryId = c.catId
+INNER JOIN price pr 
+ON p.proPriceId = pr.priId
+ORDER BY c.catId
+
+
+proId	catName	proSubcat	braName	proName	priAmount	
+1	t-shirts	
+    NULL
+	Ananas	Sunrise	50.99	
+10	t-shirts	
+    NULL
+	Ananas	Space K	24.00	
+11	t-shirts	
+    NULL
+	SuperBright	Comet	24.00	
+12	t-shirts	
+    NULL
+	The Noodles	LadyBird	29.99	
+13	t-shirts	
+    NULL
+	Hinterland	Brave Explorer	29.99	
+14	t-shirts	
+    NULL
+	Quixilder	Apex 2	24.00	
+46	t-shirts	
+    NULL
+	Ananas	SunnySide	10.99	
+47	t-shirts	
+    NULL
+	Ruwa	Girl in Town	33.00	
+54	t-shirts	
+    NULL
+	Ananas	T-Rex	20.99	
+15	vestes	
+    NULL
+	Bull & Fear	Crazy Life	110.99	
+16	vestes	
+    NULL
+	The Sport Pace	Iris	150.00	
+17	vestes	
+    NULL
+	The Noodles	Wonder7	200.99	
+18	vestes	
+    NULL
+	The Noodles	Purple Heart	200.99	
+2	pantalons	
+    NULL
+	SuperBright	Fox Straight	150.00	
+19	pantalons	
+    NULL
+	Jewis	Docker	50.99	
+20	pantalons	
+    NULL
+	Bull & Fear	Pride of America	75.99	
+21	pantalons	
+    NULL
+	Hinterland	Unstoppable	150.00	
+22	pantalons	
+    NULL
+	Jewis	Marvelous	110.99	
+23	pantalons	
+    NULL
+	Ruwa	Joy 77	210.50	
+25	pantalons	
+    NULL
+	SuperBright	Wolf Straight	150.00	
+52	pantalons	
+    NULL
+	Ananas	Docker B	99.00	
+3	robes	
+    NULL
+	Five July	Rose Rouge	150.00	
+4	robes	
+    NULL
+	Ruwa	Sweet Sunday	200.99	
+24	robes	
+    NULL
+	Ruwa	Inoubliable	150.00	
+26	sweats & pulls	
+    NULL
+	Ananas	Han	50.99	
+27	sweats & pulls	
+    NULL
+	The Sport Pace	Himalaya	50.99	
+28	sweats & pulls	
+    NULL
+	Quixilder	Jekill	50.99	
+29	sweats & pulls	
+    NULL
+	Five July	Still Standing	150.00	
+49	sweats & pulls	
+    NULL
+	Five July	Doux Hiver	75.99	
+44	sportswear	survêtement	Ananas	Goal III	110.99	
+45	sportswear	
+    NULL
+	Quixilder	Fast Fred	50.99	
+51	sportswear	
+    NULL
+	Quixilder	Universe	125.00	
+30	chaussures	
+    NULL
+	Ananas	SpeedTrack	50.99	
+31	chaussures	
+    NULL
+	Ananas	Time Attack 2	50.99	
+32	chaussures	
+    NULL
+	Hinterland	Byte100	50.99	
+33	chaussures	
+    NULL
+	Hinterland	Leggera	75.99	
+34	chaussures	
+    NULL
+	Five July	inTown K	50.99	
+35	chaussures	
+    NULL
+	Five July	inTown G	150.00	
+48	chaussures	
+    NULL
+	The Sport Pace	Peak Perfect 3	160.99	
+53	chaussures	
+    NULL
+	Hinterland	Ultra Boost KL	180.99	
+40	accessoires	casquette	Bull & Fear	NaN	24.00	
+41	accessoires	
+    NULL
+	Jewis	Kilo	50.99	
+42	accessoires	lunettes de soleil	Hinterland	Dernier Métro	75.99	
+43	accessoires	sac à dos	Five July	Supernova	44.60	
+50	accessoires	
+    NULL
+	The Noodles	Brighton Large	200.99	

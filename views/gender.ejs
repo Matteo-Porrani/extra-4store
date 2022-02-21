@@ -56,6 +56,12 @@
                 <a class="btn" href="/category/99">SOLDES</a>
                 <i class="ph-star"></i>
               </li>
+              
+              <li>
+                <a class="btn" href="/category/100">toutes les catégories</a>
+                <i class="ph-star"></i>
+              </li>
+
               <% for (const category of categories) { %>
                 <li>
                   <a class="btn" href="/category/<%= category.catId %>">
@@ -63,10 +69,6 @@
                   </a>
                 </li>
                 <% } %>
-                  <li>
-                    <a class="btn" href="/category/100">toutes les catégories</a>
-                    <i class="ph-star"></i>
-                  </li>
             </ul>
 
 
@@ -78,7 +80,7 @@
             <ul>
               <% for (const promo of promos) { %>
                 <li>
-                  <i class="ph-club"></i>
+                  <i class="ph-diamond"></i>
                   <%= promo.p_categ %> /
                     <%= promo.p_name %> /
                       € <%= promo.p_price %> /

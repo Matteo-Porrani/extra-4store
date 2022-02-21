@@ -11,7 +11,7 @@ body {
 }
 
 header {
-  color: #ee5a24;
+  color: #eb8102;
   border-bottom: 1px solid #b4c1cc;
 }
 
@@ -20,10 +20,24 @@ footer {
   padding: 1rem;
 }
 
+section {
+  border: 2px solid #b4c1cc;
+}
+
+
 h3 {
   border: 1px solid #212529;
   padding: .5rem;
   width: fit-content;
+}
+
+h4 {
+  border: 1px solid #099f9f;
+  color: #099f9f;
+  padding: .5rem;
+  width: fit-content;
+  margin: 0;
+  padding: 0 .25rem;
 }
 
 ul {
@@ -50,7 +64,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #aa5a24;
+  color: #eb8102;
 }
 
 .brd__list {
@@ -59,7 +73,7 @@ nav ul li a:hover {
 }
 
 .brd__link {
-  color: #585ff5;
+  color: #b4c1cc;
 }
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -86,7 +100,7 @@ nav ul li a:hover {
 }
 
 .btn:hover {
-  background: #ee5a24;
+  background: #eb8102;
 }
 
 .btn--xl {
@@ -98,7 +112,11 @@ nav ul li a:hover {
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 .txtor {
-  color: #ee5a24 !important;
+  color: #eb8102 !important;
+}
+
+.txtbl {
+  color: #585ff5 !important;
 }
 
 .bigtext {
@@ -108,7 +126,7 @@ nav ul li a:hover {
 }
 
 .badge {
-  background: #099f9f;
+  background: #eb8102;
   color: #f8f9fa;
   padding: .125rem;
 
@@ -135,8 +153,8 @@ nav ul li a:hover {
 }
 
 .page__title {
-  color: #ee5a24;
-  border: 1px solid #ee5a24;
+  color: #eb8102;
+  border: 1px solid #eb8102;
   padding: .5rem;
   text-align: center;
 }
@@ -148,7 +166,7 @@ nav ul li a:hover {
 }
 
 .pch--func {
-  background: #ffc107;
+  background: #ccff00;
   padding: .5rem;
   width: fit-content;
 }
@@ -184,6 +202,12 @@ input[type="radio"] {
 
   width: 20px;
   height: 20px;
+}
+
+input[type="checkbox"] {
+  display: inline;
+  width: fit-content;
+
 }
 
 textarea {

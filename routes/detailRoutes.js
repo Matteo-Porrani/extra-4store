@@ -33,17 +33,44 @@ const getProductByid = `
   INNER JOIN price pr 
   ON p.proPriceId = pr.priId
   WHERE p.proId = ?
-`
+`;
+
+const getColorsByProductId = `
+  SELECT 
+    cl.colId AS col_id,
+    cl.colName AS col_name
+  FROM bindProductToColor bd
+  INNER JOIN color cl
+  ON bd.bind1ColorId = cl.colId
+  WHERE bd.bind1ProductId = ?
+`;
+
+const getSizesByProductId = `
+  SELECT 
+    sz.sizId AS siz_id, 
+    sz.sizName AS siz_name
+  FROM bindProductToSize bd
+  INNER JOIN size sz
+  ON bd.bind2SizeId = sz.sizId
+  WHERE bd.bind2ProductId = ?
+`;
+
 
 router.get('/detail/:id', async (req, res) => {
 
   const productID = req.params.id;
 
   const [product] = await db.query(getProductByid, [productID]);
+  const [colors] = await db.query(getColorsByProductId, [productID]);
+  const [sizes] = await db.query(getSizesByProductId, [productID]);
+
+
 
   res.render('detail', {
     templateName: "detail.ejs",
-    product: product[0]
+    product: product[0],
+    colors: colors,
+    sizes: sizes
   });
 });
 

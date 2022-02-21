@@ -52,6 +52,34 @@ CREATE TABLE advert (
 
 
 
+
+
+CREATE TABLE color (
+  colId INT(11) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  colName VARCHAR(50) NOT NULL
+)
+
+CREATE TABLE size (
+  sizId INT(11) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  sizName VARCHAR(50) NOT NULL
+)
+
+
+CREATE TABLE bindProductToColor (
+  bind1Id INT(11) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  bind1ProductId INT(11) UNSIGNED NOT NULL,
+  bind1ColorId INT(11) UNSIGNED NOT NULL
+)
+
+CREATE TABLE bindProductToSize (
+  bind2Id INT(11) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  bind2ProductId INT(11) UNSIGNED NOT NULL,
+  bind2SizeId INT(11) UNSIGNED NOT NULL
+)
+
+
+
+
 # T*T -- ALTER TABLE
 
 ALTER TABLE category ADD catOrder INT(3) UNSIGNED NULL
@@ -99,6 +127,41 @@ ON UPDATE CASCADE;
 
 
 
+ALTER TABLE advert
+ADD FOREIGN KEY (advProductId) REFERENCES product(proId) 
+ON DELETE RESTRICT 
+ON UPDATE CASCADE; 
+
+
+
+
+
+ALTER TABLE bindProductToColor
+ADD FOREIGN KEY (bind1ProductId) REFERENCES product(proId) 
+ON DELETE RESTRICT
+ON UPDATE CASCADE;
+ALTER TABLE bindProductToColor
+ADD FOREIGN KEY (bind1ColorId) REFERENCES color(colId) 
+ON DELETE RESTRICT
+ON UPDATE CASCADE;
+
+
+
+
+
+ALTER TABLE bindProductToSize
+ADD FOREIGN KEY (bind2ProductId) REFERENCES product(proId) 
+ON DELETE RESTRICT
+ON UPDATE CASCADE;
+ALTER TABLE bindProductToSize
+ADD FOREIGN KEY (bind2SizeId) REFERENCES size(sizId) 
+ON DELETE RESTRICT
+ON UPDATE CASCADE;
+
+
+
+
+
 # MK -- DELETE CONSTRAINT
 ALTER TABLE extra.category
 DROP FOREIGN KEY category_ibfk_1
@@ -139,6 +202,34 @@ INSERT INTO icon
 VALUES(NULL, "tshirt"), (NULL, "jacket"), (NULL, "pants"), (NULL, "access")
 
 
+INSERT INTO size
+VALUES
+(NULL, "Taille Unique"),
+(NULL, "XS"),
+(NULL, "S"),
+(NULL, "M"),
+(NULL, "L"),
+(NULL, "XL"),
+(NULL, "XXL"),
+(NULL, "empty"),
+(NULL, "empty"),
+(NULL, "empty"),
+(NULL, "34"),
+(NULL, "35"),
+(NULL, "36"),
+(NULL, "37"),
+(NULL, "38"),
+(NULL, "39"),
+(NULL, "40"),
+(NULL, "41"),
+(NULL, "42"),
+(NULL, "43"),
+(NULL, "44"),
+(NULL, "45"),
+(NULL, "46"),
+(NULL, "47")
+
+
 
 
 
@@ -163,6 +254,33 @@ VALUES
 (NULL, 12, 1),
 (NULL, 34, 2),
 (NULL, 24, 3),
+
+
+
+
+
+
+
+INSERT INTO bindProductToColor
+VALUES
+(NULL, 30, 2),
+(NULL, 30, 6),
+(NULL, 30, 13),
+
+
+
+
+INSERT INTO bindProductToSize
+VALUES
+(NULL, 40, 1),
+(NULL, 41, 1),
+(NULL, 42, 1),
+(NULL, 43, 3),
+(NULL, 43, 5),
+(NULL, 50, 1)
+
+
+
 
 
 
@@ -204,3 +322,42 @@ INNER JOIN price pr
 ON p.proPriceId = pr.priId
 WHERE c.catId = 3
 
+
+
+-- liste produits
+SELECT 
+p.proId, 
+c.catName,
+p.proSubcat,
+p.proGender,
+b.braName, 
+p.proName,
+pr.priAmount
+FROM product p
+INNER JOIN brand b
+ON p.proBrandId = b.braId
+INNER JOIN category c 
+ON p.proCategoryId = c.catId
+INNER JOIN price pr 
+ON p.proPriceId = pr.priId
+ORDER BY c.catId
+
+
+
+-- liste couleurs en fonction de l'id produit
+SELECT cl.colName
+FROM bindProductToColor bd
+INNER JOIN color cl
+ON bd.bind1ColorId = cl.colId
+WHERE bd.bind1ProductId = 1 
+
+
+-- liste couleurs pour plusieurs produits
+SELECT DISTINCT 
+  cl.colId, 
+  cl.colName
+FROM bindProductToColor bd
+INNER JOIN color cl
+ON bd.bind1ColorId = cl.colId
+WHERE bd.bind1ProductId IN (11, 12, 13, 47, 54)
+ORDER BY cl.colId

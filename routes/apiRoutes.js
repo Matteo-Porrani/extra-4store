@@ -1,6 +1,7 @@
 // ### INIT ###
 
 const express = require('express');
+const res = require('express/lib/response');
 const db = require('../data/database');
 
 // create router
@@ -32,9 +33,30 @@ router.get('/api/products/all', async (req, res) => {
 
 
 
+/*
+router.get('/api/products/man', async (req, res) => {
+
+  const query = getProductsByGender + 'WHERE p.proGender IN ("M","U")';
+  const [products] = await db.query(query);
+
+  res.json(products);
+});
+
+
+router.get('/api/products/wom', async (req, res) => {
+
+  const query = getProductsByGender + 'WHERE p.proGender IN ("W","U")';
+  const [products] = await db.query(query);
+
+  res.json(products);
+});
+*/
+
+
+// (+) -- SHARED QUERIES
 
 // first part of the query, both M & W
-const getProductsByGender = `
+const getProductById = `
   SELECT 
     p.proId AS p_id, 
     p.proName AS p_name, 
@@ -57,23 +79,60 @@ const getProductsByGender = `
   ON p.proPriceId = pr.priId
 `;
 
+const queryColors = `
+  SELECT cl.colId
+  FROM bindProductToColor bd
+  INNER JOIN color cl
+  ON bd.bind1ColorId = cl.colId
+  `;
 
-router.get('/api/products/man', async (req, res) => {
+const querySizes = `
+  SELECT sz.sizId
+  FROM bindProductToSize bd
+  INNER JOIN size sz
+  ON bd.bind2SizeId = sz.sizId
+  `;
 
-  const query = getProductsByGender + 'WHERE p.proGender IN ("M","U")';
-  const [products] = await db.query(query)
 
-  res.json(products);
+
+
+router.get('/api/products/:gender', async (req, res) => {
+
+  let queryIds = "";
+
+  switch (req.params.gender) {
+    case "wom":
+      queryIds = 'SELECT proId FROM product WHERE proGender IN ("W","U")';
+      break;
+    case "man":
+      queryIds = 'SELECT proId FROM product WHERE proGender IN ("M","U")';
+      break;
+  }
+
+  const [productIds] = await db.query(queryIds);
+  const idsArray = productIds.map(item => item.proId);
+
+  let productObjects = [];
+
+  for (const id of idsArray) {
+
+    const [features] = await db.query(getProductById + `WHERE proId = ${id}`);
+    
+    const [colors] = await db.query(queryColors + `WHERE bd.bind1ProductId = ${id}`);
+    features[0].p_colors = colors.map(item => item.colId);
+
+    const [sizes] = await db.query(querySizes + `WHERE bd.bind2ProductId = ${id}`);
+    features[0].p_sizes = sizes.map(item => item.sizId);
+
+    productObjects.push(features[0]);
+  }
+
+  res.json(productObjects);
 });
 
 
-router.get('/api/products/wom', async (req, res) => {
 
-  const query = getProductsByGender + 'WHERE p.proGender IN ("W","U")';
-  const [products] = await db.query(query)
 
-  res.json(products);
-});
 
 
 
@@ -114,6 +173,58 @@ router.get('/advert/man', async (req, res) => {
 
   res.json(products);
 });
+
+
+
+
+// NEW -- get COLORS from product ids
+router.get('/api/colors/:args', async (req, res) => {
+
+  // args are passed as '11+12+13' and we turn them into '11, 12, 13' for the SQL query
+  const queryArgs = req.params.args.replace(/\+/gi, ', ');
+
+  const query = `
+    SELECT DISTINCT 
+      cl.colId, 
+      cl.colName
+    FROM bindProductToColor bd
+    INNER JOIN color cl
+    ON bd.bind1ColorId = cl.colId
+    WHERE bd.bind1ProductId IN (${queryArgs})
+    ORDER BY cl.colId
+  `;
+
+  const [colors] = await db.query(query);
+ 
+  // res.render('apitemp', {colors: colors});
+  res.json(colors);
+});
+
+
+
+// NEW -- get SIZES from product ids
+router.get('/api/sizes/:args', async (req, res) => {
+
+  // args are passed as '11+12+13' and we turn them into '11, 12, 13' for the SQL query
+  const queryArgs = req.params.args.replace(/\+/gi, ', ');
+
+  const query = `
+    SELECT DISTINCT 
+      sz.sizId, 
+      sz.sizName
+    FROM bindProductToSize bd
+    INNER JOIN size sz
+    ON bd.bind2SizeId = sz.sizId
+    WHERE bd.bind2ProductId IN (${queryArgs})
+    ORDER BY sz.sizId
+  `;
+
+  const [sizes] = await db.query(query);
+ 
+  res.json(sizes);
+});
+
+
 
 
 
