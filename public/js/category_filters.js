@@ -1,23 +1,22 @@
 
-const filters = {
-  order: "noteDesc",
-  prices: [],
-  colors: [],
-  sizes: []
-}
-
-
+// A*A -- gestion de l'ordre de tri
 
 const orderSelect = document.querySelector('#filterOrder');
 
 orderSelect.addEventListener('change', (e) => {
   filters.order = e.target.value;
+
+  // à chaque changement de '.order' on tri les 2 arrays 'categProducts' et 'tempProducts'
   changeOrder(categProducts);
+
   if (tempProducts.length > 0) {
     changeOrder(tempProducts);
+    displayProducts(tempProducts);
+  } else {
+    displayProducts(categProducts);
   }
-});
 
+});
 
 
 
@@ -36,66 +35,171 @@ function changeOrder(itemsArray) {
       itemsArray.sort((a, b) => a.p_rat < b.p_rat ? -1 : 1);
       break;
   }
-  displayProducts(itemsArray);
 }
 
 
-
-
-
-function addColorToFilters(colId) {
-  filters.colors.push(colId);
-  // console.log("filters.colors updated !");
-  // console.log(filters.colors);
-  filterDisplay();
-}
-
-function removeColorFromFilters(colId) {
-  filters.colors.splice(filters.colors.indexOf(colId), 1);
-  // console.log("filters.colors updated !");
-  // console.log(filters.colors);
-  if (filters.prices.length > 0 || filters.colors.length > 0) {
+// T*T -- checkIfActive
+// vérifie si au moins 1 critère de filtrage est actif
+// si c'est le cas, ça affiche 'tempProducts'
+// sinon, ça affiche 'categProducts'
+function checkIfActive() {
+  if (
+    filters.brands.length > 0 ||
+    filters.prices.length > 0 ||
+    filters.colors.length > 0 ||
+    filters.sizes.length > 0
+  ) {
+    filters.active = true;
     filterDisplay();
   } else {
+    filters.active = false;
     displayProducts(categProducts);
-    tempProducts = [];
   }
 }
 
 
 
+// T*T -- code spécifique au filtrage par prix
+
+
+
+
+function priceInRange(price) {
+  let test = false;
+  for (const range of filters.prices) {
+    if (price > priceTestValues[range][0] && price < priceTestValues[range][1]) {
+      test = true;
+    }
+  }
+  return test;
+}
+
+
+
+
+// T*T -- ADD / REMOVE for PRICES, BRANDS, COLORS, SIZES
+
+
+// A*A -- PRICES
+function addPriceRangeToFilters(priceRangeIndex) {
+  filters.prices.push(priceRangeIndex);
+  sortArray(filters.prices);
+  checkIfActive();
+}
+
+function removePriceRangeFromFilters(priceRangeIndex) {
+  filters.prices.splice(filters.prices.indexOf(priceRangeIndex), 1);
+  sortArray(filters.prices);
+  checkIfActive();
+}
+
+
+// A*A -- BRANDS
+function addBrandToFilters(id) {
+  filters.brands.push(id);
+  sortArray(filters.brands);
+  checkIfActive();
+}
+
+function removeBrandFromFilters(id) {
+  filters.brands.splice(filters.brands.indexOf(id), 1);
+  sortArray(filters.brands);
+  checkIfActive();
+}
+
+
+// A*A -- COLORS
+function addColorToFilters(id) {
+  filters.colors.push(id);
+  sortArray(filters.colors);
+  checkIfActive();
+}
+
+function removeColorFromFilters(id) {
+  filters.colors.splice(filters.colors.indexOf(id), 1);
+  sortArray(filters.colors);
+  checkIfActive();
+}
+
+
+// A*A -- SIZES
+function addSizeToFilters(id) {
+  filters.sizes.push(id);
+  sortArray(filters.sizes);
+  checkIfActive();
+}
+
+function removeSizeFromFilters(id) {
+  filters.sizes.splice(filters.sizes.indexOf(id), 1);
+  sortArray(filters.sizes);
+  checkIfActive();
+}
+
+
+
+
+
+
+
+// NEW -- filterDisplay() ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // cette f. s'exécute à chaque fois qu'un critère de filtrage change
 function filterDisplay() {
   tempProducts = categProducts.filter(item => {
-    let test = false;
-    
-    // test PRIX
-    if (priceInRange(parseFloat(item.p_price))) {
-      test = true;
-    }
 
+    let testPrice = false;
+    let testBrand = false;
+    let testColor = false;
+    let testSize = false;
 
-    // test COULEUR
-    for (const color of item.p_colors) {
-      if (filters.colors.includes(color)) {
-        test = true;
+    // (+) -- test PRICE
+    if (filters.prices.length === 0) {
+      testPrice = true;
+    } else {
+      if (priceInRange(parseFloat(item.p_price))) {
+        testPrice = true;
       }
     }
 
-    // test TAILLE
+    // (+) -- test BRAND
+    if (filters.brands.length === 0) {
+      testBrand = true;
+    } else {
+      if (filters.brands.includes(item.p_braId)) {
+        testBrand = true;
+      }
+    }
 
+    // (+) -- test COLOR
+    if (filters.colors.length === 0) {
+      testColor = true;
+    } else {
+      for (const color of item.p_colors) {
+        if (filters.colors.includes(color)) {
+          testColor = true;
+        }
+      }
+    }
 
+    // (+) -- test SIZE
+    if (filters.sizes.length === 0) {
+      testSize = true;
+    } else {
+      for (const size of item.p_sizes) {
+        if (filters.sizes.includes(size)) {
+          testSize = true;
+        }
+      }
+    }
 
-
-
-
-
-
-    if (test) return item;
+    if (
+      testPrice &&
+      testBrand &&
+      testColor &&
+      testSize
+    ) return item;
   });
 
   // console.log(tempProducts);
-  changeOrder(tempProducts);
   displayProducts(tempProducts);
 }
 
@@ -103,59 +207,33 @@ function filterDisplay() {
 
 
 
-const priceTestValues = [
-  [0, 20],
-  [20, 45],
-  [45, 75],
-  [75, 100],
-  [100, 125],
-  [125, 160],
-  [160, 200],
-  [200, 300]
-];
+// MK -- reset filters
 
-// const checkedRanges = [0, 1, 5, 6, 7];
+const resetFiltersBtn = document.querySelector('#resetFilters');
+resetFiltersBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  resetAllFilters();
+});
 
 
-function priceInRange(price) {
+function resetAllFilters() {
+  let allChecks = [];
+  allChecks.push(...Array.from(document.querySelectorAll('.checkPrices')));
+  allChecks.push(...Array.from(document.querySelectorAll('.checkBrands')));
+  allChecks.push(...Array.from(document.querySelectorAll('.checkColors')));
+  allChecks.push(...Array.from(document.querySelectorAll('.checkSizes')));
 
-  let test = false;
-
-  for (const range of filters.prices) {
-    if (price > priceTestValues[range][0] && price < priceTestValues[range][1]) {
-      test = true;
-    }
-  }
-
-  return test;
-}
-
-
-
-
-function addPriceRangeToFilters(priceRangeIndex) {
-  filters.prices.push(priceRangeIndex);
-  filterDisplay();
-}
-
-function removePriceRangeFromFilters(priceRangeIndex) {
-  filters.prices.splice(filters.prices.indexOf(priceRangeIndex), 1);
-  if (filters.prices.length > 0 || filters.colors.length > 0) {
-    filterDisplay();
-  } else {
-    displayProducts(categProducts);
-    tempProducts = [];
-  }
-}
-
-pricesChecks = document.querySelectorAll('.checkPrices');
-
-pricesChecks.forEach(item => {
-  item.addEventListener('change', (e) => {
-    if (e.target.checked) {
-      addPriceRangeToFilters(parseInt(e.target.dataset.pricerange));
-    } else {
-      removePriceRangeFromFilters(parseInt(e.target.dataset.pricerange));
+  allChecks.forEach(item => {
+    if (item.checked) {
+      item.checked = false;
     }
   });
-});
+
+  filters.prices = [];
+  filters.brands = [];
+  filters.colors = [];
+  filters.sizes = [];
+  filters.active = false;
+
+  checkIfActive();
+}

@@ -60,6 +60,7 @@ const getProductById = `
   SELECT 
     p.proId AS p_id, 
     p.proName AS p_name, 
+    b.braId AS p_braId,
     b.braName AS p_brand,
     c.catId AS p_catId,
     c.catName AS p_categ, 
@@ -148,6 +149,7 @@ router.get('/advert/man', async (req, res) => {
     SELECT
       a.advOrder AS a_order,
       p.proName AS p_name, 
+      b.braId AS p_braId,
       b.braName AS p_brand, 
       c.catId AS p_catId,
       c.catName AS p_categ,
@@ -172,6 +174,32 @@ router.get('/advert/man', async (req, res) => {
   const [products] = await db.query(query)
 
   res.json(products);
+});
+
+
+
+
+// NEW -- get BRANDS from product ids
+router.get('/api/brands/:args', async (req, res) => {
+
+  // args are passed as '11+12+13' and we turn them into '11, 12, 13' for the SQL query
+  const queryArgs = req.params.args.replace(/\+/gi, ', ');
+
+  const query = `
+    SELECT DISTINCT 
+      b.braId, 
+      b.braName
+    FROM product p
+    INNER JOIN brand b
+    ON p.proBrandId = b.braId
+    WHERE p.proId IN (${queryArgs})
+    ORDER BY b.braId
+  `;
+
+  const [colors] = await db.query(query);
+ 
+  // res.render('apitemp', {colors: colors});
+  res.json(colors);
 });
 
 

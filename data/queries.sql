@@ -263,21 +263,20 @@ VALUES
 
 INSERT INTO bindProductToColor
 VALUES
-(NULL, 30, 2),
-(NULL, 30, 6),
-(NULL, 30, 13),
+(NULL, 56, 3),
+(NULL, 56, 5)
 
 
 
 
 INSERT INTO bindProductToSize
 VALUES
-(NULL, 40, 1),
-(NULL, 41, 1),
-(NULL, 42, 1),
-(NULL, 43, 3),
-(NULL, 43, 5),
-(NULL, 50, 1)
+(NULL, 56, 2),
+(NULL, 56, 3),
+(NULL, 56, 4),
+(NULL, 56, 5),
+(NULL, 56, 6),
+(NULL, 56, 7)
 
 
 

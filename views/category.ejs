@@ -34,7 +34,9 @@
     <section>
       <div class="container">
         <h3>FILTRES</h3>
-        <a class="btn">réinitialiser tous les filtres</a>
+        <a id="resetFilters" class="btn">réinitialiser les filtres</a>
+
+        <p id="test">remove test</p>
 
         <h4>ORDRE</h4>
         <select name="filterOrder" id="filterOrder" style="width: 50%;">
@@ -45,38 +47,38 @@
         </select>
 
         <h4>PRIX</h4>
-        <input class="checkPrices" type="checkbox" data-pricerange="0"><span>0 - 20 €</span>
-        <input class="checkPrices" type="checkbox" data-pricerange="1"><span>20 - 45 €</span>
-        <input class="checkPrices" type="checkbox" data-pricerange="2"><span>45 - 75 €</span>
-        <input class="checkPrices" type="checkbox" data-pricerange="3"><span>75 - 100 €</span>
-        <input class="checkPrices" type="checkbox" data-pricerange="4"><span>100 - 125 €</span>
-        <input class="checkPrices" type="checkbox" data-pricerange="5"><span>125 - 160 €</span>
-        <input class="checkPrices" type="checkbox" data-pricerange="6"><span>160 - 200 €</span>
-        <input class="checkPrices" type="checkbox" data-pricerange="7"><span>200 - 300 €</span>
+        <input class="checkPrices" type="checkbox" data-pricerange="0"><span class="priceRangeSpan">0 - 20 €</span>
+        <input class="checkPrices" type="checkbox" data-pricerange="1"><span class="priceRangeSpan">20 - 45 €</span>
+        <input class="checkPrices" type="checkbox" data-pricerange="2"><span class="priceRangeSpan">45 - 75 €</span>
+        <input class="checkPrices" type="checkbox" data-pricerange="3"><span class="priceRangeSpan">75 - 100 €</span>
+        <input class="checkPrices" type="checkbox" data-pricerange="4"><span class="priceRangeSpan">100 - 125 €</span>
+        <input class="checkPrices" type="checkbox" data-pricerange="5"><span class="priceRangeSpan">125 - 160 €</span>
+        <input class="checkPrices" type="checkbox" data-pricerange="6"><span class="priceRangeSpan">160 - 200 €</span>
+        <input class="checkPrices" type="checkbox" data-pricerange="7"><span class="priceRangeSpan">200 - 300 €</span>
+        <input class="checkPrices" type="checkbox" data-pricerange="8"><span class="priceRangeSpan">300 - 600 €</span>
 
 
-        <h4>COULEURS</h4>
-        <!-- MK -- #filterColors -->
+        <h4>MARQUE</h4>
+        <!-- A*A -- #filterBrands -->
+        <div id="filterBrands"></div>
+
+        <h4>COULEUR</h4>
+        <!-- A*A -- #filterColors -->
         <div id="filterColors"></div>
 
-
-        <h4>TAILLES</h4>
-        <!-- MK -- #filterSizes -->
+        <h4>TAILLE</h4>
+        <!-- A*A -- #filterSizes -->
         <div id="filterSizes"></div>
-
-
-
 
       </div>
     </section>
-
 
     <section>
       <div class="container">
         <h3>produits de la catégorie choisie</h3>
 
-        <ul id="showProducts">
-        </ul>
+        <!-- A*A -- affichage produits -->
+        <div id="showProducts"></div>
 
       </div>
     </section>

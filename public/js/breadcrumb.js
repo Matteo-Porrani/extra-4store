@@ -16,8 +16,8 @@ if (loc === '/') {
   // init brd cookie
   document.cookie = `brd=${encodeURIComponent(JSON.stringify(brdInit))}; path=/`;
 
-  console.log('breadcrumb reset');
-  console.log(getCurrentBrd());
+  // console.log('breadcrumb reset');
+  // console.log(getCurrentBrd());
 
 } else if (loc === '/man' || loc === '/wom') {
   currLevel = 1;
@@ -32,21 +32,21 @@ document.cookie = `lev=${currLevel}; path=/`;
 
 // A*A -- on calcule le delta et on décide si ajouter ou enlever
 const delta = currLevel - lastLevel;
-console.log(delta);
+// console.log(delta);
 
 if (delta < 0 && loc !== '/') {
   // on supprime
   for (let i = 1; i <= Math.abs(delta); i++) {
     popBrd();
-    console.log('deleted 1 item from breadcrumb');
-    console.log(getCurrentBrd());
+    // console.log('deleted 1 item from breadcrumb');
+    // console.log(getCurrentBrd());
   }
 } else if (delta > 0) {
   // on ajoute
   addToBrd(loc);
 
-  console.log(`added -> ${loc}`);
-  console.log(getCurrentBrd());
+  // console.log(`added -> ${loc}`);
+  // console.log(getCurrentBrd());
 
 }
 
