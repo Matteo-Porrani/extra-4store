@@ -17,7 +17,9 @@ router.get('/man', async (req, res) => {
   const gender = "Homme";
 
   const query1 = `
-    SELECT * FROM category
+    SELECT * FROM category c
+    INNER JOIN icon i
+    ON c.catIconId = i.icoId
     WHERE NOT (catName = "robes");
   `;
   const [categories] = await db.query(query1);
@@ -47,9 +49,9 @@ router.get('/man', async (req, res) => {
 
   const [advertProducts] = await db.query(query2)
 
-  res.render('gender', { 
+  res.render('gender', {
     templateName: templateName,
-    gender: gender, 
+    gender: gender,
     categories: categories,
     promos: advertProducts
   });
@@ -61,7 +63,11 @@ router.get('/wom', async (req, res) => {
 
   const gender = "Femme";
 
-  const query1 = `SELECT * FROM category`;
+  const query1 = `
+    SELECT * FROM category c
+    INNER JOIN icon i
+    ON c.catIconId = i.icoId
+  `;
   const [categories] = await db.query(query1);
 
   const query2 = `
@@ -91,7 +97,7 @@ router.get('/wom', async (req, res) => {
 
   res.render('gender', {
     templateName: templateName,
-    gender: gender, 
+    gender: gender,
     categories: categories,
     promos: advertProducts
   });

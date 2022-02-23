@@ -22,14 +22,15 @@ footer {
 }
 
 section {
-  border: 2px solid #b4c1cc;
+  /* border: 2px solid #b4c1cc; */
 }
 
 
 h3 {
   border: 1px solid #212529;
-  padding: .5rem;
   width: fit-content;
+  padding: .25rem;
+  margin: 4px;
 }
 
 h4 {
@@ -50,22 +51,6 @@ ul {
 
 .main__logo {
   text-decoration: none;
-}
-
-
-/* MAIN NAV */
-
-nav ul {
-  display: flex;
-  gap: 2rem;
-}
-
-nav ul li a {
-  color: #b4c1cc;
-}
-
-nav ul li a:hover {
-  color: #eb8102;
 }
 
 .brd__list {
@@ -109,6 +94,14 @@ nav ul li a:hover {
   font-size: 1.25rem !important;
 }
 
+.block__link {
+  background: #b4c1cc;
+}
+
+.block__link:hover {
+  background: #eb8102 !important;
+  cursor: pointer;
+}
 
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -129,6 +122,14 @@ nav ul li a:hover {
   font-size: 1.5rem;
   font-weight: bold;
   margin: .25rem 0;
+}
+
+
+.vst { /* very small text */
+  font-size: .5rem;
+  color: royalblue;
+  padding: 0;
+  margin: 0;
 }
 
 .badge {
@@ -161,8 +162,7 @@ nav ul li a:hover {
 .page__title {
   color: #eb8102;
   border: 1px solid #eb8102;
-  padding: .5rem;
-  text-align: center;
+  padding: .125rem;
 }
 
 .pch--display {
@@ -190,7 +190,69 @@ nav ul li a:hover {
 
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* INDEX */
+
+.gender__image {
+  filter: saturate(0);
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* GENDER */
+
+.cat__icon {
+  width: 24px;
+}
+
+
+.inbar {
+  background: khaki;
+}
+
+.inbar nav {
+  flex-grow: 1;
+}
+
+.inbar__nav {
+  /* background: skyblue; */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.inbar__nav--primary,
+.inbar__nav--secondary {
+  display: flex;
+  justify-content: space-evenly;
+  gap: .5rem;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+.inbar__nav--primary {
+  /* border: 2px solid green; */
+}
+
+.inbar__nav--secondary {
+  /* border: 2px solid purple; */
+}
+
+.inbar__nav__link {
+  /* border: 1px solid #eb8102; */
+  padding: 0 1rem;
+}
+
+.inbar__nav__link a:hover {
+  background: #b4c1cc;
+}
+
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* PRODUCT CARDS */
+
+.display__filters {
+  background: lavender;
+}
 
 
 #showProducts { /* div qui contient les cards */
@@ -234,8 +296,17 @@ nav ul li a:hover {
   text-align: center;
 }
 
+.price--def {
+  color: #eb8102;
+}
 
+.price--erased {
+  color: #b4c1cc;
+  text-decoration-line: line-through;
+  text-decoration-thickness: 2px;
+}
 
+/* https://stackoverflow.com/questions/2539207/how-to-change-the-strike-out-line-through-thickness-in-css */
 
 
 
@@ -250,15 +321,18 @@ textarea {
   display: block;
   width: 100%;
   font-family: monospace;
-  padding: .25rem;  
+  font-size: .75rem;
+  padding: .125rem; 
+
+  accent-color: #eb8102;
 }
 
 input[type="radio"] {
   display: inline;
   width: fit-content;
 
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
 }
 
 input[type="checkbox"] {
@@ -269,6 +343,12 @@ input[type="checkbox"] {
 
 textarea {
   resize: none;
+}
+
+input[type="radio"]:checked + span,
+input[type="checkbox"]:checked + span {
+  font-weight: bold;
+  color: #eb8102;
 }
 
 
@@ -293,6 +373,20 @@ textarea {
   .two__col__half {
     width: 100%;
   }  
+
+
+  .inbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;  
+  }
+
+  .inbar__nav {
+    display: flex;
+    justify-content: space-between;
+    gap: .5rem;  
+  }
 
 }
 

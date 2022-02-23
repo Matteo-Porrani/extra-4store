@@ -32,12 +32,27 @@ const getPriceList = `
   ORDER BY priAmount
 `;
 
+const getColors = `
+  SELECT colId, colName
+  FROM color
+  ORDER BY colId
+`;
+
+const getSizes = `
+  SELECT sizId, sizName
+  FROM size
+  ORDER BY sizId
+`;
+
+
 
 router.get('/product/create', async (req, res) => {
 
   const [categories] = await db.query(getCategoryList);
   const [brands] = await db.query(getBrandList);
   const [prices] = await db.query(getPriceList);
+  const [colors] = await db.query(getColors);
+  const [sizes] = await db.query(getSizes);
 
   // console.log(brands);
 
@@ -45,9 +60,16 @@ router.get('/product/create', async (req, res) => {
     templateName: "product_handler.ejs",
     categories: categories,
     brands: brands,
-    prices: prices
+    prices: prices,
+    colors: colors,
+    sizes: sizes
   });
 });
+
+
+
+
+
 
 
 router.post('/product/create', async (req, res) => {

@@ -93,7 +93,7 @@ function filterByCateg(products) {
   }
 
   // on récupère les prix des produits de catégorie
-  categPrices = categProducts.map(p => parseFloat(p.p_price));
+  categPrices = categProducts.map(p => parseFloat(p.p_price_def));
   sortArray(categPrices);
 
   // on affiche les cards produits et les selecteurs de filtrage
@@ -117,6 +117,14 @@ function displayProducts(items) {
     const namedColors = item.p_colors.map(item => refColors[item]);
     const namedSizes = item.p_sizes.map(item => refSizes[item]);
 
+    let priceLine = "";
+
+    if (item.p_disc) {
+      priceLine = `<h2><span class="price--erased">${item.p_price} €</span> <span class="price--def">${item.p_price_def} €</span></h2>`;
+    } else {
+      priceLine = `<h2><span class="price--def">${item.p_price} €</span></h2>`;
+    }
+
     let itemString = `
       <div class="card">
         <div class="card__id"><small>#${item.p_id}</small></div>
@@ -127,7 +135,7 @@ function displayProducts(items) {
         <br>  
         <small class="txtbl">${item.p_subcat}</small>
         <p style="font-size: 1.125rem; font-style: italic; margin: 0;"><b><a href="/detail/${item.p_id}">${item.p_name}</a></b></p>
-        <h2>€ ${item.p_price}</h2>
+        ${priceLine}
         <h4><i class="ph-star"></i> ${item.p_rat}</h4>
         <small>${namedColors.join(', ')}</small>
         <br>

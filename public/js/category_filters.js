@@ -23,10 +23,10 @@ orderSelect.addEventListener('change', (e) => {
 function changeOrder(itemsArray) {
   switch (filters.order) {
     case "priceDesc":
-      itemsArray.sort((a, b) => parseFloat(a.p_price) > parseFloat(b.p_price) ? -1 : 1);
+      itemsArray.sort((a, b) => parseFloat(a.p_price_def) > parseFloat(b.p_price_def) ? -1 : 1);
       break;
     case "priceAsc":
-      itemsArray.sort((a, b) => parseFloat(a.p_price) < parseFloat(b.p_price) ? -1 : 1);
+      itemsArray.sort((a, b) => parseFloat(a.p_price_def) < parseFloat(b.p_price_def) ? -1 : 1);
       break;
     case "noteDesc":
       itemsArray.sort((a, b) => a.p_rat > b.p_rat ? -1 : 1);
@@ -53,6 +53,7 @@ function checkIfActive() {
     filterDisplay();
   } else {
     filters.active = false;
+    tempProducts = [];
     displayProducts(categProducts);
   }
 }
@@ -67,7 +68,7 @@ function checkIfActive() {
 function priceInRange(price) {
   let test = false;
   for (const range of filters.prices) {
-    if (price > priceTestValues[range][0] && price < priceTestValues[range][1]) {
+    if (price >= priceTestValues[range][0] && price <= priceTestValues[range][1]) {
       test = true;
     }
   }
@@ -155,7 +156,7 @@ function filterDisplay() {
     if (filters.prices.length === 0) {
       testPrice = true;
     } else {
-      if (priceInRange(parseFloat(item.p_price))) {
+      if (priceInRange(parseFloat(item.p_price_def))) {
         testPrice = true;
       }
     }
@@ -210,8 +211,7 @@ function filterDisplay() {
 // MK -- reset filters
 
 const resetFiltersBtn = document.querySelector('#resetFilters');
-resetFiltersBtn.addEventListener('click', (e) => {
-  e.preventDefault();
+resetFiltersBtn.addEventListener('click', () => {
   resetAllFilters();
 });
 

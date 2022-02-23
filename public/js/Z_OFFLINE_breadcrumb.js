@@ -110,10 +110,11 @@ function popBrd() {
 
 const categories = {
   1: "t-shirts",
-  2: "vestes",
+  2: "chemises",
   3: "pantalons",
-  4: "robes",
-  6: "sweats & pulls",
+  4: "sweats & pulls",
+  5: "robes",
+  6: "vestes",
   7: "sportswear",
   8: "chaussures",
   9: "accessoires",

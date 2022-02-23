@@ -16,9 +16,18 @@
 
     <section>
       <div class="container">
-        <%- include('./includes/breadcrumb') %>
+        <ul class="brd__list">
+          <li><a class="brd__link" href="/">Accueil</a><span> / </span></li>
+          <li><a class="brd__link" href="<%= genderPath %>"><%= gender %></a><span> / </span></li>
+          <li><a class="brd__link" href="/category/<%= product.p_catId %>"><%= product.p_categ.charAt(0).toUpperCase() + product.p_categ.slice(1) %></a><span> / </span></li>
+          <li><a class="brd__link txtor"><%= product.p_name %></a></li>
+        </ul>
+
       </div>
     </section>
+
+<!-- product.p_categ.charAt(0).toUpperCase() + product.p_categ.charAt(0).slice(1) -->
+
 
     <section>
       <div class="container">
@@ -29,19 +38,20 @@
 
           <div class="two__col__half">
 
-            <p id="detailPageProductName"><span class="bigtext">
-                <%= product.p_name %>
-              </span></p>
-
             <p>ID: <%= product.p_id %>
             </p>
-            <p>catégorie : <%= product.p_categ %>
+            <p>cat : <%= product.p_categ %>
             </p>
-            <p>sous-catégorie : <%= product.p_subcat %>
+            <p>subcat : <%= product.p_subcat %>
             </p>
             <p>marque : <span class="txtor">
                 <%= product.p_brand %>
               </span></p>
+
+            <p id="detailPageProductName"><span class="bigtext">
+                <%= product.p_name %>
+              </span></p>
+
 
 
             <img src="https://via.placeholder.com/200/dde2e9/f8f9fa?text=extra" alt="">
@@ -56,10 +66,16 @@
               </span>
             </p>
 
-            <p>prix : <%= product.p_price %>
-            </p>
-
-            <p>prix réduit : <%= (product.p_price - (product.p_price*(product.p_disc/100))).toFixed(2) %></p>
+            <% if (product.p_disc) { %>
+              <h2><span class="price--erased">
+                  <%= product.p_price %> €</span> <span class="price--def">
+                  <%= product.p_price_def %> €
+                </span></h2>
+              <% } else { %>
+                <h2><span class="price--def">
+                    <%= product.p_price %> €
+                  </span></h2>
+                <% } %>
 
 
           </div>
@@ -68,17 +84,21 @@
           <div class="two__col__half">
 
             <p class="pch--func"><i class="ph-wrench"></i>choix couleurs</p>
-            <ul>
+            <ul style="display: flex; gap: 1rem;">
               <% for (const color of colors) { %>
-                <li data-color-id="<%= color.col_id %>"><%= color.col_name %></li>
-              <% } %>
+                <li data-color-id="<%= color.col_id %>">
+                  <%= color.col_name %>
+                </li>
+                <% } %>
             </ul>
 
             <p class="pch--func"><i class="ph-wrench"></i>choix tailles</p>
-            <ul>
+            <ul style="display: flex; gap: 1rem;">
               <% for (const size of sizes) { %>
-                <li data-size-id="<%= size.siz_id %>"><%= size.siz_name %></li>
-              <% } %>
+                <li data-size-id="<%= size.siz_id %>">
+                  <%= size.siz_name %>
+                </li>
+                <% } %>
             </ul>
 
             <p>note : <%= product.p_rating %>
@@ -92,6 +112,9 @@
             <p class="pch--display"><i class="ph-eye"></i>features...</p>
 
             <p class="pch--func"><i class="ph-wrench"></i>choix quantité</p>
+
+            <p class="txtgr"><i class="ph-truck"></i> Livraison gratuite</p>
+            <p class="txtgr"><i class="ph-package"></i> Retours gratuits</p>
 
             <button class="btn">Ajouter au panier</button>
 
@@ -111,7 +134,7 @@
       <small>scripts utilisés sur cette page :</small>
       <ul>
         <li>utils.js</li>
-        <li>breadcrumb.js</li>
+        <li>main.js</li>
       </ul>
     </div>
   </footer>

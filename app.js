@@ -44,7 +44,7 @@ app.use('/', apiRoutes);
 // ### ERROR HANDLING
 
 app.use(function (req, res) {
-  res.status(404).render('404');
+  res.status(404).render('404', { templateName: "404.ejs" });
 });
 
 /*
@@ -52,7 +52,7 @@ app.use(function (error, req, res, next) {
   // Default error handling function
   // Will become active whenever any route / middleware crashes
   console.log(error);
-  res.status(500).render('500');
+  res.status(500).render('500, { templateName: "500.ejs" }');
 });
 */
 

@@ -125,6 +125,9 @@ router.get('/api/products/:gender', async (req, res) => {
     const [sizes] = await db.query(querySizes + `WHERE bd.bind2ProductId = ${id}`);
     features[0].p_sizes = sizes.map(item => item.sizId);
 
+
+    features[0].p_price_def = (features[0].p_price - (features[0].p_price*(features[0].p_disc/100))).toFixed(2);
+
     productObjects.push(features[0]);
   }
 
@@ -136,7 +139,7 @@ router.get('/api/products/:gender', async (req, res) => {
 
 
 
-
+// (product.p_price - (product.p_price*(product.p_disc/100))).toFixed(2)
 
 
 

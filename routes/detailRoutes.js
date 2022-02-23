@@ -3,6 +3,11 @@
 const express = require('express');
 const db = require('../data/database');
 
+
+// custom utilities
+const ch = require('../utils/cookieHandler');
+
+
 // create router
 const router = express.Router();
 
@@ -60,14 +65,30 @@ router.get('/detail/:id', async (req, res) => {
 
   const productID = req.params.id;
 
+  const currentCookies = ch.getAppCookies(req);
+  const genderPath = currentCookies.gender;
+  
+  let gender = "";
+
+  if (genderPath === '/wom') {
+    gender = 'Femme';
+  } else if (genderPath === '/man') {
+    gender = 'Homme';
+  }
+
+
   const [product] = await db.query(getProductByid, [productID]);
   const [colors] = await db.query(getColorsByProductId, [productID]);
   const [sizes] = await db.query(getSizesByProductId, [productID]);
+
+  product[0].p_price_def = (product[0].p_price - (product[0].p_price*(product[0].p_disc/100))).toFixed(2);
 
 
 
   res.render('detail', {
     templateName: "detail.ejs",
+    gender: gender,
+    genderPath: genderPath,
     product: product[0],
     colors: colors,
     sizes: sizes

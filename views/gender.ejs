@@ -14,12 +14,26 @@
 
   <main>
 
+    <!-- .inbar -->
     <section>
       <div class="container">
-        <%- include('./includes/breadcrumb') %>
+
+        <%- include('./includes/inbar') %>
+
+      </div>
+    </section>
+    
+    <!-- BREADCRUMB -->
+    <section>
+      <div class="container">
+        <ul class="brd__list">
+          <li><a class="brd__link" href="/">Accueil</a><span> / </span></li>
+          <li><a class="brd__link txtor"><%= gender %></a></li>
+        </ul>
       </div>
     </section>
 
+    <!-- PAGE TITLE -->
     <section>
       <div class="container">
 
@@ -46,36 +60,36 @@
           <%= gender %>
         </h2>
 
+
+      </div>
+
+    </section>
+
+
+
+
+    <!-- PROMOS -->
+    <section>
+      <div class="container">
+
         <div class="two__col">
 
           <div class="two__col__half">
+            <p class="pch--func">
+              <i class="ph-wrench"></i>
+              Carrousel
+            </p>
 
-            <h3>Catégories</h3>
-            <ul>
-              <li>
-                <a class="btn" href="/category/99">SOLDES</a>
-                <i class="ph-star"></i>
-              </li>
-              
-              <li>
-                <a class="btn" href="/category/100">toutes les catégories</a>
-                <i class="ph-star"></i>
-              </li>
+            <div class="img__wrapper">
+              <img src="https://via.placeholder.com/300/dde2e9/f8f9fa?text=carrousel" alt="placeholder image"
+                style="max-width: 100%;">
+            </div>
 
-              <% for (const category of categories) { %>
-                <li>
-                  <a class="btn" href="/category/<%= category.catId %>">
-                    <%= category.catName %>
-                  </a>
-                </li>
-                <% } %>
-            </ul>
 
 
           </div>
 
           <div class="two__col__half">
-
             <h3>Promos</h3>
             <ul>
               <% for (const promo of promos) { %>
@@ -89,25 +103,21 @@
                 <% } %>
             </ul>
 
-            <p class="pch--func">
-              <i class="ph-wrench"></i>
-              Carrousel
-            </p>
-            <div class="img__wrapper">
-              <img src="https://via.placeholder.com/300/dde2e9/f8f9fa?text=carrousel" alt="placeholder image"
-                style="max-width: 100%;">
-            </div>
-
 
           </div>
-
         </div>
 
 
 
-      </div>
 
+
+
+
+
+
+      </div>
     </section>
+
   </main>
 
   <footer>
@@ -115,8 +125,7 @@
       <small>scripts utilisés sur cette page :</small>
       <ul>
         <li>utils.js</li>
-        <li>breadcrumb.js</li>
-        <li>init_gender.js</li>
+        <li>main.js</li>
       </ul>
     </div>
   </footer>
@@ -124,7 +133,6 @@
 
 
   <%- include('./includes/scriptlist') %>
-    <script src="/js/init_gender.js"></script>
 </body>
 
 </html>

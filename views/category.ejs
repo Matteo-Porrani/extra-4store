@@ -14,18 +14,38 @@
 
   <main>
 
+
+    <!-- T*T -- ajout de .inbar -->
+    <!-- inbar -->
     <section>
       <div class="container">
-        <%- include('./includes/breadcrumb') %>
+        <%- include('./includes/inbar') %>
+      </div>
+    </section>
+    <!-- T*T -->
+
+    <!-- BREADCRUMB -->
+    <section>
+      <div class="container">
+        <ul class="brd__list">
+          <li><a class="brd__link" href="/">Accueil</a><span> / </span></li>
+          <li><a class="brd__link" href="<%= genderPath %>"><%= gender %></a><span> / </span></li>
+          <li><a class="brd__link txtor"><%= categoryName %></a></li>
+        </ul>
+
       </div>
     </section>
 
     <section>
       <div class="container">
         <!-- <a id="backToGender" class="btn"></a> -->
-        <h2 class="page__title">Catégorie</h2>
+        <!-- <h2 class="page__title">Catégorie</h2> -->
 
-        <h2>catégorie : <%= categoryName %> (<%= categoryID %>)</h2>
+        <h2>
+          <img class="cat__icon" src="/assets/icons/<%= categoryIcon %>" alt="">
+          <%= categoryName %>
+        </h2>
+
       </div>
 
     </section>
@@ -33,49 +53,51 @@
 
     <section>
       <div class="container">
-        <h3>FILTRES</h3>
-        <a id="resetFilters" class="btn">réinitialiser les filtres</a>
 
-        <p id="test">remove test</p>
+        <div class="display__filters">
 
-        <h4>ORDRE</h4>
-        <select name="filterOrder" id="filterOrder" style="width: 50%;">
-          <option value="priceDesc">prix : décroissant</option>
-          <option value="priceAsc">prix : croissant</option>
-          <option value="noteDesc" selected>note : décroissant</option>
-          <option value="noteAsc">note : croissant</option>
-        </select>
+          <h4>ORDRE</h4>
+          <select name="filterOrder" id="filterOrder" style="width: 50%; font-size: .75rem; padding: 0;">
+            <option value="priceDesc">prix : décroissant</option>
+            <option value="priceAsc">prix : croissant</option>
+            <option value="noteDesc" selected>note : décroissant</option>
+            <option value="noteAsc">note : croissant</option>
+          </select>
 
-        <h4>PRIX</h4>
-        <input class="checkPrices" type="checkbox" data-pricerange="0"><span class="priceRangeSpan">0 - 20 €</span>
-        <input class="checkPrices" type="checkbox" data-pricerange="1"><span class="priceRangeSpan">20 - 45 €</span>
-        <input class="checkPrices" type="checkbox" data-pricerange="2"><span class="priceRangeSpan">45 - 75 €</span>
-        <input class="checkPrices" type="checkbox" data-pricerange="3"><span class="priceRangeSpan">75 - 100 €</span>
-        <input class="checkPrices" type="checkbox" data-pricerange="4"><span class="priceRangeSpan">100 - 125 €</span>
-        <input class="checkPrices" type="checkbox" data-pricerange="5"><span class="priceRangeSpan">125 - 160 €</span>
-        <input class="checkPrices" type="checkbox" data-pricerange="6"><span class="priceRangeSpan">160 - 200 €</span>
-        <input class="checkPrices" type="checkbox" data-pricerange="7"><span class="priceRangeSpan">200 - 300 €</span>
-        <input class="checkPrices" type="checkbox" data-pricerange="8"><span class="priceRangeSpan">300 - 600 €</span>
+          <h4>PRIX</h4>
+          <input class="checkPrices" type="checkbox" data-pricerange="0"><span class="priceRangeSpan">0 - 20 €</span>
+          <input class="checkPrices" type="checkbox" data-pricerange="1"><span class="priceRangeSpan">20 - 45 €</span>
+          <input class="checkPrices" type="checkbox" data-pricerange="2"><span class="priceRangeSpan">45 - 75 €</span>
+          <input class="checkPrices" type="checkbox" data-pricerange="3"><span class="priceRangeSpan">75 - 100 €</span>
+          <input class="checkPrices" type="checkbox" data-pricerange="4"><span class="priceRangeSpan">100 - 125 €</span>
+          <input class="checkPrices" type="checkbox" data-pricerange="5"><span class="priceRangeSpan">125 - 160 €</span>
+          <input class="checkPrices" type="checkbox" data-pricerange="6"><span class="priceRangeSpan">160 - 200 €</span>
+          <input class="checkPrices" type="checkbox" data-pricerange="7"><span class="priceRangeSpan">200 - 300 €</span>
+          <input class="checkPrices" type="checkbox" data-pricerange="8"><span class="priceRangeSpan">300 - 600 €</span>
 
 
-        <h4>MARQUE</h4>
-        <!-- A*A -- #filterBrands -->
-        <div id="filterBrands"></div>
+          <h4>MARQUE</h4>
+          <!-- A*A -- #filterBrands -->
+          <div id="filterBrands"></div>
 
-        <h4>COULEUR</h4>
-        <!-- A*A -- #filterColors -->
-        <div id="filterColors"></div>
+          <h4>COULEUR</h4>
+          <!-- A*A -- #filterColors -->
+          <div id="filterColors"></div>
 
-        <h4>TAILLE</h4>
-        <!-- A*A -- #filterSizes -->
-        <div id="filterSizes"></div>
+          <h4>TAILLE</h4>
+          <!-- A*A -- #filterSizes -->
+          <div id="filterSizes"></div>
+
+          <button id="resetFilters" class="btn">réinitialiser les filtres</button>
+
+        </div>
+        <p class="vst">.display__filters</p>
 
       </div>
     </section>
 
     <section>
       <div class="container">
-        <h3>produits de la catégorie choisie</h3>
 
         <!-- A*A -- affichage produits -->
         <div id="showProducts"></div>
@@ -90,7 +112,7 @@
       <small>scripts utilisés sur cette page :</small>
       <ul>
         <li>utils.js</li>
-        <li>breadcrumb.js</li>
+        <li>main.js</li>
         <li>category_handler.js</li>
         <li>category_filters.js</li>
       </ul>
