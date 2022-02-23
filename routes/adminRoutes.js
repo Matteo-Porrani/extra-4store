@@ -46,6 +46,8 @@ const getSizes = `
 
 
 
+
+// MK -- CREATE (get)
 router.get('/product/create', async (req, res) => {
 
   const [categories] = await db.query(getCategoryList);
@@ -71,8 +73,10 @@ router.get('/product/create', async (req, res) => {
 
 
 
-
+// MK -- CREATE (post)
 router.post('/product/create', async (req, res) => {
+
+  // A*A -- (1) - INSERT INTO product
 
   const args = [
     req.body.p_form_category,
@@ -91,7 +95,7 @@ router.post('/product/create', async (req, res) => {
     req.body.p_form_active
   ];
 
-  const query = `
+  const query1 = `
     INSERT INTO product
     (
       proCategoryId,
@@ -112,17 +116,54 @@ router.post('/product/create', async (req, res) => {
     VALUES (?);
   `;
 
-  await db.query(query, [args]);
+  // écriture en BDD produit
+  await db.query(query1, [args]);
+
+
+  // A*A -- (2) - retrieve the newly created ID
+  const args2 = [req.body.p_form_name];
+
+  const query2 = `SELECT proId FROM product WHERE proName = ?`;
+  const [newlyCreatedId] = await db.query(query2, args2);
+
+  // A*A -- (3) - INSERT INTO bindProductToColor
+  const colors = req.body.p_form_color;
+
+  for (let i = 0; i < colors.length; i++) {
+    await db.query(`
+      INSERT INTO bindProductToColor (bind1ProductId, bind1ColorId)
+      VALUES (${newlyCreatedId[0].proId}, ${colors[i]})`);
+  }
+
+
+  // A*A -- (4) - INSERT INTO bindProductToSize
+  const sizes = req.body.p_form_size;
+
+  for (let i = 0; i < colors.length; i++) {
+    await db.query(`
+      INSERT INTO bindProductToSize (bind2ProductId, bind2SizeId)
+      VALUES (${newlyCreatedId[0].proId}, ${sizes[i]})`);
+  }
+
 
   res.redirect('/product/create/success');
 });
 
 
+
+
+// MK -- CREATE SUCCESS
 router.get('/product/create/success', (req, res) => {
   res.render('product_success', {
     templateName: "product_success.ejs"
   });
 });
+
+
+
+
+
+
 
 
 // export

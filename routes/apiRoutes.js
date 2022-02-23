@@ -139,12 +139,6 @@ router.get('/api/products/:gender', async (req, res) => {
 
 
 
-// (product.p_price - (product.p_price*(product.p_disc/100))).toFixed(2)
-
-
-
-
-
 
 router.get('/advert/man', async (req, res) => {
 

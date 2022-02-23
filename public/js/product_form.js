@@ -18,13 +18,10 @@ rangeRating.addEventListener('change', (e) =>{
   rangeRatingValue.textContent = e.explicitOriginalTarget.value;
 });
 
+// random rating
 const randomRating = (Math.floor(Math.random() * (50 - 39)) + 39) / 10;
 rangeRating.value = randomRating;
-
-// console.log(randomRating);
-
 rangeRatingValue.textContent = rangeRating.value;
-
 
 // gestion du nb d'avis
 const rangeRevcount = document.querySelector('#p_form_revcount');

@@ -22,6 +22,8 @@
         <form action="/product/create" method="POST">
 
           <div class="two__col">
+
+            <!-- T*T -- LEFT SIDE -->
             <div class="two__col__half">
 
               <label for="p_form_category">category</label>
@@ -62,14 +64,9 @@
                 </div>
               </div>
 
-
               <input type="radio" name="p_form_gender" id="p_form_gender" value="M" checked><span>Homme</span>
               <input type="radio" name="p_form_gender" id="p_form_gender" value="W"><span>Femme</span>
               <input type="radio" name="p_form_gender" id="p_form_gender" value="U"><span>Unisex</span>
-
-
-
-
 
               <div style="display: flex; gap: 1rem;">
                 <div style="width: 50%;">
@@ -80,7 +77,6 @@
                 <div style="width: 50%;">
                   <label for="p_form_code">code</label>
                   <input type="text" name="p_form_code" id="p_form_code" value="123.456.8926">
-
                 </div>
               </div>
 
@@ -88,9 +84,11 @@
               <textarea rows="3" name="p_form_description"
                 id="p_form_description">une description détaillée du produit et de ses caractéristiques principales</textarea>
 
-
             </div>
 
+
+
+            <!-- T*T -- RIGHT SIDE -->
             <div class="two__col__half">
 
 
@@ -104,7 +102,6 @@
                   <input type="range" name="p_form_rating" id="p_form_rating" min="0" max="5" step=".1" value="4.1">
                 </div>
               </div>
-
 
               <div style="display: flex; gap: 1rem;">
                 <div style="width: 30%;">
@@ -127,9 +124,6 @@
               </div>
 
 
-
-
-
               <label for="p_form_comments">comments</label>
               <textarea rows="3" name="p_form_comments" id="p_form_comments"></textarea>
 
@@ -139,7 +133,7 @@
               <h4>COULEURS</h4>
               <ul style="padding: 0; margin: 0;">
                 <% for (const color of colors) { %>
-                  <input type="checkbox" name="p_form_color" id="p_form_color" value="<%= color.colId %>"><span>
+                  <input type="checkbox" name="p_form_color" value="<%= color.colId %>"><span>
                     <%= color.colName %>
                   </span>
 
@@ -149,7 +143,7 @@
               <h4>TAILLES</h4>
               <ul style="padding: 0; margin: 0;">
                 <% for (const size of sizes) { %>
-                  <input type="checkbox" name="p_form_size" id="p_form_size" value="<%= size.sizId %>"><span>
+                  <input type="checkbox" name="p_form_size" value="<%= size.sizId %>"><span>
                     <%= size.sizName %>
                   </span>
 
