@@ -8,21 +8,27 @@ body {
 
   padding: 0;
   margin: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
 }
 
 header {
   color: #eb8102;
-  border-bottom: 1px solid #b4c1cc;
+  border-bottom: 1px solid #dad1c8;
 }
 
 footer {
-  background: #b4c1cc;
+  background: #dad1c8;
   padding: 1rem;
-  margin-top: 1rem;
+  margin-top: auto;
 }
 
 section {
-  /* border: 2px solid #b4c1cc; */
+  /* border: 2px solid #dad1c8; */
+  margin-bottom: .5rem;
 }
 
 
@@ -59,7 +65,7 @@ ul {
 }
 
 .brd__link {
-  color: #b4c1cc;
+  color: #dad1c8;
 }
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -67,6 +73,15 @@ ul {
 .container {
   width: 88%;
   margin: 0 auto;
+}
+
+.d-flex {
+  display: flex;
+  gap: .5rem;
+}
+
+.ls-none {
+  list-style: none;
 }
 
 .btn {
@@ -95,7 +110,7 @@ ul {
 }
 
 .block__link {
-  background: #b4c1cc;
+  background: #dad1c8;
 }
 
 .block__link:hover {
@@ -107,7 +122,7 @@ ul {
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 .txtgr {
-  color: #b4c1cc !important;
+  color: #dad1c8 !important;
 }
 
 .txtor {
@@ -124,10 +139,19 @@ ul {
   margin: .25rem 0;
 }
 
+.alcent {
+  text-align: center;
+}
+
+.alright {
+  text-align: right;
+}
 
 .vst { /* very small text */
   font-size: .5rem;
+  background-color: hsl(225, 52%, 91%);
   color: royalblue;
+  width: fit-content;
   padding: 0;
   margin: 0;
 }
@@ -149,7 +173,7 @@ ul {
 
 .view {
   color: #6c757d;
-  background-color: #b4c1cc;
+  background-color: #dad1c8;
   font-weight: bold;
   font-size: .75rem;
 
@@ -166,7 +190,7 @@ ul {
 }
 
 .pch--display {
-  background: #b4c1cc;
+  background: #dad1c8;
   padding: .5rem;
   width: fit-content;  
 }
@@ -242,7 +266,7 @@ ul {
 }
 
 .inbar__nav__link a:hover {
-  background: #b4c1cc;
+  background: #dad1c8;
 }
 
 
@@ -250,7 +274,7 @@ ul {
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* PRODUCT CARDS */
 
-.display__filters {
+.main__filters {
   background: lavender;
 }
 
@@ -301,13 +325,54 @@ ul {
 }
 
 .price--erased {
-  color: #b4c1cc;
+  color: #dad1c8;
   text-decoration-line: line-through;
   text-decoration-thickness: 2px;
 }
 
 /* https://stackoverflow.com/questions/2539207/how-to-change-the-strike-out-line-through-thickness-in-css */
 
+
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* VIEWER */
+
+#viewer__table,
+#viewer__table th,
+#viewer__table td {
+  border: 1px solid #212529;
+  border-collapse: collapse;
+  padding: .125rem .25rem;
+}
+
+.id__cell {
+  font-weight: bold;
+  text-align: center;
+}
+
+.bra__cell {
+  font-style: italic;
+  color: forestgreen;
+}
+
+.wom__cell {
+  background: pink;
+}
+
+.man__cell {
+  background: skyblue;
+}
+
+.uni__cell {
+  background: #b4c1cc;
+}
+
+.saled {
+  background: #eb8102;
+  color: #f8f9fa;
+  font-weight: bold;
+}
 
 
 

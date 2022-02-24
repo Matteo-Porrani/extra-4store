@@ -51,8 +51,10 @@ router.get('/category/:id', async (req, res) => {
 
   if (categoryID === "99") {
     categoryNameParsed = "soldes";
+    categoryIconParsed = "";
   } else if (categoryID === "100") {
-    categoryNameParsed = "toutes les catégories"
+    categoryNameParsed = "toutes les catégories";
+    categoryIconParsed = "";
   } else {
     [categoryName] = await db.query('SELECT catName FROM category WHERE catId = ?', [categoryID]);
     [categoryIcon] = await db.query('SELECT icoUrl FROM icon WHERE icoId = ?', [categoryID]);

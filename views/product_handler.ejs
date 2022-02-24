@@ -17,151 +17,253 @@
     <section>
       <div class="container">
 
-        <h2 class="page__title"><i class="ph-plus-circle"></i>Création produit</h2>
+        <h2 class="page__title">Produit</h2>
+        <h3 id="formMode"><%= productFormMode %></h3>
 
-        <form action="/product/create" method="POST">
+        <% if (productFormMode === 'edit_mode') { %>
+          <h3>id : <%= productInfo.p_id %></h3>
+        <% } %>
 
-          <div class="two__col">
+        <!-- (+) -- handle EDIT / CREATE -->
 
-            <!-- T*T -- LEFT SIDE -->
-            <div class="two__col__half">
+        <% let prefill={};
 
-              <label for="p_form_category">category</label>
-              <select name="p_form_category" id="p_form_category">
-                <% for (const category of categories) { %>
-                  <option value="<%= category.catId %>">
-                    <%= category.catName %>
-                  </option>
+        if (productFormMode==="edit_mode" ) {
+          prefill.name = productInfo.p_name;
+          prefill.code = productInfo.p_code; 
+          prefill.catId = productInfo.p_catId; 
+          prefill.braId = productInfo.p_braId;
+          prefill.priId = productInfo.p_priId;
+
+          if (productInfo.p_gender === 'W') {
+            prefill.markCheckedWom = "checked";
+            prefill.markCheckedMan = "";
+            prefill.markCheckedUni = "";
+          } else if (productInfo.p_gender === 'M') {
+            prefill.markCheckedWom = "";
+            prefill.markCheckedMan = "checked";
+            prefill.markCheckedUni = "";
+          } else {
+            prefill.markCheckedWom = "";
+            prefill.markCheckedMan = "";
+            prefill.markCheckedUni = "checked";
+          }
+        
+          if (!productInfo.p_subcat) {
+            prefill.subcat = '-';
+          } else {
+            prefill.subcat = productInfo.p_subcat;
+          }
+        
+          prefill.desc = productInfo.p_desc;
+          prefill.comm = productInfo.p_comm;
+          prefill.disc = productInfo.p_disc;
+
+          if (productInfo.p_sales === 'Y') {
+            prefill.markCheckSalesYes = "checked";
+            prefill.markCheckSalesNo = "";
+          } else {
+            prefill.markCheckSales = "";
+            prefill.markCheckSalesNo = "checked";
+          }
+
+          if (productInfo.p_act === 'Y') {
+            prefill.markCheckActYes = "checked";
+            prefill.markCheckActNo = "";
+          } else {
+            prefill.markCheckActYes = "";
+            prefill.markCheckActNo = "checked";
+          }
+
+          prefill.rating = productInfo.p_rating;
+          prefill.revcount = productInfo.p_revcount;
+
+          prefill.colors = productInfo.p_colors;
+          prefill.sizes = productInfo.p_sizes;
+          
+        } else {
+
+          prefill.name = "" ; 
+          prefill.code = "" ; 
+          prefill.catId = "" ; 
+          prefill.braId = "" ; 
+          prefill.priId = "" ;
+          prefill.markCheckedWom = "";
+          prefill.markCheckedMan = "checked";
+          prefill.markCheckedUni = "";
+          prefill.subcat = "-";
+          prefill.desc = "une description détaillée du produit et de ses caractéristiques principales";
+          prefill.comm = "";
+          prefill.disc = "0";
+          prefill.markCheckSalesYes = "";
+          prefill.markCheckSalesNo = "checked";
+          prefill.markCheckActYes = "checked";
+          prefill.markCheckActNo = "";
+          prefill.rating = "";
+          prefill.revcount = "";
+          prefill.colors = [];
+          prefill.sizes = [];
+        } %>
+
+          <form action="/product/<%= productFormAction %>" method="POST">
+
+            <% if (productFormMode === 'edit_mode') { %>
+              <input type="hidden" name="p_form_id" value="<%= productInfo.p_id %>">
+            <% } %>
+
+            <div class="two__col">
+
+              <!-- T*T -- LEFT SIDE -->
+              <div class="two__col__half">
+
+                <label for="p_form_category">category</label>
+                <select name="p_form_category" id="p_form_category">
+                  <% for (const category of categories) { 
+                    let markSelected="" ;
+                    markSelected=(category.catId==prefill.catId) ? "selected" : markSelected="" ; %>
+                    <option value="<%= category.catId %>" <%=markSelected %>>
+                      <%= category.catName %>
+                    </option>
                   <% } %>
 
-              </select>
+                </select>
 
-              <label for="p_form_brand">brand</label>
-              <select name="p_form_brand" id="p_form_brand">
-                <% for (const brand of brands) { %>
-                  <option value="<%= brand.braId %>">
-                    <%= brand.braName %>
-                  </option>
+                <label for="p_form_brand">brand</label>
+                <select name="p_form_brand" id="p_form_brand">
+                  <% for (const brand of brands) {
+                    let markSelected=""; 
+                    markSelected=(brand.braId==prefill.braId) ? "selected" : markSelected="" ; %>
+                    <option value="<%= brand.braId %>" <%=markSelected %>>
+                      <%= brand.braName %>
+                    </option>
                   <% } %>
-              </select>
+                </select>
 
+                <div style="display: flex; gap: 1rem;">
 
-              <div style="display: flex; gap: 1rem;">
-                <div style="width: 50%;">
-                  <label for="p_form_name">name</label>
-                  <input type="text" name="p_form_name" id="p_form_name" required>
-                </div>
+                  <div style="width: 50%;">
+                    <label for="p_form_name">name</label>
+                    <input type="text" name="p_form_name" id="p_form_name" value="<%= prefill.name %>" required>
+                  </div>
 
-                <div style="width: 50%;">
-                  <label for="">price</label>
-                  <select name="p_form_price" id="p_form_price">
-                    <% for (const price of prices) { %>
-                      <option value="<%= price.priId %>">
-                        <%= price.priAmount %> €
-                      </option>
+                  <div style="width: 50%;">
+                    <label for="">price</label>
+                    <select name="p_form_price" id="p_form_price">
+                      <% for (const price of prices) {
+                        let markSelected=""; 
+                        markSelected=(price.priId==prefill.priId) ? "selected" : markSelected="" ; %>
+
+                        <option value="<%= price.priId %>" <%=markSelected %>>
+                          <%= price.priAmount %> €
+                        </option>
                       <% } %>
-                  </select>
+                    </select>
+                  </div>
+
                 </div>
+
+                <input type="radio" name="p_form_gender" id="p_form_gender" value="W" <%= prefill.markCheckedWom %>><span>Femme</span>
+                <input type="radio" name="p_form_gender" id="p_form_gender" value="M" <%= prefill.markCheckedMan %>><span>Homme</span>
+                <input type="radio" name="p_form_gender" id="p_form_gender" value="U" <%= prefill.markCheckedUni %>><span>Unisex</span>
+
+                <div style="display: flex; gap: 1rem;">
+
+                  <div style="width: 50%;">
+                    <label for="p_form_subcat">sous-catégorie</label>
+                    <input type="text" name="p_form_subcat" id="p_form_subcat" value="<%= prefill.subcat %>">
+                  </div>
+
+                  <div style="width: 50%;">
+                    <label for="p_form_code">code</label>
+                    <input type="text" name="p_form_code" id="p_form_code" value="<%= prefill.code %>">
+                  </div>
+
+                </div>
+
+                <label for="p_form_description">description</label>
+                <textarea rows="3" name="p_form_description" id="p_form_description"><%= prefill.desc %></textarea>
+
               </div>
 
-              <input type="radio" name="p_form_gender" id="p_form_gender" value="M" checked><span>Homme</span>
-              <input type="radio" name="p_form_gender" id="p_form_gender" value="W"><span>Femme</span>
-              <input type="radio" name="p_form_gender" id="p_form_gender" value="U"><span>Unisex</span>
 
-              <div style="display: flex; gap: 1rem;">
-                <div style="width: 50%;">
-                  <label for="p_form_souscategory">sous-catégorie</label>
-                  <input type="text" name="p_form_souscategory" id="p_form_souscategory">
+              <!-- T*T -- RIGHT SIDE -->
+              <div class="two__col__half">
 
+                <div style="display: flex; gap: 1rem;">
+                  <div style="width: 50%;">
+                    <label for="p_form_discount">discount <span class="badge"
+                        id="p_form_discount_value">0</span></label>
+                    <input type="range" name="p_form_discount" id="p_form_discount" min="0" max="70" step="10"
+                      value="<%= prefill.disc %>">
+                  </div>
+                  <div style="width: 50%;">
+                    <label for="p_form_rating">rating <span class="badge" id="p_form_rating_value"><%= prefill.rating %></span></label>
+                    <input type="range" name="p_form_rating" id="p_form_rating" min="0" max="5" step=".1" value="<%= prefill.rating %>">
+                  </div>
                 </div>
-                <div style="width: 50%;">
-                  <label for="p_form_code">code</label>
-                  <input type="text" name="p_form_code" id="p_form_code" value="123.456.8926">
+
+                <div style="display: flex; gap: 1rem;">
+                  <div style="width: 30%;">
+                    <label>sales</label>
+                    <input type="radio" name="p_form_sales" id="p_form_sales" value="Y" <%= prefill.markCheckSalesYes %>><span>Y</span>
+                    <input type="radio" name="p_form_sales" id="p_form_sales" value="N" <%= prefill.markCheckSalesNo %>><span>N</span>
+                  </div>
+                  <div style="width: 30%;">
+                    <label>active</label>
+                    <input type="radio" name="p_form_active" id="p_form_active" value="Y" <%= prefill.markCheckActYes %>><span>Y</span>
+                    <input type="radio" name="p_form_active" id="p_form_active" value="N" <%= prefill.markCheckActNo %>><span>N</span>
+                  </div>
+                  <div style="width: 30%;">
+                    <label for="p_form_revcount">review count</label>
+                    <input type="text" name="p_form_revcount" id="p_form_revcount" value="<%= prefill.revcount %>">
+                  </div>
                 </div>
+
+                <label for="p_form_comments">comments</label>
+                <textarea rows="3" name="p_form_comments" id="p_form_comments"><%= prefill.comm %></textarea>
+
+                <h4>COULEURS</h4>
+                <ul style="padding: 0; margin: 0;">
+                  <% for (const color of colors) {
+
+                    let markCheckCol = "";                    
+                    if (prefill.colors.includes(color.colId)) {
+                      markCheckCol = "checked";
+                    } %>
+
+                    <input type="checkbox" name="p_form_color" value="<%= color.colId %>" <%= markCheckCol %>><span>
+                      <%= color.colName %>
+                    </span>
+
+                  <% } %>
+                </ul>
+
+                <h4>TAILLES</h4>
+                <ul style="padding: 0; margin: 0;">
+                  <% for (const size of sizes) { 
+                    
+                    let markCheckSiz = "";                    
+                    if (prefill.sizes.includes(size.sizId)) {
+                      markCheckSiz = "checked";
+                    } %>
+
+                    <input type="checkbox" name="p_form_size" value="<%= size.sizId %>" <%= markCheckSiz %>><span>
+                      <%= size.sizName %>
+                    </span>
+
+                  <% } %>
+                </ul>
+
+                <button class="btn btn--xl" style="display: block; margin-left: auto;">Submit</button>
+
               </div>
-
-              <label for="p_form_description">description</label>
-              <textarea rows="3" name="p_form_description"
-                id="p_form_description">une description détaillée du produit et de ses caractéristiques principales</textarea>
 
             </div>
 
-
-
-            <!-- T*T -- RIGHT SIDE -->
-            <div class="two__col__half">
-
-
-              <div style="display: flex; gap: 1rem;">
-                <div style="width: 50%;">
-                  <label for="p_form_discount">discount <span class="badge" id="p_form_discount_value">0</span></label>
-                  <input type="range" name="p_form_discount" id="p_form_discount" min="0" max="70" step="10" value="0">
-                </div>
-                <div style="width: 50%;">
-                  <label for="p_form_rating">rating <span class="badge" id="p_form_rating_value"></span></label>
-                  <input type="range" name="p_form_rating" id="p_form_rating" min="0" max="5" step=".1" value="4.1">
-                </div>
-              </div>
-
-              <div style="display: flex; gap: 1rem;">
-                <div style="width: 30%;">
-                  <label>sales</label>
-                  <input type="radio" name="p_form_sales" id="p_form_sales" value="Y"><span>Y</span>
-                  <input type="radio" name="p_form_sales" id="p_form_sales" value="N" checked><span>N</span>
-
-                </div>
-                <div style="width: 30%;">
-                  <label>active</label>
-                  <input type="radio" name="p_form_active" id="p_form_active" value="Y" checked><span>Y</span>
-                  <input type="radio" name="p_form_active" id="p_form_active" value="N"><span>N</span>
-
-                </div>
-                <div style="width: 30%;">
-                  <label for="p_form_revcount">review count</label>
-                  <input type="text" name="p_form_revcount" id="p_form_revcount">
-    
-                </div>
-              </div>
-
-
-              <label for="p_form_comments">comments</label>
-              <textarea rows="3" name="p_form_comments" id="p_form_comments"></textarea>
-
-
-
-
-              <h4>COULEURS</h4>
-              <ul style="padding: 0; margin: 0;">
-                <% for (const color of colors) { %>
-                  <input type="checkbox" name="p_form_color" value="<%= color.colId %>"><span>
-                    <%= color.colName %>
-                  </span>
-
-                  <% } %>
-              </ul>
-
-              <h4>TAILLES</h4>
-              <ul style="padding: 0; margin: 0;">
-                <% for (const size of sizes) { %>
-                  <input type="checkbox" name="p_form_size" value="<%= size.sizId %>"><span>
-                    <%= size.sizName %>
-                  </span>
-
-                  <% } %>
-              </ul>
-
-
-              <button class="btn btn--xl" style="display: block; margin-left: auto;">Submit</button>
-
-            </div>
-
-          </div>
-
-        </form>
+          </form>
 
       </div>
     </section>
-
 
   </main>
 

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <%- include('./includes/head') %>
+    <title>Extra</title>
+</head>
+
+<body>
+
+  <header>
+    <%- include('./includes/header') %>
+  </header>
+
+  <main>
+
+    <section>
+      <div class="container">
+        <h1>Product Viewer</h1>
+
+        <p>Total : <span id="nbOfProducts"><%= count %></span> products</p>
+
+        <a class="btn" href="/product/create">Ajouter un produit</a>
+
+        <table id="viewer__table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>ACT</th>
+              <th>ID</th>
+              <th>GEND</th>
+              <th>NAME</th>
+              <th>X</th>
+              <th>SAL</th>
+              <th>%</th>
+              <th>PRICE</th>
+              <th>PR_DEF</th>
+              <th>BRAND</th>
+              <th>CATEG</th>
+              <th>SUBCAT</th>
+              <th>RATING</th>
+              <th>REVCNT</th>
+              <th>CODE</th>
+              <th>COLORS</th>
+              <th>SIZES</th>
+              <th>EDIT</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% 
+              let cnt = 0;
+              for (const prod of products) {
+
+                cnt++
+
+                let p_price_def = '';
+                if (prod.p_sal === 'Y') {
+                  salesClass = 'saled';
+                  p_price_def = (prod.p_price - (prod.p_price * (prod.p_disc / 100))).toFixed(2);
+                  // product[0].p_price - (product[0].p_price*(product[0].p_disc/100))).toFixed(2)
+                } else {
+                  salesClass = '';
+                  p_price_def = '';
+                }
+
+                let genderClass='wom__cell';
+                if (prod.p_gend === 'M') genderClass = 'man__cell';
+                if (prod.p_gend === 'U') genderClass = 'uni__cell';
+            %>
+
+                <tr id="row<%= cnt %>">
+                  <td class="txtor"><%= cnt %></td>
+                  <td><%= prod.p_act %></td>
+                  <td class="id__cell"><%= prod.p_id %></td>
+                  <td class="alcent <%= genderClass %>"><%= prod.p_gend %></td>
+                  <td><b><%= prod.p_name %></b></td>
+                  <td><input type="checkbox" class="vw__sel" data-count="<%= cnt %>" style="width: 20px; height: 20px;"></td>
+                  <td><%= prod.p_sal %></td>
+                  <td class="<%= salesClass %>"><%= prod.p_disc %></td>
+                  <td class="alright"><%= prod.p_price %></td>
+                  <td class="alright"><%= p_price_def %></td>
+                  <td class="bra__cell"><%= prod.p_brand %></td>
+                  <td><%= prod.p_categ %></td>
+                  <td><%= prod.p_subcat %></td>
+                  <td class="alcent"><%= prod.p_rat %></td>
+                  <td class="alcent"><%= prod.p_revcount %></td>
+                  <td style="font-size: 8px;"><%= prod.p_code %></td>
+                  <td id="colCell<%= prod.p_id %>" style="font-size: 8px;"></td>
+                  <td id="sizCell<%= prod.p_id %>" style="font-size: 8px;"></td>
+                  <td><a href="/product/edit/<%= prod.p_id %>"><i class="ph-wrench"></i></a></td>
+                </tr>
+
+            <% } %>
+
+          </tbody>
+        </table>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <small>scripts utilisés sur cette page :</small>
+      <ul>
+        <li>utils.js</li>
+        <li>breadcrumb.js</li>
+        <li>viewer_handler.js</li>
+      </ul>
+    </div>
+  </footer>
+
+  <%- include('./includes/scriptlist') %>
+    <script src="/js/viewer_handler.js"></script>
+</body>
+
+</html>
