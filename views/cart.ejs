@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <%- include('./includes/head') %>
+    <title>Extra</title>
+</head>
+
+<body>
+
+  <header>
+    <%- include('./includes/header') %>
+  </header>
+
+  <main>
+
+    <!-- pas de breadcrumb sur cette page -->
+
+    <section>
+      <div class="container">
+
+        <h2 class="page__title">Panier</h2>
+
+        <!-- FIXME -- formulaire -->
+        <form action="" method="">
+
+
+          <div class="two__col">
+
+            <div class="two__col__half">
+
+              <!-- MK -- cartDisplay -->
+              <div id="cartDisplay">
+                <% for (const item of cartItems) { %>
+
+                  <div id="cartItemDisplay<%= item.p_id %>" class="cart__line">
+                    <p><%= item.p_quant %></p>
+                    <p><%= item.p_name %></p>
+                    <p style="font-size: .5rem;"><%= item.p_brand %></p>
+                    <p style="font-size: .5rem;"><%= item.p_color %> / <%= item.p_size %></p>
+                    <p class="alright" style="">€ <span class="cart__price__def"><%= item.p_priceDef %></span></p>
+                    <p>
+                      <button class="btn cartItemDeleteBtn" data-target="<%= item.p_id %>">
+                        <i class="ph-trash" style="font-size: 1.25rem;"></i>
+                      </button>
+                    </p>
+                  </div>
+
+                  <% } %>
+              </div>
+              <hr>
+
+              <!-- MK -- cartTotal -->
+              <div class="cartTotal">
+                <input id="cartTotalHidden" type="hidden">
+
+                <div class="cart__line">
+                  <p></p>
+                  <p></p>
+                  <p>Total</p>
+                  <p></p>
+                  <p id="cartTotalAmountDisplay" class="alright"></p>
+                  <p></p>
+                </div>
+              </div>
+
+              <div id="productsTotal"></div>
+
+              <!-- MK -- livraison -->
+
+            </div>
+
+            <div class="two__col__half" style="margin-top: 3rem;">
+              <span class="badge">Récapitulatif Commande</span>
+              <p>Total articles — <span id="checkoutTotalArticles" class="bigtext txtbl"></span></p>
+
+              <div style="margin-top: 3rem;">
+                <input type="radio" name="delivery" id="deliveryStd" style="display: none;" checked>
+                <label for="deliveryStd" class="deliveryOption" data-deliv="0" style="">Livraison STANDARD — Gratuit</label>
+                <br>
+                <input type="radio" name="delivery" id="deliveryExp" style="display: none;">
+                <label for="deliveryExp" class="deliveryOption" data-deliv="12.99" style="">Livraison EXPRESS — € 12.99</label>
+              </div>
+
+              <hr>
+              <p>Total — <span id="checkoutTotal" class="bigtext"></span></p>
+
+              <button type="submit" class="btn btn--xl"
+                style="display: block; width: fit-content; margin-top: 4rem; margin-left: auto;">Commander</button>
+            </div>
+
+          </div>
+
+
+        </form>
+
+
+      </div>
+    </section>
+
+
+  </main>
+
+
+  <footer>
+    <div class="container">
+      <small>scripts utilisés sur cette page :</small>
+      <ul>
+        <li>utils.js</li>
+        <li>main.js</li>
+        <li>cart.js</li>
+      </ul>
+    </div>
+  </footer>
+
+  <%- include('./includes/scriptlist') %>
+    <script src="/js/cart.js"></script>
+</body>
+
+</html>

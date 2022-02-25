@@ -336,6 +336,26 @@ ul {
 
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* DETAIL */
+
+input[type="radio"]:checked + label {
+  background: #eb8102;
+}
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* CART */
+
+.cart__line {
+  display: grid;
+  grid-template-columns: .5fr 1fr 1fr 1fr 2fr .5fr;
+  grid-template-rows: 1fr;
+  grid-gap: 10px;
+}
+
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* VIEWER */
 
 #viewer__table,

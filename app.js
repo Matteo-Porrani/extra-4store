@@ -11,6 +11,7 @@ const defaultRoutes = require('./routes/defaultRoutes');
 const genderRoutes = require('./routes/genderRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const detailRoutes = require('./routes/detailRoutes');
+const cartRoutes = require('./routes/cartRoutes');
 
 const adminRoutes = require('./routes/adminRoutes');
 const apiRoutes = require('./routes/apiRoutes');
@@ -36,6 +37,7 @@ app.use('/', defaultRoutes);
 app.use('/', genderRoutes);
 app.use('/', categoryRoutes);
 app.use('/', detailRoutes);
+app.use('/', cartRoutes);
 app.use('/', adminRoutes);
 app.use('/', apiRoutes);
 

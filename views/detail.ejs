@@ -15,6 +15,11 @@
   <main>
 
     <section>
+      <%- include('./includes/modal') %>
+    </section>
+
+
+    <section>
       <div class="container">
         <ul class="brd__list">
           <li><a class="brd__link" href="/">Accueil</a><span> / </span></li>
@@ -38,85 +43,72 @@
 
           <div class="two__col__half">
 
-            <p>ID: <%= product.p_id %>
-            </p>
-            <p>cat : <%= product.p_categ %>
-            </p>
-            <p>subcat : <%= product.p_subcat %>
-            </p>
-            <p>marque : <span class="txtor">
-                <%= product.p_brand %>
-              </span></p>
-
-            <p id="detailPageProductName"><span class="bigtext">
-                <%= product.p_name %>
-              </span></p>
+            <p>ID: <span id="detailPageProductId"><%= product.p_id %></span></p>
+            <p>cat : <%= product.p_categ %></p>
+            <p>subcat : <%= product.p_subcat %></p>
+            <p>marque : <span id="detailPageProductBrand" class="txtor"><%= product.p_brand %></span></p>
 
 
+            <p id="detailPageProductName"><span class="bigtext"><%= product.p_name %></span></p>
 
             <img src="https://via.placeholder.com/200/dde2e9/f8f9fa?text=extra" alt="">
 
-            <p class="txtbl">description : <%= product.p_desc %>
-            </p>
+            <p class="txtbl">description : <%= product.p_desc %></p>
 
             <p>promo : <%= product.p_sales %>
             </p>
-            <p>réduction : <span class="badge">
-                <%= product.p_disc %>%
-              </span>
-            </p>
+            <p>réduction : <span class="badge"><%= product.p_disc %>%</span></p>
 
             <% if (product.p_disc) { %>
               <h2><span class="price--erased">
                   <%= product.p_price %> €</span> <span class="price--def">
-                  <%= product.p_price_def %> €
+                  <span id="detailPageProductPriceDef"><%= product.p_price_def %> €</span>
                 </span></h2>
               <% } else { %>
-                <h2><span class="price--def">
-                    <%= product.p_price %> €
-                  </span></h2>
-                <% } %>
-
+                <h2><span id="detailPageProductPriceDef" class="price--def"><%= product.p_price %> €</span></h2>
+              <% } %>
 
           </div>
 
 
           <div class="two__col__half">
 
-            <p class="pch--func"><i class="ph-wrench"></i>choix couleurs</p>
-            <ul style="display: flex; gap: 1rem;">
+            <!-- MK -- COLORS -->
+              <h4 style="margin: .5rem 0;">COULEUR</h4>
               <% for (const color of colors) { %>
-                <li data-color-id="<%= color.col_id %>">
-                  <%= color.col_name %>
-                </li>
-                <% } %>
-            </ul>
+                <!-- <div style="border: 1px solid #212529; display: inline-block;"> -->
+                  <input type="radio" name="det_color" id="det_color<%= color.col_id %>" value="<%= color.col_id %>" style="display: none;">
+                  <label for="det_color<%= color.col_id %>" class="detColorBtn" data-colid="<%= color.col_id %>" style="display: inline; border: 1px solid #212529;"><%= color.col_name %></label>    
+                <!-- </div> -->
+              <% } %>
 
-            <p class="pch--func"><i class="ph-wrench"></i>choix tailles</p>
-            <ul style="display: flex; gap: 1rem;">
+            <!-- MK -- SIZES -->
+              <h4 style="margin: .5rem 0;">TAILLE</h4>
               <% for (const size of sizes) { %>
-                <li data-size-id="<%= size.siz_id %>">
-                  <%= size.siz_name %>
-                </li>
-                <% } %>
-            </ul>
 
-            <p>note : <%= product.p_rating %>
-            </p>
-            <p>nb de commentaires : <%= product.p_revcount %>
-            </p>
+                  <input type="radio" name="det_size" id="det_size<%= size.siz_id %>" value="<%= size.siz_id %>" data-color-id="<%= size.siz_id %>" style="display: none;">
+                  <label for="det_size<%= size.siz_id %>" class="detSizeBtn" data-sizid="<%= size.siz_id %>" style="display: inline; border: 1px solid #212529;"><%= size.siz_name %></label>    
 
-            <p>code : <%= product.p_code %>
-            </p>
+              <% } %>
+
+            <p>note : <%= product.p_rating %></p>
+            <p>nb de commentaires : <%= product.p_revcount %></p>
+            <p>code : <%= product.p_code %></p>
 
             <p class="pch--display"><i class="ph-eye"></i>features...</p>
 
-            <p class="pch--func"><i class="ph-wrench"></i>choix quantité</p>
+            <!-- MK -- QUANTITÉ -->
+            <div>
+              <h4>Quantité</h4>
+              <button class="quantBtn bigtext" data-action="sub" style="width: 40px;">-</button>
+              <input id="quantDisplay" type="text" value="1" style="display: inline; width: 30px;" readonly>
+              <button class="quantBtn bigtext" data-action="add" style="width: 40px;">+</button>
+            </div>
 
             <p class="txtgr"><i class="ph-truck"></i> Livraison gratuite</p>
             <p class="txtgr"><i class="ph-package"></i> Retours gratuits</p>
 
-            <button class="btn">Ajouter au panier</button>
+            <button id="addToCart" class="btn">Ajouter au panier</button>
 
 
           </div>
@@ -127,6 +119,13 @@
       </div>
     </section>
 
+    <section>
+      <div class="container">
+        <button id="testBtn" class="btn btn--xl" data-message="il ne reste plus qu'à ajouter l'article au panier">TEST</button>
+      </div>
+    </section>
+
+
   </main>
 
   <footer>
@@ -135,12 +134,14 @@
       <ul>
         <li>utils.js</li>
         <li>main.js</li>
+        <li>cart.js</li>
       </ul>
     </div>
   </footer>
 
 
   <%- include('./includes/scriptlist') %>
+  <script src="/js/cart.js"></script>
 </body>
 
 </html>

@@ -27,6 +27,7 @@ router.get('/man', async (req, res) => {
   const query2 = `
     SELECT
       a.advOrder AS a_order,
+      p.proId AS p_id,
       p.proName AS p_name, 
       b.braName AS p_brand, 
       c.catName AS p_categ,
@@ -73,6 +74,7 @@ router.get('/wom', async (req, res) => {
   const query2 = `
     SELECT
       a.advOrder AS a_order,
+      p.proId AS p_id,
       p.proName AS p_name, 
       b.braName AS p_brand, 
       c.catName AS p_categ,

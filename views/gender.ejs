@@ -14,6 +14,10 @@
 
   <main>
 
+    <section>
+      <%- include('./includes/modal') %>
+    </section>
+
     <!-- .inbar -->
     <section>
       <div class="container">
@@ -94,11 +98,9 @@
             <ul>
               <% for (const promo of promos) { %>
                 <li>
-                  <i class="ph-diamond"></i>
-                  <%= promo.p_categ %> /
-                    <%= promo.p_name %> /
-                      € <%= promo.p_price %> /
-                        <%= promo.p_gender %>
+                  <a href="/detail/<%= promo.p_id %>">
+                    <%= promo.p_id %> (<%= promo.p_gender %>) <%= promo.p_categ %> / <%= promo.p_name %> / € <%= promo.p_price %>
+                  </a>
                 </li>
                 <% } %>
             </ul>
