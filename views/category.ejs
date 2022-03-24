@@ -8,6 +8,16 @@
 
 <body>
 
+  <!-- T*T -- template name -->
+  <section class="template__name">
+    <div class="container">
+      <p class="view">
+        <%= templateName %>
+      </p>
+    </div>
+  </section>
+
+
   <header>
     <%- include('./includes/header') %>
   </header>
@@ -19,12 +29,9 @@
     </section>
 
 
-    <!-- T*T -- ajout de .inbar -->
-    <!-- inbar -->
+    <!-- MK -- #inbar -->
     <section>
-      <div class="container">
-        <%- include('./includes/inbar') %>
-      </div>
+      <%- include('./includes/inbar') %>
     </section>
     <!-- T*T -->
 
@@ -33,20 +40,21 @@
       <div class="container">
         <ul class="brd__list">
           <li><a class="brd__link" href="/">Accueil</a><span> / </span></li>
-          <li><a class="brd__link" href="<%= genderPath %>"><%= gender %></a><span> / </span></li>
-          <li><a class="brd__link txtor"><%= categoryName %></a></li>
+          <li><a class="brd__link" href="<%= genderPath %>">
+              <%= gender %>
+            </a><span> / </span></li>
+          <li><a class="brd__link txtor">
+              <%= categoryName %>
+            </a></li>
         </ul>
 
       </div>
     </section>
 
-    <section>
+    <section class="my2">
       <div class="container">
-        <!-- <a id="backToGender" class="btn"></a> -->
-        <!-- <h2 class="page__title">Catégorie</h2> -->
 
         <h2>
-          <img class="cat__icon" src="/assets/icons/<%= categoryIcon %>" alt="">
           <%= categoryName %>
         </h2>
 
@@ -55,61 +63,170 @@
     </section>
 
 
-    <section>
-      <div class="container">
 
-        <div class="main__filters">
+    <p class="vst">#catWrapper (#mainFilters + #showProducts)</p>
 
-          <h4>ORDRE</h4>
-          <select name="filterOrder" id="filterOrder" style="width: 50%; font-size: .75rem; padding: 0;">
-            <option value="priceDesc">prix : décroissant</option>
-            <option value="priceAsc">prix : croissant</option>
-            <option value="noteDesc" selected>note : décroissant</option>
-            <option value="noteAsc">note : croissant</option>
-          </select>
+    <section id="catWrapper">
 
-          <h4>PRIX</h4>
-          <input class="checkPrices" type="checkbox" data-pricerange="0"><span class="priceRangeSpan">0 - 20 €</span>
-          <input class="checkPrices" type="checkbox" data-pricerange="1"><span class="priceRangeSpan">20 - 45 €</span>
-          <input class="checkPrices" type="checkbox" data-pricerange="2"><span class="priceRangeSpan">45 - 75 €</span>
-          <input class="checkPrices" type="checkbox" data-pricerange="3"><span class="priceRangeSpan">75 - 100 €</span>
-          <input class="checkPrices" type="checkbox" data-pricerange="4"><span class="priceRangeSpan">100 - 125 €</span>
-          <input class="checkPrices" type="checkbox" data-pricerange="5"><span class="priceRangeSpan">125 - 160 €</span>
-          <input class="checkPrices" type="checkbox" data-pricerange="6"><span class="priceRangeSpan">160 - 200 €</span>
-          <input class="checkPrices" type="checkbox" data-pricerange="7"><span class="priceRangeSpan">200 - 300 €</span>
-          <input class="checkPrices" type="checkbox" data-pricerange="8"><span class="priceRangeSpan">300 - 600 €</span>
+      <!-- MK -- MAIN FILTERS -->
+      <div id="mainFilters" class="">
 
 
-          <h4>MARQUE</h4>
-          <!-- A*A -- #filterBrands -->
-          <div id="filterBrands"></div>
 
-          <h4>COULEUR</h4>
-          <!-- A*A -- #filterColors -->
-          <div id="filterColors"></div>
+        <h4>ORDRE</h4>
+        <select name="filterOrder" id="filterOrder" style="width: 50%; font-size: .75rem; padding: 0;">
+          <option value="priceDesc">prix : décroissant</option>
+          <option value="priceAsc">prix : croissant</option>
+          <option value="noteDesc" selected>note : décroissant</option>
+          <option value="noteAsc">note : croissant</option>
+        </select>
 
-          <h4>TAILLE</h4>
-          <!-- A*A -- #filterSizes -->
-          <div id="filterSizes"></div>
 
-          <button id="resetFilters" class="btn">réinitialiser les filtres</button>
+
+
+
+        <!-- PRIX -->
+        <div class="fil__wrapper">
+
+          <input class="fil__input--hidden" type="checkbox" id="tab-1" name="tabs">
+
+          <!-- label -->
+          <label class="fil__label" for="tab-1">
+            <p class="fil__label__title">Prix</p>
+            <div class="fil__label__cross"></div>
+          </label>
+
+          <!-- content -->
+          <div class="fil__content">
+
+            <div class="fil__check__line">
+              <input class="fil__input--secondary checkPrices" id="checkPrices0" type="checkbox" data-pricerange="0">
+              <label class="fil__label--secondary priceRangeSpan" for="checkPrices0">0 - 20 €</label>
+            </div>
+
+            <div class="fil__check__line">
+              <input class="fil__input--secondary checkPrices" id="checkPrices1" type="checkbox" data-pricerange="1">
+              <label class="fil__label--secondary priceRangeSpan" for="checkPrices1">20 - 45 €</label>
+            </div>
+
+            <div class="fil__check__line">
+              <input class="fil__input--secondary checkPrices" id="checkPrices2" type="checkbox" data-pricerange="2">
+              <label class="fil__label--secondary priceRangeSpan" for="checkPrices2">45 - 75 €</label>
+            </div>
+
+            <div class="fil__check__line">
+              <input class="fil__input--secondary checkPrices" id="checkPrices3" type="checkbox" data-pricerange="3">
+              <label class="fil__label--secondary priceRangeSpan" for="checkPrices3">75 - 100 €</label>
+            </div>
+
+            <div class="fil__check__line">
+              <input class="fil__input--secondary checkPrices" id="checkPrices4" type="checkbox" data-pricerange="4">
+              <label class="fil__label--secondary priceRangeSpan" for="checkPrices4">100 - 125 €</label>
+            </div>
+
+            <div class="fil__check__line">
+              <input class="fil__input--secondary checkPrices" id="checkPrices5" type="checkbox" data-pricerange="5">
+              <label class="fil__label--secondary priceRangeSpan" for="checkPrices5">125 - 160 €</label>
+            </div>
+
+            <div class="fil__check__line">
+              <input class="fil__input--secondary checkPrices" id="checkPrices6" type="checkbox" data-pricerange="6">
+              <label class="fil__label--secondary priceRangeSpan" for="checkPrices6">160 - 200 €</label>
+            </div>
+
+            <div class="fil__check__line">
+              <input class="fil__input--secondary checkPrices" id="checkPrices7" type="checkbox" data-pricerange="7">
+              <label class="fil__label--secondary priceRangeSpan" for="checkPrices7">200 - 300 €</label>
+            </div>
+
+            <div class="fil__check__line">
+              <input class="fil__input--secondary checkPrices" id="checkPrices8" type="checkbox" data-pricerange="8">
+              <label class="fil__label--secondary priceRangeSpan" for="checkPrices8">300 - 600 €</label>
+            </div>
+
+          </div>
 
         </div>
-        <p class="vst">.main__filters</p>
+
+
+        <!-- A*A -- #filterBrands -->
+        <div class="fil__wrapper">
+          <input class="fil__input--hidden" type="checkbox" id="tab-2" name="tabs">
+
+          <!-- label -->
+          <label class="fil__label" for="tab-2">
+            <p class="fil__label__title">Marque</p>
+            <div class="fil__label__cross"></div>
+          </label>
+
+          <!-- content -->
+          <div class="fil__content" id="filterBrands">
+          </div>
+        </div>
+
+
+
+        <!-- A*A -- #filterColors -->
+        <div class="fil__wrapper">
+          <input class="fil__input--hidden" type="checkbox" id="tab-3" name="tabs">
+
+          <!-- label -->
+          <label class="fil__label" for="tab-3">
+            <p class="fil__label__title">Couleur</p>
+            <div class="fil__label__cross"></div>
+          </label>
+
+          <!-- content -->
+          <div class="fil__content" id="filterColors">
+          </div>
+        </div>
+
+
+
+        <!-- A*A -- #filterSizes -->
+        <div class="fil__wrapper">
+          <input class="fil__input--hidden" type="checkbox" id="tab-4" name="tabs">
+
+          <!-- label -->
+          <label class="fil__label" for="tab-4">
+            <p class="fil__label__title">Taille</p>
+            <div class="fil__label__cross"></div>
+          </label>
+
+          <!-- content -->
+          <div class="fil__content" id="filterSizes">
+          </div>
+        </div>
+
+        <button id="resetFilters" class="btn">réinitialiser les filtres</button>
 
       </div>
-    </section>
-
-    <section>
-      <div class="container">
-
-        <!-- A*A -- affichage produits -->
-        <div id="showProducts"></div>
 
       </div>
+
+
+      <!-- A*A -- affichage produits -->
+      <div id="showProducts"></div>
+
+
+
+
     </section>
 
-    <section>
+
+
+
+    <section class="my2">
+
+
+    </section>
+
+
+
+
+
+    <!-- LOG -- temporary TEST BUTTON -->
+    <section class="dnn">
       <div class="container">
         <button id="testBtn" class="btn btn--xl" data-message="vous avez cliqué sur la page de catégorie">TEST</button>
       </div>
@@ -118,22 +235,26 @@
 
   </main>
 
-  <footer>
+  <section id="jsList">
     <div class="container">
       <small>scripts utilisés sur cette page :</small>
       <ul>
         <li>utils.js</li>
         <li>main.js</li>
-        <li>category_handler.js</li>
-        <li>category_filters.js</li>
+        <li class="txtor">category_handler.js</li>
+        <li class="txtor">category_filters.js</li>
       </ul>
     </div>
-  </footer>
+  </section>
+
+  <!-- T*T -- FOOTER -->
+  <%- include('./includes/footer') %>
 
 
-  <%- include('./includes/scriptlist') %>
-    <script src="/js/category_handler.js"></script>
-    <script src="/js/category_filters.js"></script>
+
+    <%- include('./includes/scriptlist') %>
+      <script src="/js/category_handler.js"></script>
+      <script src="/js/category_filters.js"></script>
 </body>
 
 </html>

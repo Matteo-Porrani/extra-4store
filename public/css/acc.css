@@ -1,0 +1,167 @@
+
+
+
+#mainFilters {
+  /* background: #3c6; */
+  background: var(--c-dark);
+
+
+  flex: 1;
+
+
+  padding: 1rem;
+}
+
+
+#showProducts { /* div qui contient les cards */
+  display: flex;
+  flex-wrap: wrap;
+
+  flex: 2;
+}
+
+
+/* TODO - MEDIA */
+@media (min-width: 820px) {
+
+  #catWrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+  }
+
+}
+
+
+
+
+
+
+.fil__wrapper {
+  border: 1px solid var(--c-shad);
+  background: var(--c-shad);
+
+
+  
+
+  margin: 1rem 0;
+}
+
+
+
+.fil__input--hidden {
+  display: none !important;
+}
+
+
+.fil__label {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  font-family: "Space Grotesk", sans-serif !important;
+
+  padding: 8px 0;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+/* nom du filtre */
+.fil__label__title {
+
+  line-height: 30px;
+
+  margin-left: 10px;
+}
+
+.fil__label__cross {
+  /* background: #1be; */
+  position: relative;
+  margin-right: 15px;
+  
+  width: 30px;
+  height: 30px;
+}
+
+.fil__label__cross::before,
+.fil__label__cross::after {
+  content: '';
+  position: absolute;
+  
+  background: var(--c-lgt);
+  display: block;
+  transition: 0.3s;
+}
+
+.fil__label__cross::before {
+
+  width: 2px;
+  height: 100%;
+
+
+
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.fil__label__cross::after {
+
+  width: 100%;
+  height: 2px;
+
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.fil__input--hidden:checked ~ .fil__content {
+  max-height: 200px;
+}
+
+
+.fil__input--hidden:checked ~ label .fil__label__cross::before {
+  transform: translateX(-50%) rotate(90deg);
+}
+
+
+.fil__input--secondary:checked + label {
+  color: var(--c-hero);
+}
+
+
+.fil__content {
+  /* background: lightgreen; */
+  background: var(--c-dark);
+
+  max-height: 0;
+
+  overflow: hidden;
+
+  transition: max-height .4s ease-in-out;
+}
+
+
+
+.fil__check__line {
+  
+  padding: 0 1rem;
+  margin: .125rem 0;
+}
+
+
+.fil__input--secondary,
+.fil__label--secondary {
+  font-family: "Space Grotesk", sans-serif !important;
+}
+
+/* SPECIFIC STYLE INSIDE ACCORDIONS */
+
+input.checkPrices {
+  display: block;
+}
+
+.fil__input--secondary,
+.fil__label--secondary {
+  display: inline !important;
+  border: 0;
+}

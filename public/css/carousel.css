@@ -1,0 +1,241 @@
+
+
+
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* LAYOUT */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.promo__half {
+  /* border: 3px solid violet; */
+  /* background: lightgreen; */
+}
+
+
+@media (min-width: 820px) {
+
+  #promoDisplay {
+    display: flex;
+  }
+
+  .promo__half {
+    width: 50%;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+.carousel {
+  position: relative;
+  height: 50vh;
+}
+
+.carousel__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel__track-container {
+  /* border: 5px solid goldenrod; */
+  /* background: lightgreen; */
+
+  overflow: hidden;
+
+  position: relative;
+  height: 100%;
+}
+
+
+.carousel__track {
+  list-style-type: none;
+
+  position: relative;
+  height: 100%;
+
+  transition: transform 250ms ease-in;
+  
+  padding: 0;
+  margin: 0;
+}
+
+
+.carousel__slide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+
+
+
+.discount__tag {
+
+  background: var(--c-hero);
+  color: var(--c-lgt);
+
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 120px;
+  height: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  z-index: 9999;
+}
+
+.adv__discount {
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+
+
+
+.carousel__button {
+  /* background: green; */
+  background: transparent;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  border: 0;
+}
+
+
+.carousel__button:hover {
+  background: rgba(0,0,0,.3);
+}
+
+
+.carousel__button--left {
+  left: 10px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+
+.carousel__button--right {
+  right: 10px;
+  cursor: pointer;
+}
+
+
+.carousel__button img {
+  width: 72px;
+  height: 72px;
+}
+
+
+.carousel__nav {
+  /* background: pink; */
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 1rem 0;
+}
+
+
+.carousel__indicator {
+  border: 0;
+  /* border-radius: 50%; */
+  width: 50px;
+  height: 10px;
+  background: #dad1c8;
+
+  cursor: pointer;
+
+  margin: 0 10px;
+}
+
+
+.carousel__indicator.current-slide {
+  background: #ff6600;
+}
+
+
+
+/* T*T -- INFO */
+
+
+#promoInfo {
+  padding: 2rem 4rem;
+
+  background: var(--c-shad);
+  color: var(--c-lgt);
+
+}
+
+.advertItem {
+  /* border: 2px solid #e72; */
+
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+
+.stripe--mid {
+  /* background: red; */
+  padding: 3rem 0;
+}
+
+.adv__name {
+  color: var(--c-hero);
+  font-size: 2.5rem;
+}
+
+
+
+.adv__price {
+  padding: .25rem;
+
+  font-size: 1.5rem;
+  font-weight: 800;
+
+
+  margin-bottom: .5rem;
+}
+
+.adv__price--erased {
+  /* background: blue; */
+  color: hsla(24, 100%, 50%, .3);
+
+  text-decoration: line-through;
+}
+
+.adv__price--def {
+  /* background: teal; */
+  color: var(--c-lgt);
+  
+  margin-right: 1rem;  
+}
+
+
+
+

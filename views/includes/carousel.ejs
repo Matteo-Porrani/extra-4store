@@ -1,0 +1,67 @@
+
+
+
+
+<button class="carousel__button carousel__button--left">
+  <img src="/assets/carousel/caret-left.svg" alt="">
+</button>
+
+<div class="carousel__track-container">
+  <ul class="carousel__track">
+
+    <!-- ce contenu est généré dynamiquement -->
+
+    <% for (const promo of promos) {
+      const pictNameRoot = gender === 'Femme' ? 'advWom' : 'advMan'; 
+      const currentTag = promo.a_order === 1 ? 'current-slide' : ''; %>
+
+      <li class="carousel__slide <%= currentTag %>">
+
+        <!-- TODO -- DISCOUNT TAG -->
+        <div class="discount__tag">
+          <p class="adv__discount">
+            -<%= promo.p_disc %>%
+          </p>
+        </div>
+
+        <img class="carousel__image" src="/assets/advert/<%= pictNameRoot %><%= promo.a_order %>.jpg" alt="">
+      </li>
+
+    <% } %>
+
+  </ul>
+</div>
+
+<button class="carousel__button carousel__button--right">
+  <img src="/assets/carousel/caret-right.svg" alt="">
+</button>
+
+
+
+<!-- NAV -->
+<div class="carousel__nav">
+
+
+  <% for (const promo of promos) { 
+      const currentTag = promo.a_order === 1 ? 'current-slide' : ''; %>
+
+      <button class="carousel__indicator <%= currentTag %>">
+      </button>
+
+    <% } %>
+
+<!--
+  <button class="carousel__indicator current-slide">
+  </button>
+
+  <button class="carousel__indicator">
+  </button>
+
+  <button class="carousel__indicator">
+  </button>
+
+  <button class="carousel__indicator">
+  </button>
+-->
+
+</div>

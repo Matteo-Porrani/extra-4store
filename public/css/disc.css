@@ -1,0 +1,23 @@
+
+
+#discBanner {
+  background: var(--c-lgt);
+}
+
+
+
+
+.disc__banner__parag {
+  color: var(--c-dark);
+  font-size: 1.75rem;
+  font-weight: 800;
+
+  padding: .5rem;
+  
+}
+
+.disc__banner__badge {
+  background: var(--c-hero);
+  color: var(--c-dark);
+  padding: .5rem;
+}

@@ -4,9 +4,7 @@ const loc = location.pathname;
 
 // (+) -- index.ejs
 
-// activation links home page 'femme' / 'homme'
-const test = document.querySelector('#test')
-
+// activation links vers 'femme' / 'homme'
 const genderLinks = document.querySelectorAll('.gender__link');
 
 genderLinks.forEach(link => {
@@ -51,7 +49,6 @@ if (!cartCookie) {
 
 // (+) -- toutes les pages
 
-
 function updateCartPreview() {
   const cartPreview = document.querySelector('#cartPreview');
   if (getCartItems().length > 0) {
@@ -76,11 +73,8 @@ const testBtn = document.querySelector('#testBtn');
 try {
   
   testBtn.addEventListener('click', (e) => {
-
     writeNewCookie('mmess', e.target.dataset.message);
-
     showModal(e.target.dataset.message);
-
   });
 
 } catch (e) {

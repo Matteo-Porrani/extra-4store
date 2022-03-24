@@ -8,6 +8,16 @@
 
 <body>
 
+    <!-- T*T -- template name -->
+    <section class="template__name">
+      <div class="container">
+        <p class="view">
+          <%= templateName %>
+        </p>
+      </div>
+    </section>
+  
+  <!-- T*T -- HEADER -->
   <header>
     <%- include('./includes/header') %>
   </header>
@@ -18,123 +28,132 @@
       <%- include('./includes/modal') %>
     </section>
 
-    <!-- .inbar -->
+    <!-- MK -- INBAR -->
     <section>
-      <div class="container">
-
-        <%- include('./includes/inbar') %>
-
-      </div>
+      <%- include('./includes/inbar') %>
     </section>
-    
-    <!-- BREADCRUMB -->
-    <section>
+
+    <!-- MK -- BREADCRUMB -->
+    <p class="vst">breadcrumb</p>
+    <section id="breadcrumb">
       <div class="container">
-        <ul class="brd__list">
+        <ul class="brd__list ls-none pm0">
           <li><a class="brd__link" href="/">Accueil</a><span> / </span></li>
-          <li><a class="brd__link txtor"><%= gender %></a></li>
+          <li><a class="brd__link txtor">
+              <%= gender %>
+            </a></li>
         </ul>
       </div>
     </section>
 
-    <!-- PAGE TITLE -->
-    <section>
-      <div class="container">
+    <!--
+    <p class="notes">
+      Au chargement de cette page on effectue 2 requêtes pour récupérer :<br>
+      - la liste des catégories<br>
+      - la liste des articles en promotion (pour alimenter le carrousel)
+    </p>
 
-        <!--
-        <p class="notes">
-          Au chargement de cette page on effectue 2 requêtes pour récupérer :<br>
-          - la liste des catégories<br>
-          - la liste des articles en promotion (pour alimenter le carrousel)
-        </p>
+    <p class="notes">
+      En arrière plan le fetch récupère un array d'objets avec TOUS les produits correspondants au GENRE CHOISI + UNISEX.<br>
+    </p>
 
-        <p class="notes">
-          En arrière plan le fetch récupère un array d'objets avec TOUS les produits correspondants au GENRE CHOISI + UNISEX.<br>
-          On initialise localStorage avec les clés '.gender' ('M' / 'W') et '.products'.
-        </p>
-
-        <p class="notes">
-          D'ici on peut poursuivre en choisissant :<br>
-          - [1] UNE ou [2] TOUTES les catégories / ou [3] la catégorie spéciale "SOLDES"<br>
-          - [4] UN produit en promotion
-        </p>
-        -->
-
-        <h2 class="">
-          <%= gender %>
-        </h2>
+    <p class="notes">
+      D'ici on peut poursuivre en choisissant :<br>
+      - [1] UNE ou [2] TOUTES les catégories / ou [3] la catégorie spéciale "SOLDES"<br>
+      - [4] UN produit en promotion
+    </p>
+    -->
 
 
+
+    <!-- T*T -- CAROUSEL -->
+
+    <p class="vst">#promoDisplay</p>
+
+    <section id="promoDisplay" class="">
+
+      <div id="promoCarousel" class="carousel promo__half">
+        <%- include('./includes/carousel') %>
       </div>
 
-    </section>
+
+      <div id="promoInfo" class="promo__half">
+
+        <% for (const promo of promos) { const currOption=promo.a_order===1 ? 'current-info' : '' ; const
+          priceDef=(promo.p_price - (promo.p_price*(promo.p_disc/100))).toFixed(2); const dnnOption=promo.a_order===1
+          ? '' : 'dnn' ; %>
+
+          <article class="advertItem <%= currOption %> <%= dnnOption %>">
+
+            <div class="stripe--top">
+              <p>
+                <%= promo.p_categ %> / <%= promo.p_brand %>
+              </p>
+            </div>
 
 
+            <div class="stripe--mid">
+              <h2 class="adv__name">
+                <%= promo.p_name %>
+              </h2>
+              <p>
+                <%= promo.p_desc %>
+              </p>
+
+              <!-- PRICE -->
+              <p class="adv__price">
+                <span class="adv__price--def">
+                  <%= priceDef %> €
+                </span>
+                <span class="adv__price--erased">
+                  <%= promo.p_price %> €
+                </span>
+
+              </p>
+
+            </div>
 
 
-    <!-- PROMOS -->
-    <section>
-      <div class="container">
-
-        <div class="two__col">
-
-          <div class="two__col__half">
-            <p class="pch--func">
-              <i class="ph-wrench"></i>
-              Carrousel
-            </p>
-
-            <div class="img__wrapper">
-              <img src="https://via.placeholder.com/300/dde2e9/f8f9fa?text=carrousel" alt="placeholder image"
-                style="max-width: 100%;">
+            <div class="stripe--bot">
+              <a class="btn" href="/detail/<%= promo.p_id %>">Voir le produit</a>
             </div>
 
 
 
-          </div>
-
-          <div class="two__col__half">
-            <h3>Promos</h3>
-            <ul>
-              <% for (const promo of promos) { %>
-                <li>
-                  <a href="/detail/<%= promo.p_id %>">
-                    <%= promo.p_id %> (<%= promo.p_gender %>) <%= promo.p_categ %> / <%= promo.p_name %> / € <%= promo.p_price %>
-                  </a>
-                </li>
-                <% } %>
-            </ul>
-
-
-          </div>
-        </div>
-
-
-
-
-
-
-
-
+          </article>
+          <% } %>
 
       </div>
+
     </section>
 
   </main>
 
-  <footer>
+
+
+
+  <p class="vst">#jsList</p>
+
+  <section id="jsList">
     <div class="container">
       <small>scripts utilisés sur cette page :</small>
-      <ul>
+      <ul style="list-style: square">
         <li>utils.js</li>
         <li>main.js</li>
+        <li class="txtor">carousel.js</li>
       </ul>
     </div>
-  </footer>
+  </section>
 
 
 
-  <%- include('./includes/scriptlist') %>
+  <!-- T*T -- FOOTER -->
+  <%- include('./includes/footer') %>
+
+
+    <%- include('./includes/scriptlist') %>
+      <script src="/js/carousel.js"></script>
+
 </body>
 
 </html>

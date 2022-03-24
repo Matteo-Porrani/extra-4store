@@ -73,33 +73,38 @@
 
           <div class="two__col__half">
 
+            <p>code : <%= product.p_code %></p>
+            <p>note : <%= product.p_rating %></p>
+            <p>nb de commentaires : <%= product.p_revcount %></p>
+
+            <p class="pch--display"><i class="ph-eye"></i>features...</p>
+
+
+
+
+
             <!-- MK -- COLORS -->
               <h4 style="margin: .5rem 0;">COULEUR</h4>
               <% for (const color of colors) { %>
-                <!-- <div style="border: 1px solid #212529; display: inline-block;"> -->
+
                   <input type="radio" name="det_color" id="det_color<%= color.col_id %>" value="<%= color.col_id %>" style="display: none;">
                   <label for="det_color<%= color.col_id %>" class="detColorBtn" data-colid="<%= color.col_id %>" style="display: inline; border: 1px solid #212529;"><%= color.col_name %></label>    
-                <!-- </div> -->
+
               <% } %>
 
             <!-- MK -- SIZES -->
               <h4 style="margin: .5rem 0;">TAILLE</h4>
               <% for (const size of sizes) { %>
 
-                  <input type="radio" name="det_size" id="det_size<%= size.siz_id %>" value="<%= size.siz_id %>" data-color-id="<%= size.siz_id %>" style="display: none;">
+                  <input type="radio" name="det_size" id="det_size<%= size.siz_id %>" value="<%= size.siz_id %>" style="display: none;">
                   <label for="det_size<%= size.siz_id %>" class="detSizeBtn" data-sizid="<%= size.siz_id %>" style="display: inline; border: 1px solid #212529;"><%= size.siz_name %></label>    
 
               <% } %>
 
-            <p>note : <%= product.p_rating %></p>
-            <p>nb de commentaires : <%= product.p_revcount %></p>
-            <p>code : <%= product.p_code %></p>
-
-            <p class="pch--display"><i class="ph-eye"></i>features...</p>
 
             <!-- MK -- QUANTITÉ -->
             <div>
-              <h4>Quantité</h4>
+              <h4 style="margin: .5rem 0;">QUANTITE</h4>
               <button class="quantBtn bigtext" data-action="sub" style="width: 40px;">-</button>
               <input id="quantDisplay" type="text" value="1" style="display: inline; width: 30px;" readonly>
               <button class="quantBtn bigtext" data-action="add" style="width: 40px;">+</button>
@@ -128,17 +133,19 @@
 
   </main>
 
-  <footer>
+  <section id="jsList">
     <div class="container">
       <small>scripts utilisés sur cette page :</small>
       <ul>
         <li>utils.js</li>
         <li>main.js</li>
-        <li>cart.js</li>
+        <li class="txtor">cart.js</li>
       </ul>
     </div>
-  </footer>
+  </section>
 
+<!-- T*T -- FOOTER -->
+  <%- include('./includes/footer') %>
 
   <%- include('./includes/scriptlist') %>
   <script src="/js/cart.js"></script>

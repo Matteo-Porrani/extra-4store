@@ -102,8 +102,6 @@ let deliveryAmount = 0;
 const cartTotalAmountDisplay = document.querySelector('#cartTotalAmountDisplay');
 const checkoutTotalArticles = document.querySelector('#checkoutTotalArticles');
 const checkoutTotal = document.querySelector('#checkoutTotal');
-
-
 const cartTotalHidden = document.querySelector('#cartTotalHidden');
 
 

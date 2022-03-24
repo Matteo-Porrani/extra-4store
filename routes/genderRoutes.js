@@ -33,7 +33,9 @@ router.get('/man', async (req, res) => {
       c.catName AS p_categ,
       p.proSubcat AS p_subcateg,
       pr.priAmount AS p_price,
+      p.proDiscount AS p_disc,
       p.proGender AS p_gender,
+      p.proDescription AS p_desc,
       p.proRating AS p_rat,
       p.proReviewCount AS p_revcount
     FROM advert a
@@ -48,7 +50,9 @@ router.get('/man', async (req, res) => {
     WHERE a.advGender = "M"
 `;
 
-  const [advertProducts] = await db.query(query2)
+  const [advertProducts] = await db.query(query2);
+
+  // console.log(advertProducts);
 
   res.render('gender', {
     templateName: templateName,
@@ -80,7 +84,9 @@ router.get('/wom', async (req, res) => {
       c.catName AS p_categ,
       p.proSubcat AS p_subcateg,
       pr.priAmount AS p_price,
+      p.proDiscount AS p_disc,
       p.proGender AS p_gender,
+      p.proDescription AS p_desc,
       p.proRating AS p_rat,
       p.proReviewCount AS p_revcount
     FROM advert a
@@ -95,7 +101,7 @@ router.get('/wom', async (req, res) => {
     WHERE a.advGender = "W"
 `;
 
-  const [advertProducts] = await db.query(query2)
+  const [advertProducts] = await db.query(query2);
 
   res.render('gender', {
     templateName: templateName,

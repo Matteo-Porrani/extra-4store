@@ -1,0 +1,245 @@
+:root {
+  --c-hero: #ff6000;
+  --c-dark: #312e2a;
+  --c-shad: #4b4449;
+  --c-gray: #789;
+  --c-mid: #dad1c8;
+  --c-lgt: #f9f7f6;
+}
+
+
+.vst { /* very small text */
+  display: none;
+
+  
+  background: var(--c-dark);
+  background: yellow;
+  color: #585ff5;
+
+  font-family: monospace;
+  font-size: .625rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  
+  /* width: fit-content; */
+  padding: 2px 0;
+  margin: 0;
+}
+
+
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* UTILITY CLASSES */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.dnn {
+  display: none !important;
+}
+
+.d-flex {
+  display: flex;
+  gap: .5rem;
+}
+
+
+
+
+
+
+.bgr {
+  background: red;
+}
+
+.bdr {
+  border: 2px solid red;
+}
+
+.pm0 {
+  padding: 0;
+  margin: 0;
+}
+
+.my2 {
+  margin: 2rem 0;
+}
+
+.m0auto {
+  margin: 0 auto;
+}
+
+.ls-none {
+  list-style: none;
+}
+
+
+
+.w100 {
+  width: 100%;
+}
+
+.w75 {
+  width: 75%;
+}
+
+.w50 {
+  width: 50%;
+}
+
+.w25 {
+  width: 25%;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* TEXT ALIGN */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.alcent {
+  text-align: center;
+}
+
+.alleft {
+  text-align: left;
+}
+
+.alright {
+  text-align: right;
+}
+
+
+
+
+.txtgr {
+  color: #dad1c8 !important;
+}
+
+.txtor {
+  color: #eb8102 !important;
+}
+
+.txtbl {
+  color: #585ff5 !important;
+}
+
+.bigtext {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: .25rem 0;
+}
+
+
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* BASIC ELEMENTS */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.container {
+  width: 88%;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+.btn {
+  display: inline-block;
+  background: var(--c-mid);
+  color: var(--c-dark);
+
+  text-decoration: none;
+
+  /* font-family: monospace; */
+  border: none;
+
+  padding: .75rem 1.25rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--c-hero);
+}
+
+.btn--xl {
+  font-size: 1.25rem !important;
+}
+
+
+
+
+
+.badge {
+  background: #eb8102;
+  color: #f8f9fa;
+  padding: .125rem;
+
+  font-size: .75rem;
+  font-weight: bold;
+
+  letter-spacing: 2px;
+
+  margin: 0 .25rem;
+}
+
+
+
+.view {
+  color: #372;
+  background-color: #8b2;
+  font-weight: bold;
+  font-size: .675rem;
+
+  border-left: 5px solid #372;
+  padding: .125rem .5rem;
+
+  width: fit-content;
+}
+
+
+
+
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* DEV STYLES */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+
+#jsList {
+  background: var(--c-gray);
+  font-family: monospace;
+
+  padding: 1rem 0;
+}
+
+.page__title {
+  color: #eb8102;
+  border: 1px solid #eb8102;
+  padding: .125rem;
+}
+
+.pch--display {
+  background: #dad1c8;
+  padding: .5rem;
+  width: fit-content;  
+}
+
+.pch--func {
+  background: #ccff00;
+  padding: .5rem;
+  width: fit-content;
+}
+
+.notes {
+  color: #585ff5;
+  background-color: hsl(237, 78%, 96%);
+  font-size: .675rem;
+
+  border-left: 5px solid #585ff5;
+  padding: .5rem;
+
+  width: fit-content;
+}

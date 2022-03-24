@@ -134,6 +134,9 @@ function displayProducts(items) {
         <small>${item.p_brand}</small>
         <br>  
         <small class="txtbl">${item.p_subcat}</small>
+        <br>
+        <img src="/assets/products/${item.p_main_img}" style="width: 100%;">
+
         <p style="font-size: 1.125rem; font-style: italic; margin: 0;"><b><a href="/detail/${item.p_id}">${item.p_name}</a></b></p>
         ${priceLine}
         <h4><i class="ph-star"></i> ${item.p_rat}</h4>
@@ -164,7 +167,12 @@ function displayBrands(items) {
     .then(res => res.json())
     .then(activeBrands => {
       const htmlBrands = activeBrands.map(item => {
-        return `<input type="checkbox" class="checkBrands" data-id="${item.braId}"><span>${item.braName}</span>`;
+        return `
+          <div class="fil__check__line">
+            <input class="fil__input--secondary checkBrands" id="checkBrands${item.braId}" type="checkbox" data-id="${item.braId}">
+            <label class="fil__label--secondary" for="checkBrands${item.braId}">${item.braName}</label>
+          </div>
+        `;
       });
 
       // on injecte les éléments (checkboxes) dans le DOM
@@ -200,7 +208,14 @@ function displayColors(items) {
     .then(res => res.json())
     .then(activeColors => {
       const htmlColors = activeColors.map(item => {
-        return `<input type="checkbox" class="checkColors" data-id="${item.colId}"><span>${item.colName}</span>`;
+        // return `<input type="checkbox" class="checkColors" data-id="${item.colId}"><span>${item.colName}</span>`;
+        return `
+          <div class="fil__check__line">
+            <input class="fil__input--secondary checkColors" id="checkColors${item.colId}" type="checkbox" data-id="${item.colId}">
+            <label class="fil__label--secondary" for="checkColors${item.colId}">${item.colName}</label>
+          </div>
+        `;
+
       });
 
       // on injecte les éléments (checkboxes) dans le DOM
@@ -235,7 +250,13 @@ function displaySizes(items) {
     .then(res => res.json())
     .then(activeSizes => {
       const htmlSizes = activeSizes.map(item => {
-        return `<input type="checkbox" class="checkSizes" data-id="${item.sizId}"><span>${item.sizName}</span>`;
+        // return `<input type="checkbox" class="checkSizes" data-id="${item.sizId}"><span>${item.sizName}</span>`;
+        return `
+          <div class="fil__check__line">
+            <input class="fil__input--secondary checkSizes" id="checkSizes${item.sizId}" type="checkbox" data-id="${item.sizId}">
+            <label class="fil__label--secondary" for="checkSizes${item.sizId}">${item.sizName}</label>
+          </div>
+        `;
       });
 
       // on injecte les éléments (checkboxes) dans le DOM

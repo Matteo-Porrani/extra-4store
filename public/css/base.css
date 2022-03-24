@@ -1,10 +1,13 @@
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 body {
-  font-family: monospace;
-  color: #212529;
+  font-family: "Space Grotesk", sans-serif;
+  background: var(--c-dark);
+  color: var(--c-lgt);
 
   padding: 0;
   margin: 0;
@@ -15,33 +18,35 @@ body {
   min-height: 100vh;
 }
 
-header {
-  color: #eb8102;
-  border-bottom: 1px solid #dad1c8;
-}
-
-footer {
-  background: #dad1c8;
-  padding: 1rem;
-  margin-top: auto;
-}
-
-section {
-  /* border: 2px solid #dad1c8; */
-  margin-bottom: .5rem;
-}
 
 
-h3 {
-  border: 1px solid #212529;
-  width: fit-content;
-  padding: .25rem;
-  margin: 4px;
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* FONT SIZES / PADDING / MARGIN */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+h1, h2, h3, h4, h5, h6, p {
+  padding: 0;
+  margin: 0;
 }
+
+h1 {
+  font-size: calc(1.375rem + 1.5vw);
+}
+
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+
+
+
+
 
 h4 {
-  border: 1px solid #099f9f;
-  color: #099f9f;
+  /* border: 1px solid #099f9f; */
+  color: yellow;
   padding: .5rem;
   width: fit-content;
   margin: 0;
@@ -53,186 +58,153 @@ ul {
   /* padding: 0; */
 }
 
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
-.main__logo {
-  text-decoration: none;
-}
+
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* BREADCRUMB */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 .brd__list {
   display: flex;
   gap: 1rem;
+
+
+  list-style: none;
+  padding: 0;
+
 }
 
 .brd__link {
   color: #dad1c8;
 }
 
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
-.container {
-  width: 88%;
-  margin: 0 auto;
-}
-
-.d-flex {
-  display: flex;
-  gap: .5rem;
-}
-
-.ls-none {
-  list-style: none;
-}
-
-.btn {
-  display: inline-block;
-  background: #212529;
-  color: #f8f9fa;
-
-  text-decoration: none;
-  font-size: .75rem;
-
-  /* <button> */
-  font-family: monospace;
-  border: none;
-
-  padding: .5rem;
-  margin: .25rem;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background: #eb8102;
-}
-
-.btn--xl {
-  font-size: 1.25rem !important;
-}
 
 .block__link {
   background: #dad1c8;
 }
 
 .block__link:hover {
-  background: #eb8102 !important;
+  /* background: #eb8102 !important; */
   cursor: pointer;
 }
 
 
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
-.txtgr {
-  color: #dad1c8 !important;
+
+
+
+#breadcrumb {
+  /* background: red; */
+
+  padding: 1rem 0;
 }
 
-.txtor {
-  color: #eb8102 !important;
+
+
+
+
+
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* T*T -- INDEX */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.gender__link {
+  /* border: 2px solid #1be; */
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 30vh;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.txtbl {
-  color: #585ff5 !important;
-}
-
-.bigtext {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: .25rem 0;
-}
-
-.alcent {
+.gender__title {
   text-align: center;
-}
+  width: 30%;
+  background: var(--c-dark);
+  color: var(--c-lgt);
 
-.alright {
-  text-align: right;
-}
-
-.vst { /* very small text */
-  font-size: .5rem;
-  background-color: hsl(225, 52%, 91%);
-  color: royalblue;
-  width: fit-content;
-  padding: 0;
-  margin: 0;
-}
-
-.badge {
-  background: #eb8102;
-  color: #f8f9fa;
-  padding: .125rem;
-
-  font-size: .75rem;
-  font-weight: bold;
-
-  letter-spacing: 2px;
-
-  margin: 0 .25rem;
-}
-
-
-
-.view {
-  color: #6c757d;
-  background-color: #dad1c8;
-  font-weight: bold;
-  font-size: .75rem;
-
-  border-left: 5px solid #6c757d;
   padding: .5rem;
-
-  width: fit-content;
 }
 
-.page__title {
-  color: #eb8102;
-  border: 1px solid #eb8102;
-  padding: .125rem;
+#selectWom {
+  background-image: url(../assets/pictures/active/genderWom.jpg);
 }
 
-.pch--display {
-  background: #dad1c8;
-  padding: .5rem;
-  width: fit-content;  
+#selectMan {
+  background-image: url(../assets/pictures/active/genderMan.jpg);
 }
 
-.pch--func {
-  background: #ccff00;
-  padding: .5rem;
-  width: fit-content;
+
+
+.gender__link#selectWom:hover {
+  background-image: url(../assets/pictures/active/genderWomB.jpg);
 }
 
-.notes {
-  color: #585ff5;
-  background-color: hsl(237, 78%, 96%);
-  font-size: .675rem;
-
-  border-left: 5px solid #585ff5;
-  padding: .5rem;
-
-  width: fit-content;
+.gender__link#selectMan:hover {
+  background-image: url(../assets/pictures/active/genderManB.jpg);
 }
+
+.gender__link:hover .gender__title {
+  background: var(--c-lgt);
+  color: var(--c-hero)
+}
+
+
+
+
+@media (min-width: 800px) {
+  #genderNav {
+    display: flex;
+  }
+
+
+  .gender__link {
+    width: 50%;
+    height: 50vh;
+  }
+  
+}
+
+
+
+
+#newsLetter {
+  background: olive;
+
+  padding: 1.5rem 0;
+}
+
+
+
+
+
+
 
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* INDEX */
-
-.gender__image {
-  filter: saturate(0);
-}
-
+/* T*T -- GENDER */
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* GENDER */
 
 .cat__icon {
   width: 24px;
 }
 
 
-.inbar {
-  background: khaki;
+#inbar {
+  background: var(--c-shad);
+  padding: .5rem 0;
 }
 
-.inbar nav {
+#inbar nav {
   flex-grow: 1;
 }
 
@@ -271,30 +243,45 @@ ul {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* PRODUCT CARDS */
 
-.main__filters {
-  background: lavender;
-}
 
-
-#showProducts { /* div qui contient les cards */
-  display: flex;
-  flex-wrap: wrap;
-  gap: .5rem;
-}
 
 
 
 .card {
-  border: 1px solid #000;
+  border: 1px solid violet;
+  background: var(--c-mid);
   position: relative;
 
-  width: 200px;
-  height: 240px;
+  width: 50%;
 
   padding: 1.5rem .25rem .25rem;
+}
+
+
+
+
+/* TODO - MEDIA */
+@media (min-width: 820px) {
+
+  .card {
+    width: 25%;
+  }
+
 }
 
 
@@ -451,16 +438,18 @@ textarea {
 @media (min-width: 800px) {
 
   .two__col {
+    border: 2px solid teal;
     display: flex;
-    gap: 2rem;
+    /* gap: 2rem; */
   }
   
   .two__col__half {
+    border: 2px solid gold;
     width: 100%;
   }  
 
 
-  .inbar {
+  #inbar {
     display: flex;
     justify-content: space-between;
     align-items: center;

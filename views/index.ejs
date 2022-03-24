@@ -7,84 +7,103 @@
 </head>
 
 <body>
+  <!-- T*T -- template name -->
+  <section class="template__name dnn">
+    <div class="container">
+      <p class="view">
+        <%= templateName %>
+      </p>
+    </div>
 
+  </section>
+
+
+
+<!-- T*T -- header -->
   <header>
     <%- include('./includes/header') %>
   </header>
-  
+
   <main>
-    
+
     <section>
       <%- include('./includes/modal') %>
     </section>
 
-    <!-- pas de breadcrumb sur cette page -->
+    <!-- <p class="vst">#discBanner</p> -->
 
-    <section>
-      <div class="container">
+    <!-- MK -- #discBanner -->
+    <section id="discBanner">
+      <p class="disc__banner__parag">10% de réduction avec le code 
+        <span class="disc__banner__badge">HIVER21</span>
+      </p>
+    </section>
 
-        <h2 class="page__title">Accueil</h2>
+    <!-- A*A -- pas de breadcrumb sur cette page -->
 
-        <div class="two__col">
-          <div class="two__col__half">
 
-            <div id="selectWom" class="gender__link block__link" data-href="/wom" style="text-align: center;">
-              <!-- <img src="https://via.placeholder.com/150/dde2e9/f8f9fa?text=image femme" alt=""> -->
-              <img src="/assets/pictures/active/genderWom.jpg" alt="" class="gender__image"
-                style="width: 150px; height: 150px; object-fit: cover;">
-              <br>
-              <!-- <a href="/wom" class="btn btn--xl" data-gender="wom">Femme</a> -->
-              <h2 data-gender="wom">Femme</h2>
-            </div>
 
-          </div>
 
-          <div class="two__col__half">
 
-            <div id="selectMan" class="gender__link block__link" data-href="/man" style="text-align: center;">
-              <!-- <img src="https://via.placeholder.com/150/dde2e9/f8f9fa?text=image homme" alt=""> -->
-              <img src="/assets/pictures/active/genderMan.jpg" alt="" class="gender__image"
-                style="width: 150px; height: 150px; object-fit: cover;">
-              <br>
-              <!-- <a href="/man" class="btn btn--xl" data-gender="man">Homme</a> -->
-              <h2 data-gender="man">Homme</h2>
-            </div>
+    <!-- <p class="vst">#genderNav</p> -->
 
-          </div>
-        </div>
+    <!-- MK -- #genderNav -->
+    <section id="genderNav">
+      <!-- TODO -- vérifier si besoin de data-gender dans h2 ??? -->
 
-      </div>
+      <!-- WOM -->
+      <article id="selectWom" class="gender__link block__link" data-href="/wom">
+        <h2 class="gender__title" data-gender="wom">Femme</h2>
+      </article>
+
+      <!-- MAN -->
+      <article id="selectMan" class="gender__link block__link" data-href="/man">
+        <h2 class="gender__title" data-gender="man">Homme</h2>
+      </article>
+
     </section>
 
 
-    <section>
+
+
+
+    <!-- MK -- #newsLetter -->
+    <p class="vst">#newsLetter</p>
+
+    <section id="newsLetter">
       <div class="container">
-        <h3>Newsletter</h3>
-        <p>Inscrivez vous pour recevoir toutes nos offres de réduction.</p>
-        <form action="" method="" style="width: 50%; display: flex; margin: 0 auto;">
-          <input type="text" style="margin: 0;">
+
+        <h2 class="pm0 alcent">Newsletter</h2>
+        <p class="alcent">Inscrivez vous pour recevoir toutes nos offres de réduction.</p>
+
+        <form class="w50" action="" method="" style="display: flex; margin: 0 auto;">
+          <input class="pm0" type="text">
           <button class="btn" type="submit">Inscription</button>
         </form>
 
-        <!-- <p class="pch--func">
-          <i class="ph-wrench"></i>
-          Formulaire inscription newsletter
-        </p> -->
-
       </div>
     </section>
+
+
+    <section id="jsList">
+      <div class="container">
+        <small>scripts utilisés sur cette page :</small>
+        <ul>
+          <li>utils.js</li>
+          <li>main.js</li>
+          <li>burger.js</li>
+        </ul>
+      </div>
+    </section>
+
+
   </main>
 
 
-  <footer>
-    <div class="container">
-      <small>scripts utilisés sur cette page :</small>
-      <ul>
-        <li>utils.js</li>
-        <li>main.js</li>
-      </ul>
-    </div>
-  </footer>
+
+
+<!-- T*T -- FOOTER -->
+  <%- include('./includes/footer') %>
 
   <%- include('./includes/scriptlist') %>
 </body>

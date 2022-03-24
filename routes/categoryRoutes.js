@@ -7,7 +7,6 @@ const db = require('../data/database');
 // custom utilities
 const ch = require('../utils/cookieHandler');
 
-
 // create router
 const router = express.Router();
 

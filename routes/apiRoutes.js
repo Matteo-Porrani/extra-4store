@@ -67,6 +67,8 @@ const getProductById = `
     pr.priAmount AS p_price,
     p.proGender AS p_gender,
     p.proSubcat AS p_subcat,
+    p.proDescription AS p_desc,
+    p.proMainImg AS p_main_img,
     p.proRating AS p_rat,
     p.proReviewCount AS p_revcount,
     p.proSales AS p_sales,

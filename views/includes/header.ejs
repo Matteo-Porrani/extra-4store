@@ -1,25 +1,48 @@
 <div class="container">
 
-  <span>
-  </span>
+  <div class="header__wrapper">
 
-  <h5 style="border: 1px solid #212529; width: fit-content; padding: .125rem; display: inline-block; margin: 0;">
     <a class="main__logo" href="/">
-      <i class="ph-spade"></i>
-      <i class="ph-diamond"></i>
-      <i class="ph-club"></i>
-      <i class="ph-heart"></i>
-      <br>
-      4Store
+      <img class="main__logo__image" src="/assets/logo/logo4s.svg" alt="">
+      <h1 class="main__logo__parag">4S<span class="tore">tore</span></h1>
     </a>
-  </h5>
 
-  <small><b>v0.2.0</b></small>
 
-  <p class="view">
-    <%= templateName %>
-  </p>
 
-  <%- include('./nav') %>
+
+    <button class="head__toggler">
+      <div class="burg__line burg__line-1"></div>
+      <div class="burg__line burg__line-2"></div>
+      <div class="burg__line burg__line-3"></div>
+    </button>
+
+
+
+    <div class="nav">
+
+      <ul class="head__nav">
+
+        <li class="head__nav__item">
+          <a class="head__nav__link" href="/admin">
+            <img class="hnl__image" src="/assets/icons/hexa.png" alt="">
+            <p class="hnl__parag">Profil</p>
+            
+          </a>
+        </li>
+        
+
+        <li class="head__nav__item">
+          <a class="head__nav__link" href="/cart">
+            <img class="hnl__image" src="/assets/icons/bag.png" alt="">
+            <p class="hnl__parag">Panier</p>
+            <span id="cartPreview"></span>
+
+          </a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
 
 </div>
