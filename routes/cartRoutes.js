@@ -18,6 +18,8 @@ router.get('/cart', async (req, res) => {
   // récupération des éléments dans le cookie 'cart'
   const currentCookies = ch.getAppCookies(req);
   const cart = currentCookies.cart;
+  const genderPath = currentCookies.gender;
+
 
   // double passe de .parse()
   const parsedCart = JSON.parse(cart);
@@ -77,7 +79,8 @@ router.get('/cart', async (req, res) => {
 
   res.render('cart', { 
     templateName: "cart.ejs",
-    cartItems: cartItems
+    cartItems: cartItems,
+    genderPath: genderPath
   });
 });
 

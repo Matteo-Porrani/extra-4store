@@ -19,116 +19,319 @@
     </section>
 
 
+<!-- T*T -->
+
+    <section id="lightbox">
+
+      <div class="det-lbx" id="lbx-item-1">
+        <div class="det-lbx__content">
+          <a href="#" class="lbx__close"></a> 
+          <img class="det-lbx__image" src="/assets/products/<%= product.p_main_img %>" alt="">
+        </div>
+      </div>
+
+    </section>
+
+
+
+
+
+
+    <!-- T*T -- breadcrumb -->
     <section>
       <div class="container">
-        <ul class="brd__list">
-          <li><a class="brd__link" href="/">Accueil</a><span> / </span></li>
-          <li><a class="brd__link" href="<%= genderPath %>"><%= gender %></a><span> / </span></li>
-          <li><a class="brd__link" href="/category/<%= product.p_catId %>"><%= product.p_categ.charAt(0).toUpperCase() + product.p_categ.slice(1) %></a><span> / </span></li>
+        <ul class="brd__list txt75">
+          <li><a class="brd__link" href="/">Accueil</a><span>/</span></li>
+          <li><a class="brd__link" href="<%= genderPath %>"><%= gender %></a><span>/</span></li>
+          <li><a class="brd__link" href="/category/<%= product.p_catId %>"><%= product.p_categ.charAt(0).toUpperCase() + product.p_categ.slice(1) %></a><span>/</span></li>
           <li><a class="brd__link txtor"><%= product.p_name %></a></li>
         </ul>
-
       </div>
     </section>
 
-<!-- product.p_categ.charAt(0).toUpperCase() + product.p_categ.charAt(0).slice(1) -->
 
 
-    <section>
+    <!-- T*T -- content -->
+
+    <section id="productDetail">
+
       <div class="container">
 
-        <h2 class="page__title">Détail</h2>
+        <div class="det__top">
 
-        <div class="two__col">
+          <p class="det__top__categ txt75 txtgr">
+            <span>
+              <%= product.p_categ %>
+            </span> /
+            <span>
+              <%= product.p_subcat %>
+            </span>
+          </p>
 
-          <div class="two__col__half">
 
-            <p>ID: <span id="detailPageProductId"><%= product.p_id %></span></p>
-            <p>cat : <%= product.p_categ %></p>
-            <p>subcat : <%= product.p_subcat %></p>
-            <p>marque : <span id="detailPageProductBrand" class="txtor"><%= product.p_brand %></span></p>
+          <!-- LOG -- product ID not visible on page (cart.js needs to read it !) -->
+          <p id="detailPageProductId" class="dnn">
+            <%= product.p_id %>
+          </p>
+          <p id="detailPageProductBrand" class="det__top__brand">
+            <%= product.p_brand %>
+          </p>
+          <h2 id="detailPageProductName" class="det__top__name">
+            <%= product.p_name %>
+          </h2>
+        </div>
 
 
-            <p id="detailPageProductName"><span class="bigtext"><%= product.p_name %></span></p>
+        <div class="det__bot">
 
-            <img src="https://via.placeholder.com/200/dde2e9/f8f9fa?text=extra" alt="">
+          <!-- A*A -- LEFT -->
+          <div class="det__bot__left">
 
-            <p class="txtbl">description : <%= product.p_desc %></p>
+            <div class="det__bot__left__line1">
 
-            <p>promo : <%= product.p_sales %>
-            </p>
-            <p>réduction : <span class="badge"><%= product.p_disc %>%</span></p>
+              <div class="det__pict">
+                <% if (product.p_disc) { %>
+                  <div class="det__discount__tag">
+                    <p>-<%= product.p_disc %>%</p>
+                  </div>
+                  <% } %>
 
-            <% if (product.p_disc) { %>
-              <h2><span class="price--erased">
-                  <%= product.p_price %> €</span> <span class="price--def">
-                  <span id="detailPageProductPriceDef"><%= product.p_price_def %> €</span>
-                </span></h2>
-              <% } else { %>
-                <h2><span id="detailPageProductPriceDef" class="price--def"><%= product.p_price %> €</span></h2>
-              <% } %>
+                    <!-- <img class="det__main__pict" src="https://via.placeholder.com/250/dde2e9/f8f9fa?text=extra" alt=""> -->
+
+                    <a href="#lbx-item-1">
+                      <img class="det__main__pict" src="/assets/products/<%= product.p_main_img %>" alt="">
+                    </a>
+              </div>
+
+
+              <div class="det__thumbs">
+                <img class="det__thumb__pict" src="/assets/products/thumb1.jpg" alt="">
+                <img class="det__thumb__pict" src="/assets/products/thumb2.jpg" alt="">
+                <img class="det__thumb__pict" src="/assets/products/thumb3.jpg" alt="">
+              </div>
+            </div>
+
+            <div class="det__bot__left__line2">
+
+              <% if (product.p_disc) { %>
+                <p class="det__price">
+                  <span class="det__price--def" id="detailPageProductPriceDef">
+                    <%= product.p_price_def %> €
+                  </span>
+
+                  <span class="det__price--erased">
+                    <%= product.p_price %> €
+                  </span>
+                </p>
+                <% } else { %>
+                  <p class="det__price">
+                    <span id="detailPageProductPriceDef" class="det__price--def">
+                      <%= product.p_price %> €
+                    </span>
+                  </p>
+                  <% } %>
+
+                    <p class="det__desc">
+                      <%= product.p_desc %>
+                    </p>
+
+            </div>
 
           </div>
 
 
-          <div class="two__col__half">
+          <!-- A*A -- RIGHT -->
+          <div class="det__bot__right">
 
-            <p>code : <%= product.p_code %></p>
-            <p>note : <%= product.p_rating %></p>
-            <p>nb de commentaires : <%= product.p_revcount %></p>
+            <div class="det__bot__right__line1">
 
-            <p class="pch--display"><i class="ph-eye"></i>features...</p>
-
-
-
-
-
-            <!-- MK -- COLORS -->
-              <h4 style="margin: .5rem 0;">COULEUR</h4>
-              <% for (const color of colors) { %>
-
-                  <input type="radio" name="det_color" id="det_color<%= color.col_id %>" value="<%= color.col_id %>" style="display: none;">
-                  <label for="det_color<%= color.col_id %>" class="detColorBtn" data-colid="<%= color.col_id %>" style="display: inline; border: 1px solid #212529;"><%= color.col_name %></label>    
-
-              <% } %>
-
-            <!-- MK -- SIZES -->
-              <h4 style="margin: .5rem 0;">TAILLE</h4>
-              <% for (const size of sizes) { %>
-
-                  <input type="radio" name="det_size" id="det_size<%= size.siz_id %>" value="<%= size.siz_id %>" style="display: none;">
-                  <label for="det_size<%= size.siz_id %>" class="detSizeBtn" data-sizid="<%= size.siz_id %>" style="display: inline; border: 1px solid #212529;"><%= size.siz_name %></label>    
-
-              <% } %>
+              <div class="det__info">
+                <p class="det__section__title">Code produit</p>
+                <p class="det__code">
+                  <%= product.p_code %>
+                </p>
 
 
-            <!-- MK -- QUANTITÉ -->
-            <div>
-              <h4 style="margin: .5rem 0;">QUANTITE</h4>
-              <button class="quantBtn bigtext" data-action="sub" style="width: 40px;">-</button>
-              <input id="quantDisplay" type="text" value="1" style="display: inline; width: 30px;" readonly>
-              <button class="quantBtn bigtext" data-action="add" style="width: 40px;">+</button>
+
+                <p class="det__section__title">Caractéristiques</p>
+                <ul class="det__feature__list">
+                  <li class="det__feature__item">Col italien</li>
+                  <li class="det__feature__item">Patte de boutonnage</li>
+                  <li class="det__feature__item">Poches sur l'avant</li>
+                  <li class="det__feature__item">Manches longues</li>
+                  <li class="det__feature__item">Coupe classique</li>
+                </ul>
+              </div>
+
+              <div class="det__choice">
+
+                <!-- MK -- COLORS -->
+                <p class="det__section__title">Couleur</p>
+
+
+                <div class="det__col__wrapper">
+
+                  <% for (const color of colors) { %>
+
+                    <div>
+                      <input type="radio" name="det_color" id="det_color<%= color.col_id %>" value="<%= color.col_id %>"
+                        style="display: none;">
+                      <label for="det_color<%= color.col_id %>" class="det__label detColorBtn"
+                        data-colid="<%= color.col_id %>">
+                        <%= color.col_name %>
+                      </label>
+                    </div>
+
+                    <% } %>
+
+                </div>
+
+
+                <!-- MK -- SIZES -->
+                <p class="det__section__title">Taille</p>
+
+                <div class="det__siz__wrapper">
+
+                  <% for (const size of sizes) { %>
+                    <div>
+                      <input type="radio" name="det_size" id="det_size<%= size.siz_id %>" value="<%= size.siz_id %>"
+                        style="display: none;">
+                      <label for="det_size<%= size.siz_id %>" class="det__label detSizeBtn"
+                        data-sizid="<%= size.siz_id %>">
+                        <%= size.siz_name %>
+                      </label>
+                    </div>
+
+                    <% } %>
+
+                </div>
+
+
+              </div>
+
             </div>
 
-            <p class="txtgr"><i class="ph-truck"></i> Livraison gratuite</p>
-            <p class="txtgr"><i class="ph-package"></i> Retours gratuits</p>
+            <div class="det__bot__right__line2">
 
-            <button id="addToCart" class="btn">Ajouter au panier</button>
+              <div class="det__rate">
 
+                <p class="det__section__title">Note</p>
+
+                <p id="productRating" class="dnn">
+                  <%= product.p_rating %>
+                </p>
+
+                <!-- A*A -- RATE LINE 1 -->
+                <div class="det__rate__line1">
+
+
+
+                  <!-- A*A -- rate wrapper -->
+                  <div class="rate__wrapper">
+
+                    <div class="rate__square">
+                      <div class="rate__fill" id="fill1"></div>
+                      <img class="rate__star" src="/assets/icons/star.svg" alt="">
+                    </div>
+
+                    <div class="rate__square">
+                      <div class="rate__fill" id="fill2"></div>
+                      <img class="rate__star" src="/assets/icons/star.svg" alt="">
+                    </div>
+
+                    <div class="rate__square">
+                      <div class="rate__fill" id="fill3"></div>
+                      <img class="rate__star" src="/assets/icons/star.svg" alt="">
+                    </div>
+
+                    <div class="rate__square">
+                      <div class="rate__fill" id="fill4"></div>
+                      <img class="rate__star" src="/assets/icons/star.svg" alt="">
+                    </div>
+
+                    <div class="rate__square">
+                      <div class="rate__fill" id="fill5"></div>
+                      <img class="rate__star" src="/assets/icons/star.svg" alt="">
+                    </div>
+
+                  </div>
+
+
+                  <p class="det__rate__parag">
+                    <%= product.p_rating %>
+                  </p>
+
+
+                </div>
+
+
+
+
+                <!-- A*A -- RATE LINE 2 -->
+                <div class="det__rate__line2">
+                  <p>
+                    <%= product.p_revcount %> avis
+                  </p>
+                </div>
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+              <div class="det__add">
+
+                <!-- MK -- QUANTITÉ -->
+                <div class="det__quant__wrapper">
+                  <p class="det__quant__title">Quantité</p>
+                  <div class="det__quant__commands">
+
+                    <button class="quantBtn quant__btn quant__btn--sub" data-action="sub"></button>
+
+                    <input id="quantDisplay" type="text" value="1" style="display: inline; width: 30px;" readonly>
+
+                    <button class="quantBtn quant__btn quant__btn--add" data-action="add"></button>
+
+                  </div>
+                </div>
+
+                <p class="det__delivery__parag txtgr">
+                  <i class="det__delivery__icon ph-truck"></i>
+                  <span class="det__delivery__text">Livraison gratuite</span>
+                </p>
+                <p class="det__delivery__parag txtgr">
+                  <i class="det__delivery__icon ph-package"></i>
+                  <span class="det__delivery__text">Retours gratuits</span>
+                </p>
+
+                <button id="addToCart" class="btn btn--accent det__add__button">Ajouter au panier</button>
+              </div>
+
+            </div>
 
           </div>
 
         </div>
 
 
+
       </div>
+
     </section>
 
-    <section>
-      <div class="container">
-        <button id="testBtn" class="btn btn--xl" data-message="il ne reste plus qu'à ajouter l'article au panier">TEST</button>
-      </div>
-    </section>
+
+
+
+
+
+
+
 
 
   </main>
@@ -140,15 +343,17 @@
         <li>utils.js</li>
         <li>main.js</li>
         <li class="txtor">cart.js</li>
+        <li class="txtor">stars.js</li>
       </ul>
     </div>
   </section>
 
-<!-- T*T -- FOOTER -->
+  <!-- T*T -- FOOTER -->
   <%- include('./includes/footer') %>
 
-  <%- include('./includes/scriptlist') %>
-  <script src="/js/cart.js"></script>
+    <%- include('./includes/scriptlist') %>
+      <script src="/js/cart.js"></script>
+      <script src="/js/stars.js"></script>
 </body>
 
 </html>

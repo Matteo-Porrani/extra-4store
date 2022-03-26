@@ -9,7 +9,7 @@
 <body>
 
   <!-- T*T -- template name -->
-  <section class="template__name">
+  <section class="template__name dnn">
     <div class="container">
       <p class="view">
         <%= templateName %>
@@ -40,12 +40,8 @@
       <div class="container">
         <ul class="brd__list">
           <li><a class="brd__link" href="/">Accueil</a><span> / </span></li>
-          <li><a class="brd__link" href="<%= genderPath %>">
-              <%= gender %>
-            </a><span> / </span></li>
-          <li><a class="brd__link txtor">
-              <%= categoryName %>
-            </a></li>
+          <li><a class="brd__link" href="<%= genderPath %>"><%= gender %></a><span> / </span></li>
+          <li><a class="brd__link txtor"><%= categoryName %></a></li>
         </ul>
 
       </div>
@@ -71,18 +67,22 @@
       <!-- MK -- MAIN FILTERS -->
       <div id="mainFilters" class="">
 
+        <div class="fil__wrapper">
 
+          <label class="fil__label" id="orderLabel">
+            <p class="fil__label__title">Ordre</p>
+            <!-- <div class="fil__label__cross"></div> -->
 
-        <h4>ORDRE</h4>
-        <select name="filterOrder" id="filterOrder" style="width: 50%; font-size: .75rem; padding: 0;">
-          <option value="priceDesc">prix : décroissant</option>
-          <option value="priceAsc">prix : croissant</option>
-          <option value="noteDesc" selected>note : décroissant</option>
-          <option value="noteAsc">note : croissant</option>
-        </select>
+            <select name="filterOrder" id="filterOrder" style="width: 50%; font-size: .75rem; padding: 0; margin:0;">
+              <option value="priceDesc">Prix décroissant</option>
+              <option value="priceAsc">Prix croissant</option>
+              <option value="noteDesc" selected>Note décroissante</option>
+              <option value="noteAsc">Note croissante</option>
+            </select>
 
+          </label>
 
-
+        </div>
 
 
         <!-- PRIX -->
@@ -198,7 +198,7 @@
           </div>
         </div>
 
-        <button id="resetFilters" class="btn">réinitialiser les filtres</button>
+        <button id="resetFilters" class="btn btn--light" style="display: block; margin-left: auto">réinitialiser les filtres</button>
 
       </div>
 
@@ -206,7 +206,32 @@
 
 
       <!-- A*A -- affichage produits -->
-      <div id="showProducts"></div>
+      <div id="showProducts">
+
+
+        <!-- item 
+        <article class="card product__link" data-href="23">
+          <div class="card__tag">-20%</div>
+          <img class="card__pict" src="/assets/products/productW_01.jpg" alt="">
+          <div class="card__brand">
+            <p>Ananas</p>
+          </div>
+
+          <div class="card__name">
+            <h2 class="card__name__text">Kalifornia</h2>
+          </div>
+
+          <div class="card__price">
+            <p class="card__price__text">
+              <span class="price--def">60 €</span>
+              <span class="price--erased">100 €</span>
+            </p>
+          </div>
+        </article>
+        -->
+
+
+      </div>
 
 
 
@@ -246,15 +271,15 @@
       </ul>
     </div>
   </section>
-
+  
   <!-- T*T -- FOOTER -->
   <%- include('./includes/footer') %>
-
-
-
-    <%- include('./includes/scriptlist') %>
-      <script src="/js/category_handler.js"></script>
-      <script src="/js/category_filters.js"></script>
+  
+  
+  
+  <%- include('./includes/scriptlist') %>
+  <script src="/js/category_handler.js"></script>
+  <script src="/js/category_filters.js"></script>
 </body>
 
 </html>

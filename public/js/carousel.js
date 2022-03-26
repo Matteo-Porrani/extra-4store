@@ -1,5 +1,5 @@
 
-const slideActive = 0;
+const slideActive = 1;
 
 
 const track = document.querySelector('.carousel__track');

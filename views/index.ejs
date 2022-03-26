@@ -33,7 +33,7 @@
     <!-- <p class="vst">#discBanner</p> -->
 
     <!-- MK -- #discBanner -->
-    <section id="discBanner">
+    <section id="discBanner" class="dnn">
       <p class="disc__banner__parag">10% de réduction avec le code 
         <span class="disc__banner__badge">HIVER21</span>
       </p>
@@ -67,18 +67,23 @@
 
 
 
+
+
     <!-- MK -- #newsLetter -->
     <p class="vst">#newsLetter</p>
 
-    <section id="newsLetter">
+    <section id="newsLetter" style="margin-top: 3rem;">
       <div class="container">
 
         <h2 class="pm0 alcent">Newsletter</h2>
         <p class="alcent">Inscrivez vous pour recevoir toutes nos offres de réduction.</p>
 
-        <form class="w50" action="" method="" style="display: flex; margin: 0 auto;">
+        <form id="newsLetterForm" class="" action="" method="" style="display: flex; margin: 2rem auto;">
           <input class="pm0" type="text">
-          <button class="btn" type="submit">Inscription</button>
+          <button class="btn btn--accent" type="submit">
+            <span class="newslett__btn__text--mob midtext">&gt;</span>
+            <span class="newslett__btn__text--dsk">Inscription</span>
+          </button>
         </form>
 
       </div>
@@ -91,7 +96,6 @@
         <ul>
           <li>utils.js</li>
           <li>main.js</li>
-          <li>burger.js</li>
         </ul>
       </div>
     </section>

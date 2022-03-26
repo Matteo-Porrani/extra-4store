@@ -37,6 +37,8 @@ try {
 const detColorBtns = document.querySelectorAll('.detColorBtn');
 const detSizeBtns = document.querySelectorAll('.detSizeBtn');
 
+
+
 try {
   detColorBtns.forEach(item => {
     item.addEventListener('click', (e) => {
@@ -138,7 +140,7 @@ try {
   cartItemDeleteBtns.forEach(item => {
     item.addEventListener('click', (e) => {
 
-      const targetSelector = `#cartItemDisplay${e.currentTarget.dataset.target}`;
+      const targetSelector = `#cartItemDisplay${parseInt(e.currentTarget.dataset.target)}`;
       const target = document.querySelector(targetSelector);
       target.remove();
 

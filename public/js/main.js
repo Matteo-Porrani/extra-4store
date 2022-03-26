@@ -2,6 +2,19 @@
 const loc = location.pathname;
 
 
+// (+) burger menu
+
+const toggler = document.querySelector('.head__toggler');
+const headNav = document.querySelector('.head__nav');
+
+toggler.addEventListener('click', (e) => {
+  e.currentTarget.classList.toggle('open');
+  headNav.classList.toggle('open');
+});
+
+
+
+
 // (+) -- index.ejs
 
 // activation links vers 'femme' / 'homme'
@@ -23,6 +36,10 @@ genderLinks.forEach(link => {
 if (loc === '/wom' || loc === '/man') {
   document.cookie = `gender=${encodeURIComponent(location.pathname)}; path= "/"`;
 }
+
+
+
+
 
 
 

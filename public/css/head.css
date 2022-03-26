@@ -201,6 +201,8 @@ header {
   .head__nav {
     position: relative;
     display: flex;
+    
+    max-height: 200px;
   
   
     gap: 1.5rem;

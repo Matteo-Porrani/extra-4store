@@ -3,8 +3,11 @@
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 footer {
-  background: var(--c-dark);
-  color: var(--c-lgt);
+  /* background: var(--c-darker); */
+  /* color: var(--c-lgt); */
+
+  background: var(--c-shad);
+  color: var(--c-mid);
 
   padding: 2rem 0;
   margin-top: auto;

@@ -16,77 +16,152 @@
 
     <!-- pas de breadcrumb sur cette page -->
 
-    <section>
+    <section class="my2">
+      <div class="container">
+        <h2>Panier</h2>
+      </div>
+    </section>
+
+
+
+    <section class="my2">
+      <div class="container">
+        <a class="btn btn--light" href="<%= genderPath %>">Retour aux achats</a>
+      </div>
+    </section>
+
+
+<!-- T*T -- CART -->
+    <section class="my2">
       <div class="container">
 
-        <h2 class="page__title">Panier</h2>
 
-        <!-- FIXME -- formulaire -->
+        <!-- TODO -- formulaire -->
         <form action="" method="">
 
 
-          <div class="two__col">
 
-            <div class="two__col__half">
+          <!-- MK -- LEFT SIDE -->
+          <div id="cartWrapper">
 
-              <!-- MK -- cartDisplay -->
+            <div id="cartArticles" class="cart__half">
+
+              <p class="cart__section__title">Articles</p>
+
+              <!-- A*A -- cartDisplay -->
               <div id="cartDisplay">
                 <% for (const item of cartItems) { %>
 
-                  <div id="cartItemDisplay<%= item.p_id %>" class="cart__line">
-                    <p><%= item.p_quant %></p>
-                    <p><%= item.p_name %></p>
-                    <p style="font-size: .5rem;"><%= item.p_brand %></p>
-                    <p style="font-size: .5rem;"><%= item.p_color %> / <%= item.p_size %></p>
-                    <p class="alright" style="">€ <span class="cart__price__def"><%= item.p_priceDef %></span></p>
+                  <!-- A*A -- LINE -->
+                  <div id="cartItemDisplay<%= parseInt(item.p_id) %>" class="cart__line cart__line--article">
+
+                    <!-- 1 -->
                     <p>
-                      <button class="btn cartItemDeleteBtn" data-target="<%= item.p_id %>">
-                        <i class="ph-trash" style="font-size: 1.25rem;"></i>
-                      </button>
+                      <%= item.p_brand %>
                     </p>
+
+                    <!-- 2 -->
+                    <p>
+                      <%= item.p_name %>
+                    </p>
+
+                    <!-- 3 -->
+                    <p>
+                      
+                    </p>
+
+                    <!-- 4 -->
+                    <p class="alright">
+                      <button class="btn btn--dark cartItemDeleteBtn" data-target="<%= item.p_id %>">
+                        <i class="ph-trash"></i>
+                      </button>
+
+                    </p> 
+
+                    <!-- 5 -->
+                    <p>
+                      <%= item.p_color %> / <%= item.p_size %>
+                    </p>
+
+                    <!-- 6 -->
+                    <p></p>
+
+                    <!-- 7 -->
+                    <p class="alright">
+                      x<%= item.p_quant %>
+                    </p>
+
+                    <!-- 8 -->
+                    <p class="alright" style="">€ <span class="cart__price__def">
+                      <%= item.p_priceDef %>
+                    </span></p>
+
+                    
                   </div>
 
                   <% } %>
               </div>
-              <hr>
 
-              <!-- MK -- cartTotal -->
-              <div class="cartTotal">
+              <!-- A*A -- cartTotal -->
+              <div id="cartTotal" class="cartTotal">
+
                 <input id="cartTotalHidden" type="hidden">
 
-                <div class="cart__line">
+                <div class="cart__line cart__line--subtotal">
                   <p></p>
-                  <p></p>
-                  <p>Total</p>
+                  <p>Sous-total</p>
                   <p></p>
                   <p id="cartTotalAmountDisplay" class="alright"></p>
-                  <p></p>
                 </div>
               </div>
 
-              <div id="productsTotal"></div>
+              <!-- <div id="productsTotal"></div> -->
 
-              <!-- MK -- livraison -->
+              
 
             </div>
 
-            <div class="two__col__half" style="margin-top: 3rem;">
-              <span class="badge">Récapitulatif Commande</span>
-              <p>Total articles — <span id="checkoutTotalArticles" class="bigtext txtbl"></span></p>
 
-              <div style="margin-top: 3rem;">
-                <input type="radio" name="delivery" id="deliveryStd" style="display: none;" checked>
-                <label for="deliveryStd" class="deliveryOption" data-deliv="0" style="">Livraison STANDARD — Gratuit</label>
-                <br>
-                <input type="radio" name="delivery" id="deliveryExp" style="display: none;">
-                <label for="deliveryExp" class="deliveryOption" data-deliv="12.99" style="">Livraison EXPRESS — € 12.99</label>
+            <!-- MK -- RIGHT SIDE -->
+            <div id="cartCheckout" class="cart__half">
+
+
+              <p class="cart__section__title">Récapitulatif commande</p>
+
+              <div class="checkout__line">
+                <p class="checkout__line--item1">Sous-total</p>
+                <p id="checkoutTotalArticles" class="checkout__line--item2 alright"></p>
               </div>
 
-              <hr>
-              <p>Total — <span id="checkoutTotal" class="bigtext"></span></p>
+              <!-- CHOIX LIVRAISON -->
+              <div class="delivery__choice__wrapper my2">
 
-              <button type="submit" class="btn btn--xl"
-                style="display: block; width: fit-content; margin-top: 4rem; margin-left: auto;">Commander</button>
+                <p class="delivery__choice__dir">Choisissez votre livraison</p>
+
+                <div class="delivery__choice__line">
+                  <input type="radio" name="delivery" id="deliveryStd" style="display: none;" checked>
+                  <label for="deliveryStd" class="deliveryOption" data-deliv="0">Livraison STANDARD — Gratuit</label>
+                </div>
+
+                <div class="delivery__choice__line">
+                  <input type="radio" name="delivery" id="deliveryExp" style="display: none;">
+                  <label for="deliveryExp" class="deliveryOption" data-deliv="12.99">Livraison EXPRESS — €12.99</label>
+                </div>
+
+              </div>
+
+
+              <!-- <p>Total — <span id="checkoutTotal" class="bigtext"></span></p> -->
+
+              <div class="checkout__line checkout__final">
+                <p class="checkout__line--item1">Total ordre</p>
+                <p id="checkoutTotal" class="checkout__line--item2 alright"></p>
+              </div>
+
+              <div class="checkout__btn__wrapper">
+                <button type="submit" class="btn btn--accent midtext">Commander</button>
+              </div>
+
             </div>
 
           </div>
@@ -114,13 +189,13 @@
   </section>
 
 
-<!-- T*T -- FOOTER -->
+  <!-- T*T -- FOOTER -->
   <%- include('./includes/footer') %>
-  
-  
-  
-  <%- include('./includes/scriptlist') %>
-  <script src="/js/cart.js"></script>
+
+
+
+    <%- include('./includes/scriptlist') %>
+      <script src="/js/cart.js"></script>
 </body>
 
 </html>

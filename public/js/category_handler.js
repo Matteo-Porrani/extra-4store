@@ -113,6 +113,8 @@ function displayProducts(items) {
   const htmlProducts = items.map(item => {
 
     let discountString = (item.p_sales === 'Y') ? `<div class="card__tag"><b>-${item.p_disc}%</b></div>` : "";
+
+
     if (item.p_subcat === null) item.p_subcat = "---";
     const namedColors = item.p_colors.map(item => refColors[item]);
     const namedSizes = item.p_sizes.map(item => refSizes[item]);
@@ -120,11 +122,15 @@ function displayProducts(items) {
     let priceLine = "";
 
     if (item.p_disc) {
-      priceLine = `<h2><span class="price--erased">${item.p_price} €</span> <span class="price--def">${item.p_price_def} €</span></h2>`;
+      priceLine = `<p class="card__price__text"><span class="price--def">${item.p_price_def} €</span> <span class="price--erased">${item.p_price} €</span></p>`;
     } else {
-      priceLine = `<h2><span class="price--def">${item.p_price} €</span></h2>`;
+      priceLine = `<p class="card__price__text"><span class="price--def">${item.p_price} €</span></p>`;
     }
 
+
+
+    // A*A -- CARD
+    /*
     let itemString = `
       <div class="card">
         <div class="card__id"><small>#${item.p_id}</small></div>
@@ -145,6 +151,35 @@ function displayProducts(items) {
         <small>${namedSizes.join(', ')}</small>
       </div>
     `;
+    */
+
+
+
+    // A*A -- CARD
+    let itemString = `
+      <article class="card product__link" data-href="/detail/${item.p_id}">
+        ${discountString}
+        <img class="card__pict" src="/assets/products/${item.p_main_img}" alt="">
+        <div class="card__brand">
+          <p>${item.p_brand}</p>
+        </div>
+
+        <div class="card__name">
+          <h2 class="card__name__text">${item.p_name}</h2>
+        </div>
+
+        <div class="card__price">
+          ${priceLine}
+        </div>
+
+        <div class="card__details">
+          <p>${namedColors.join(' - ')}</p>
+        </div>
+      </article>
+`;
+
+
+
 
     return itemString;
   });
@@ -152,6 +187,23 @@ function displayProducts(items) {
   // on affiche dans le DOM
   const showProducts = document.querySelector("#showProducts");
   showProducts.innerHTML = htmlProducts.join('');
+
+
+  // NEW -- event listener for block links
+
+  // activation links produits
+  const productLinks = document.querySelectorAll('.product__link');
+
+  productLinks.forEach(link => {
+    link.addEventListener('click', e => {
+
+
+      // console.log(e.currentTarget.dataset.href);
+      location = e.currentTarget.dataset.href;
+    });
+  });
+
+
 }
 
 
@@ -309,7 +361,7 @@ function verifyPriceRanges(categPrices) {
         removePriceRangeFromFilters(parseInt(e.target.dataset.pricerange));
       }
     });
-  });  
+  });
 
 
   domPriceRanges.forEach((item, index) => {

@@ -1,9 +1,13 @@
 :root {
   --c-hero: #ff6000;
+  --c-hero-dimm: hsla(24, 100%, 50%, .3);
   --c-dark: #312e2a;
+  --c-dark-dimm: hsla(34, 8%, 18%, .5);
+  --c-darker: #211f1c;
   --c-shad: #4b4449;
   --c-gray: #789;
   --c-mid: #dad1c8;
+  --c-mid-dimm: hsla(30, 20%, 82%, .5);
   --c-lgt: #f9f7f6;
 }
 
@@ -91,8 +95,16 @@
 }
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* TEXT ALIGN */
+/* TEXT ALIGN & SIZE */
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+.txt75 {
+  font-size: .75rem !important;
+}
+
+.txt875 {
+  font-size: .875rem !important;
+}
 
 .alcent {
   text-align: center;
@@ -121,6 +133,10 @@
   color: #585ff5 !important;
 }
 
+.midtext {
+  font-size: 1.25rem;
+}
+
 .bigtext {
   font-size: 1.5rem;
   font-weight: bold;
@@ -143,25 +159,63 @@
 
 
 
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* BUTTONS */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 
 .btn {
   display: inline-block;
-  background: var(--c-mid);
-  color: var(--c-dark);
+  border: 1px solid transparent;
 
   text-decoration: none;
 
-  /* font-family: monospace; */
-  border: none;
+  font-size: 1rem;
 
-  padding: .75rem 1.25rem;
+  font-family: inherit;
+
+  padding: .5em 1.5em;
   cursor: pointer;
 }
 
-.btn:hover {
+
+
+.btn--accent {
   background: var(--c-hero);
+  border-color: var(--c-hero);
+  /* color: var(--c-lgt); */
+  color: var(--c-dark);
 }
+
+.btn--accent:hover {
+  background: var(--c-hero-dimm);
+  color: var(--c-dark);
+}
+
+
+.btn--light {
+  background: var(--c-mid);
+  border-color: var(--c-mid);
+  color: var(--c-dark);
+}
+
+.btn--light:hover {
+  background: var(--c-mid-dimm);
+  color: var(--c-dark);
+}
+
+
+.btn--dark {
+  background: var(--c-dark);
+  border-color: var(--c-dark);
+  color: var(--c-lgt);
+}
+
+.btn--dark:hover {
+  background: var(--c-dark-dimm);
+  color: var(--c-hero);
+}
+
 
 .btn--xl {
   font-size: 1.25rem !important;

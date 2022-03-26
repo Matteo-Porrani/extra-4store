@@ -5,19 +5,29 @@
 }
 
 body {
-  font-family: "Space Grotesk", sans-serif;
   background: var(--c-dark);
   color: var(--c-lgt);
+  
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 300;
+  
+  display: flex;
+  flex-direction: column;
+  
+  min-height: 100vh;
 
   padding: 0;
   margin: 0;
-
-  display: flex;
-  flex-direction: column;
-
-  min-height: 100vh;
 }
 
+
+main {
+  margin-bottom: 100px;
+}
+
+#jsList {
+  display: none !important;
+}
 
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -53,53 +63,39 @@ h4 {
   padding: 0 .25rem;
 }
 
-ul {
-  /* list-style: none; */
-  /* padding: 0; */
-}
-
-
-
 
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* BREADCRUMB */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
+
+#breadcrumb {
+  padding: 1rem 0;
+}
+
+
 .brd__list {
   display: flex;
-  gap: 1rem;
+  gap: .5rem;
 
 
   list-style: none;
   padding: 0;
-
 }
 
 .brd__link {
-  color: #dad1c8;
+  color: var(--c-mid);
+  margin-right: .25rem;
 }
 
-
-
 .block__link {
-  background: #dad1c8;
+  background: var(--c-mid);
 }
 
 .block__link:hover {
   /* background: #eb8102 !important; */
   cursor: pointer;
-}
-
-
-
-
-
-
-#breadcrumb {
-  /* background: red; */
-
-  padding: 1rem 0;
 }
 
 
@@ -160,12 +156,11 @@ ul {
 
 
 
-
+/* TODO -- MEDIA */
 @media (min-width: 800px) {
   #genderNav {
     display: flex;
   }
-
 
   .gender__link {
     width: 50%;
@@ -174,17 +169,53 @@ ul {
   
 }
 
-
-
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* newsletter */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 #newsLetter {
-  background: olive;
+  /* background: olive; */
 
   padding: 1.5rem 0;
 }
 
+#newsLetterForm {
+  display: flex;
+  align-items: stretch;
+
+}
 
 
+
+.newslett__btn__text--mob {
+  display: block;
+}
+
+.newslett__btn__text--dsk {
+  display: none;
+}
+
+
+
+/* TODO -- MEDIA */
+@media (min-width: 800px) {
+  
+  #newsLetterForm {
+    width: 50%;
+  }
+  
+
+  .newslett__btn__text--mob {
+    display: none;
+  }
+  
+  .newslett__btn__text--dsk {
+    display: block;
+  }
+  
+  
+
+}
 
 
 
@@ -250,28 +281,123 @@ ul {
 
 
 
-
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* T*T -- CATEGORY */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 
 
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* PRODUCT CARDS */
-
-
-
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 
 .card {
-  border: 1px solid violet;
-  background: var(--c-mid);
+  /* border: 1px solid violet; */
+  /* background: var(--c-shad); */
   position: relative;
-
+  
+  border-width: 0px 2px 2px 0px;
+  border-style: solid;
+  border-color: var(--c-dark);
+  
   width: 50%;
 
-  padding: 1.5rem .25rem .25rem;
+  cursor: pointer;
+
 }
 
+
+
+
+
+
+.card__tag {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  background: var(--c-hero);
+  color: var(--c-lgt);
+  font-size: 90%;
+  font-weight: 800;
+  text-align: center;
+
+
+  padding: .375em 1em;
+
+}
+
+.card__pict {
+  width: 100%;
+
+  margin-bottom: -5px; /* correction d'une marge qui apparaît sous la photo... ??? */
+}
+
+.card__brand {
+  background: var(--c-mid-dimm);
+  color: var(--c-dark);
+  padding: .25rem .5rem;
+  font-size: .875rem;
+}
+
+.card__name {
+  background: var(--c-shad);
+  padding: .5rem;
+}
+
+.card__name__text {
+  color: var(--c-hero);
+  font-size: 1.125rem;
+}
+
+.card__price {
+  background: var(--c-shad);
+  padding: .5rem;
+}
+
+.card__price__text {
+  font-weight: 800;
+}
+
+
+
+
+
+.price--def {
+  color: var(--c-lgt);
+}
+
+.price--erased {
+  color: var(--c-hero-dimm);
+  text-decoration-line: line-through;
+  text-decoration-thickness: 2px;
+}
+
+/* https://stackoverflow.com/questions/2539207/how-to-change-the-strike-out-line-through-thickness-in-css */
+
+
+
+
+.card__details {
+  background: var(--c-shad);
+
+  height: 46px;
+
+  font-size: .75rem !important;
+  padding: .5rem;
+}
+
+/* DEPRECATED */
+.card__id {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  padding: .25rem;
+  color: deeppink;
+}
 
 
 
@@ -285,60 +411,25 @@ ul {
 }
 
 
-.card__id {
-  position: absolute;
-  left: 0;
-  top: 0;
-
-  padding: .25rem;
-  color: deeppink;
-}
-
-.card__tag {
-  position: absolute;
-  right: 0;
-  top: 0;
-
-  width: 50%;
-  height: 20px;
-  background: #eb8102;
-  color: #fff;
-
-  text-align: center;
-}
-
-.price--def {
-  color: #eb8102;
-}
-
-.price--erased {
-  color: #dad1c8;
-  text-decoration-line: line-through;
-  text-decoration-thickness: 2px;
-}
-
-/* https://stackoverflow.com/questions/2539207/how-to-change-the-strike-out-line-through-thickness-in-css */
 
 
 
 
-/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* DETAIL */
 
+
+
+
+
+
+
+
+
+
+/* ???????? */
 input[type="radio"]:checked + label {
-  background: #eb8102;
+  background: var(--c-hero);
 }
 
-
-/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* CART */
-
-.cart__line {
-  display: grid;
-  grid-template-columns: .5fr 1fr 1fr 1fr 2fr .5fr;
-  grid-template-rows: 1fr;
-  grid-gap: 10px;
-}
 
 
 
