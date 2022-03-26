@@ -45,7 +45,9 @@ let tempProducts = [];
 
 // on récupère le genre courant et on construit le path pour le fetch
 const currGenderPath = getCookieValue('gender');
-const fetchUrl = `http://localhost:3000/api/products${currGenderPath}`;
+// TODO -- switch local/deploy 
+// const fetchUrl = `http://localhost:3000/api/products${currGenderPath}`;
+const fetchUrl = `https://demo-4store.herokuapp.com/api/products${currGenderPath}`;
 
 
 // first fetch - TOUS les produits du genre (sans distinction de catégprie)
@@ -129,31 +131,6 @@ function displayProducts(items) {
 
 
 
-    // A*A -- CARD
-    /*
-    let itemString = `
-      <div class="card">
-        <div class="card__id"><small>#${item.p_id}</small></div>
-        ${discountString}
-        <small class="txtgr">${item.p_categ}</small>
-        <br>
-        <small>${item.p_brand}</small>
-        <br>  
-        <small class="txtbl">${item.p_subcat}</small>
-        <br>
-        <img src="/assets/products/${item.p_main_img}" style="width: 100%;">
-
-        <p style="font-size: 1.125rem; font-style: italic; margin: 0;"><b><a href="/detail/${item.p_id}">${item.p_name}</a></b></p>
-        ${priceLine}
-        <h4><i class="ph-star"></i> ${item.p_rat}</h4>
-        <small>${namedColors.join(', ')}</small>
-        <br>
-        <small>${namedSizes.join(', ')}</small>
-      </div>
-    `;
-    */
-
-
 
     // A*A -- CARD
     let itemString = `
@@ -215,7 +192,8 @@ function displayBrands(items) {
   // on prend les ids des produits filtrés
   const categoryIds = items.map(item => item.p_id);
 
-  fetch(`http://localhost:3000/api/brands/${categoryIds.join('+')}`)
+  // fetch(`http://localhost:3000/api/brands/${categoryIds.join('+')}`)
+  fetch(`https://demo-4store.herokuapp.com/api/brands/${categoryIds.join('+')}`)
     .then(res => res.json())
     .then(activeBrands => {
       const htmlBrands = activeBrands.map(item => {
@@ -256,7 +234,8 @@ function displayColors(items) {
     return item.p_id;
   });
 
-  fetch(`http://localhost:3000/api/colors/${filteredIds.join('+')}`)
+  // fetch(`http://localhost:3000/api/colors/${filteredIds.join('+')}`)
+  fetch(`https://demo-4store.herokuapp.com/api/colors/${filteredIds.join('+')}`)
     .then(res => res.json())
     .then(activeColors => {
       const htmlColors = activeColors.map(item => {
@@ -298,7 +277,8 @@ function displaySizes(items) {
   // on prend les ids des produits filtrés
   const categoryIds = items.map(item => item.p_id);
 
-  fetch(`http://localhost:3000/api/sizes/${categoryIds.join('+')}`)
+  // fetch(`http://localhost:3000/api/sizes/${categoryIds.join('+')}`)
+  fetch(`https://demo-4store.herokuapp.com/api/sizes/${categoryIds.join('+')}`)
     .then(res => res.json())
     .then(activeSizes => {
       const htmlSizes = activeSizes.map(item => {
