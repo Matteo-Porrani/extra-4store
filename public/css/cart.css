@@ -136,7 +136,7 @@
 
   #cartWrapper {
     display: flex;
-    gap: 1rem;
+    gap: 4rem;
   }
 
   .cart__half {
