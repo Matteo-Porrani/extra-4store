@@ -1,10 +1,10 @@
 
 // (+) -- HOSTNAME
 // MK -- local
-const hostname = 'http://localhost:3000';
+// const hostname = 'http://localhost:3000';
 
 // MK -- deploy
-// const hostname = 'https://demo-4store.herokuapp.com';
+const hostname = 'https://demo-4store.herokuapp.com';
 
 
 

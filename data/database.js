@@ -2,7 +2,7 @@
 const mysql = require('mysql2/promise');
 
 // LOG -- local or deploy
-const devState = 1;
+const devState = 0;
 
 let pool;
 
