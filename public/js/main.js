@@ -1,8 +1,18 @@
 
+// (+) -- HOSTNAME
+// MK -- local
+const hostname = 'http://localhost:3000';
+
+// MK -- deploy
+// const hostname = 'https://demo-4store.herokuapp.com';
+
+
+
+
 const loc = location.pathname;
 
 
-// (+) burger menu
+// (+) -- burger menu
 
 const toggler = document.querySelector('.head__toggler');
 const headNav = document.querySelector('.head__nav');
@@ -43,7 +53,7 @@ if (loc === '/wom' || loc === '/man') {
 
 
 
-// (+) initialize cookie 'cart'
+// (+) -- initialize cookie 'cart'
 let currCookies = getCookieArray();
 
 let cartCookie = currCookies.find(item => item[0] === 'cart');

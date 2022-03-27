@@ -29,7 +29,7 @@ const idsArray = idCellsArray.map(item => item.textContent);
 idsArray.forEach(item => {
 
   // fetch(`http://localhost:3000/api/colors/${item}`)
-  fetch(`https://demo-4store.herokuapp.com/api/colors/${item}`)
+  fetch(`${hostname}/api/colors/${item}`)
     .then(res => res.json())
     .then(data => {
 
@@ -45,7 +45,7 @@ idsArray.forEach(item => {
 idsArray.forEach(item => {
 
   // fetch(`http://localhost:3000/api/sizes/${item}`)
-  fetch(`https://demo-4store.herokuapp.com/api/sizes/${item}`)
+  fetch(`${hostname}/api/sizes/${item}`)
     .then(res => res.json())
     .then(data => {
 

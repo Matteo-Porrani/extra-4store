@@ -81,11 +81,11 @@ try {
       updateCartPreview();
 
       // modale de confirmation
-      showModal("l'article a bien été ajouté :)");
+      showModal("L'article a bien été ajouté au panier");
 
     } else {
 
-      showModal("Veuillez choisir COULEUR & TAILLE");
+      showModal("Veuillez choisir une couleur et une taille");
     }
 
   })

@@ -179,20 +179,21 @@
 }
 
 
-
+/* ACCENT BUTTON */
 .btn--accent {
   background: var(--c-hero);
   border-color: var(--c-hero);
-  /* color: var(--c-lgt); */
+
   color: var(--c-dark);
 }
 
 .btn--accent:hover {
   background: var(--c-hero-dimm);
+  border-color: var(--c-hero-dimm);
   color: var(--c-dark);
 }
 
-
+/* LIGHT BUTTON */
 .btn--light {
   background: var(--c-mid);
   border-color: var(--c-mid);
@@ -201,10 +202,11 @@
 
 .btn--light:hover {
   background: var(--c-mid-dimm);
+  border-color: var(--c-mid-dimm);
   color: var(--c-dark);
 }
 
-
+/* DARK BUTTON */
 .btn--dark {
   background: var(--c-dark);
   border-color: var(--c-dark);
@@ -213,8 +215,12 @@
 
 .btn--dark:hover {
   background: var(--c-dark-dimm);
+  border-color: var(--c-dark-dimm);
   color: var(--c-hero);
 }
+
+
+
 
 
 .btn--xl {
@@ -225,32 +231,7 @@
 
 
 
-.badge {
-  background: #eb8102;
-  color: #f8f9fa;
-  padding: .125rem;
 
-  font-size: .75rem;
-  font-weight: bold;
-
-  letter-spacing: 2px;
-
-  margin: 0 .25rem;
-}
-
-
-
-.view {
-  color: #372;
-  background-color: #8b2;
-  font-weight: bold;
-  font-size: .675rem;
-
-  border-left: 5px solid #372;
-  padding: .125rem .5rem;
-
-  width: fit-content;
-}
 
 
 
@@ -268,6 +249,33 @@
 
   padding: 1rem 0;
 }
+
+.view {
+  border-left: 5px solid #372;
+  background-color: #8b2;
+  color: #372;
+  font-weight: bold;
+  font-size: .675rem;
+  width: fit-content;
+
+  padding: .125rem .5rem;
+}
+
+.badge {
+  background: #eb8102;
+  color: #f8f9fa;
+  
+  font-size: .75rem;
+  font-weight: bold;
+  
+  letter-spacing: 2px;
+  
+  padding: .125rem;
+  margin: 0 .25rem;
+}
+
+
+
 
 .page__title {
   color: #eb8102;

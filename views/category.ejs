@@ -3,7 +3,6 @@
 
 <head>
   <%- include('./includes/head') %>
-    <title>Extra</title>
 </head>
 
 <body>
@@ -183,8 +182,8 @@
 
 
 
-        <!-- A*A -- #filterSizes -->
-        <div class="fil__wrapper">
+        <!-- BUG -- #filterSizes DISPLAY NONE -->
+        <div class="fil__wrapper dnn">
           <input class="fil__input--hidden" type="checkbox" id="tab-4" name="tabs">
 
           <!-- label -->
@@ -205,47 +204,12 @@
       </div>
 
 
-      <!-- A*A -- affichage produits -->
+      <!-- MK -- affichage produits -->
       <div id="showProducts">
-
-
-        <!-- item 
-        <article class="card product__link" data-href="23">
-          <div class="card__tag">-20%</div>
-          <img class="card__pict" src="/assets/products/productW_01.jpg" alt="">
-          <div class="card__brand">
-            <p>Ananas</p>
-          </div>
-
-          <div class="card__name">
-            <h2 class="card__name__text">Kalifornia</h2>
-          </div>
-
-          <div class="card__price">
-            <p class="card__price__text">
-              <span class="price--def">60 €</span>
-              <span class="price--erased">100 €</span>
-            </p>
-          </div>
-        </article>
-        -->
-
-
+        <!-- generated content -->
       </div>
 
-
-
-
     </section>
-
-
-
-
-    <section class="my2">
-
-
-    </section>
-
 
 
 
@@ -256,6 +220,11 @@
         <button id="testBtn" class="btn btn--xl" data-message="vous avez cliqué sur la page de catégorie">TEST</button>
       </div>
     </section>
+
+
+    <!-- attribution -->
+    <%- include('./includes/attrib') %>
+
 
 
   </main>
@@ -271,6 +240,8 @@
       </ul>
     </div>
   </section>
+
+
   
   <!-- T*T -- FOOTER -->
   <%- include('./includes/footer') %>

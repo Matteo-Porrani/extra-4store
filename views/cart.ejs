@@ -22,24 +22,18 @@
       </div>
     </section>
 
-
-
     <section class="my2">
       <div class="container">
         <a class="btn btn--light" href="<%= genderPath %>">Retour aux achats</a>
       </div>
     </section>
 
-
 <!-- T*T -- CART -->
     <section class="my2">
       <div class="container">
 
-
         <!-- TODO -- formulaire -->
         <form action="" method="">
-
-
 
           <!-- MK -- LEFT SIDE -->
           <div id="cartWrapper">
@@ -66,16 +60,13 @@
                     </p>
 
                     <!-- 3 -->
-                    <p>
-                      
-                    </p>
+                    <p></p>
 
                     <!-- 4 -->
                     <p class="alright">
                       <button class="btn btn--dark cartItemDeleteBtn" data-target="<%= item.p_id %>">
                         <i class="ph-trash"></i>
                       </button>
-
                     </p> 
 
                     <!-- 5 -->
@@ -95,7 +86,6 @@
                     <p class="alright" style="">€ <span class="cart__price__def">
                       <%= item.p_priceDef %>
                     </span></p>
-
                     
                   </div>
 
@@ -116,15 +106,11 @@
               </div>
 
               <!-- <div id="productsTotal"></div> -->
-
-              
-
             </div>
 
 
             <!-- MK -- RIGHT SIDE -->
             <div id="cartCheckout" class="cart__half">
-
 
               <p class="cart__section__title">Récapitulatif commande</p>
 
@@ -173,6 +159,8 @@
       </div>
     </section>
 
+  <!-- attribution -->
+  <%- include('./includes/attrib') %>
 
   </main>
 

@@ -47,7 +47,7 @@ let tempProducts = [];
 const currGenderPath = getCookieValue('gender');
 // TODO -- switch local/deploy 
 // const fetchUrl = `http://localhost:3000/api/products${currGenderPath}`;
-const fetchUrl = `https://demo-4store.herokuapp.com/api/products${currGenderPath}`;
+const fetchUrl = `${hostname}/api/products${currGenderPath}`;
 
 
 // first fetch - TOUS les produits du genre (sans distinction de catégprie)
@@ -193,7 +193,7 @@ function displayBrands(items) {
   const categoryIds = items.map(item => item.p_id);
 
   // fetch(`http://localhost:3000/api/brands/${categoryIds.join('+')}`)
-  fetch(`https://demo-4store.herokuapp.com/api/brands/${categoryIds.join('+')}`)
+  fetch(`${hostname}/api/brands/${categoryIds.join('+')}`)
     .then(res => res.json())
     .then(activeBrands => {
       const htmlBrands = activeBrands.map(item => {
@@ -235,7 +235,7 @@ function displayColors(items) {
   });
 
   // fetch(`http://localhost:3000/api/colors/${filteredIds.join('+')}`)
-  fetch(`https://demo-4store.herokuapp.com/api/colors/${filteredIds.join('+')}`)
+  fetch(`${hostname}/api/colors/${filteredIds.join('+')}`)
     .then(res => res.json())
     .then(activeColors => {
       const htmlColors = activeColors.map(item => {
@@ -278,7 +278,7 @@ function displaySizes(items) {
   const categoryIds = items.map(item => item.p_id);
 
   // fetch(`http://localhost:3000/api/sizes/${categoryIds.join('+')}`)
-  fetch(`https://demo-4store.herokuapp.com/api/sizes/${categoryIds.join('+')}`)
+  fetch(`${hostname}/api/sizes/${categoryIds.join('+')}`)
     .then(res => res.json())
     .then(activeSizes => {
       const htmlSizes = activeSizes.map(item => {

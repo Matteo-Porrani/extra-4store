@@ -3,7 +3,6 @@
 
 <head>
   <%- include('./includes/head') %>
-    <title>Extra</title>
 </head>
 
 <body>
@@ -40,7 +39,7 @@
     <!-- T*T -- breadcrumb -->
     <section>
       <div class="container">
-        <ul class="brd__list txt75">
+        <ul class="brd__list">
           <li><a class="brd__link" href="/">Accueil</a><span>/</span></li>
           <li><a class="brd__link" href="<%= genderPath %>"><%= gender %></a><span>/</span></li>
           <li><a class="brd__link" href="/category/<%= product.p_catId %>"><%= product.p_categ.charAt(0).toUpperCase() + product.p_categ.slice(1) %></a><span>/</span></li>
@@ -59,11 +58,11 @@
 
         <div class="det__top">
 
-          <p class="det__top__categ txt75 txtgr">
+          <p class="det__top__categ txt75 txtgr dnn">
             <span>
               <%= product.p_categ %>
             </span> /
-            <span>
+            <span class="">
               <%= product.p_subcat %>
             </span>
           </p>
@@ -325,13 +324,8 @@
 
     </section>
 
-
-
-
-
-
-
-
+    <!-- attribution -->
+    <%- include('./includes/attrib') %>
 
 
   </main>

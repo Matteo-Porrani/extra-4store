@@ -1,4 +1,4 @@
-
+// LOG -- set to 0 to stop carousel
 const slideActive = 1;
 
 
@@ -40,7 +40,7 @@ if (slideActive) {
 
   setInterval(() => {
     slideRight();
-  }, 2000);
+  }, 4000);
 
 }
 

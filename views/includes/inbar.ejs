@@ -1,42 +1,42 @@
-
 <p class="vst">.inbar</p>
 
 <div id="inbar">
 
   <nav>
-    <ul class="inbar__nav">
+    <div class="inbar__nav">
 
       <!-- flex-child -->
-      <div class="inbar__nav--primary">
-        <li class="inbar__nav__link">
+      <ul class="inbar__nav--primary">
+
+        <li class="inbar__nav__link inbar--promo">
           <a class="txtgr" href="/category/99">SOLDES</a>
         </li>
-        <li class="inbar__nav__link">
+        
+        <li class="inbar__nav__link inbar--every">
           <a class="txtgr" href="/category/100">tout</a>
         </li>
-      </div>
+      </ul>
 
       <!-- flex-child -->
-      <div class="inbar__nav--secondary">
+      <ul class="inbar__nav--secondary">
+
         <% for (const category of categories) { %>
-          <li class="inbar__nav__link">
-            <a class="" href="/category/<%= category.catId %>">
+          <li class="inbar__nav__link inbar__nav__link--category">
+
+            <a class="inbar__category__anchor" href="/category/<%= category.catId %>">
               <img class="cat__icon" src="/assets/icons/<%= category.icoUrl %>" alt="">
             </a>
+
           </li>
-          <% } %>
-      </div>
+        <% } %>
+      </ul>
 
-
-    </ul>
+    </div>
 
   </nav>
 
   <div class="inbar__search">
-    <input type="text" name="" id="" placeholder="search..." style="margin: .25rem; width: 95%;">
+    <input type="text" name="" id="globalSearch" style="">
   </div>
 
-
 </div>
-
-
